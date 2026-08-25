@@ -190,7 +190,7 @@ export function App() {
 
         {/* 頁腳 */}
         <footer className="footer">
-          <div>✦ 64-TYPE PERSONA DYNAMICS | 48 題六維度心理學深度測驗系統 ✦</div>
+          <div>✦ 64-TYPE PERSONA DYNAMICS | 60 題六維度心理學深度測驗系統 ✦</div>
           <div>本測驗結果僅供自我探索、性格認知與個人成長參考。</div>
         </footer>
       </div>

@@ -40,7 +40,7 @@ class PersonalityEngine {
     Object.keys(DIMENSIONS).forEach(dimKey => {
       const meta = DIMENSIONS[dimKey];
       const scoreObj = dimensionScores[dimKey];
-      const maxRaw = scoreObj.maxPossible || 16; // 8題 * 2 = 16
+      const maxRaw = scoreObj.maxPossible || 20; // 10題 * 2 = 20
       const raw = scoreObj.raw;
 
       // 轉換成 0 ~ 100% 的 A 維度傾向 (0 = 100% B, 50 = 中立, 100 = 100% A)

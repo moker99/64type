@@ -2,8 +2,8 @@
  * 64型人格分析計算引擎 (Personality Engine)
  */
 
-import { DIMENSIONS, QUESTIONS } from '../data/questions';
-import { getPersonalityProfile } from '../data/personalityData';
+import { DIMENSIONS, QUESTIONS } from '../data/questions.js';
+import { getPersonalityProfile } from '../data/personalityData.js';
 
 export class PersonalityEngine {
   /**
@@ -38,7 +38,7 @@ export class PersonalityEngine {
     Object.keys(DIMENSIONS).forEach(dimKey => {
       const meta = DIMENSIONS[dimKey];
       const scoreObj = dimensionScores[dimKey];
-      const maxRaw = scoreObj.maxPossible || 16;
+      const maxRaw = scoreObj.maxPossible || 20;
       const raw = scoreObj.raw;
 
       const ratioA = (raw + maxRaw) / (2 * maxRaw);

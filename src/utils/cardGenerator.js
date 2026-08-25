@@ -2,7 +2,7 @@
  * 64型人格 - 分享海報/圖卡生成器 (Share Card Generator)
  */
 
-import { getPersonalityProfile } from '../data/personalityData';
+import { getPersonalityProfile } from '../data/personalityData.js';
 
 export class ShareCardGenerator {
   /**
@@ -82,7 +82,7 @@ export class ShareCardGenerator {
 
     ctx.font = "18px 'Noto Sans TC', sans-serif";
     ctx.fillStyle = "rgba(226, 232, 240, 0.6)";
-    ctx.fillText("48題深度性格維度分析報告", width / 2, 140);
+    ctx.fillText("60題深度性格維度分析報告", width / 2, 140);
 
     // 6. 徽章與代碼
     const badge = result.profile.badge || "✨";
@@ -230,7 +230,7 @@ export class ShareCardGenerator {
     ctx.textAlign = "center";
     ctx.font = "16px 'Noto Sans TC', sans-serif";
     ctx.fillStyle = "rgba(148, 163, 184, 0.7)";
-    ctx.fillText("64型人格48題深度測驗  |  探索你的專屬心靈宇宙", width / 2, 1475);
+    ctx.fillText("64型人格60題深度測驗  |  探索你的專屬心靈宇宙", width / 2, 1475);
 
     ctx.font = "bold 18px 'JetBrains Mono', monospace";
     ctx.fillStyle = "#6366f1";

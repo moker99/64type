@@ -83,7 +83,7 @@ class ShareCardGenerator {
 
     ctx.font = "18px 'Noto Sans TC', sans-serif";
     ctx.fillStyle = "rgba(226, 232, 240, 0.6)";
-    ctx.fillText("48題深度性格維度分析報告", width / 2, 140);
+    ctx.fillText("60題深度性格維度分析報告", width / 2, 140);
 
     // 6. 人格徽章與大代碼
     const badge = result.profile.badge || "✨";
@@ -233,7 +233,7 @@ class ShareCardGenerator {
     ctx.textAlign = "center";
     ctx.font = "16px 'Noto Sans TC', sans-serif";
     ctx.fillStyle = "rgba(148, 163, 184, 0.7)";
-    ctx.fillText("64型人格48題深度測驗  |  掃描或點擊連結解鎖你的心靈光譜", width / 2, 1475);
+    ctx.fillText("64型人格60題深度測驗  |  掃描或點擊連結解鎖你的心靈光譜", width / 2, 1475);
 
     ctx.font = "bold 18px 'JetBrains Mono', monospace";
     ctx.fillStyle = "#6366f1";

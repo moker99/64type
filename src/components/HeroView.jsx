@@ -5,7 +5,7 @@ export function HeroView({ onStartQuiz, onOpenCodex }) {
   return (
     <section className="hero-section">
       <div className="hero-badge-pill">
-        <span>✦ 6維度心智模型 × 48題精準題庫 ✦</span>
+        <span>✦ 6維度心智模型 × 60題精準題庫 ✦</span>
       </div>
 
       <h1 className="hero-title">
@@ -14,7 +14,7 @@ export function HeroView({ onStartQuiz, onOpenCodex }) {
       </h1>
 
       <p className="hero-subtitle">
-        突破傳統 16 型架構，融入心態韌性與行動驅力雙重維度（2⁶ = 64 種人格原型）。透過 48 題精準情境心理分析，揭示你的天賦超能力、職涯指南與靈魂契合拍檔。
+        突破傳統 16 型架構，融入心態韌性與行動驅力雙重維度（2⁶ = 64 種人格原型）。透過 60 題精準情境心理分析，揭示你的天賦超能力、職涯指南與靈魂契合拍檔。
       </p>
 
       <div className="hero-cta-group">
@@ -25,7 +25,7 @@ export function HeroView({ onStartQuiz, onOpenCodex }) {
             onStartQuiz();
           }}
         >
-          <span>開始 48 題深度測驗 🚀</span>
+          <span>開始 60 題深度測驗 🚀</span>
         </button>
         <button
           className="btn btn-secondary btn-lg"
@@ -49,7 +49,7 @@ export function HeroView({ onStartQuiz, onOpenCodex }) {
           <div className="stat-label">雙極核心維度</div>
         </div>
         <div className="stat-card">
-          <div className="stat-number">48</div>
+          <div className="stat-number">60</div>
           <div className="stat-label">精選心理情境題</div>
         </div>
       </div>
