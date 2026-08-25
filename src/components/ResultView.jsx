@@ -142,27 +142,47 @@ export function ResultView({
                   ⚡ 核心天賦超能力 (Superpowers)
                 </h4>
                 <div className="trait-chip-list">
-                  {p.superpowers.map((pw, i) => (
-                    <div key={i} className="trait-chip-item">
-                      <div className="chip-icon">⚡</div>
-                      <div>
-                        <div className="chip-text-title">{pw}</div>
-                        <div className="chip-text-desc">天賦本能，能在複雜情境下迅速發揮超常效能。</div>
+                  {p.superpowers.map((pw, i) => {
+                    const tagMeta = [
+                      { label: "核心競爭力", desc: "在複雜任務與團隊中本能展現的關鍵優勢，能創造決定性的突破成果。" },
+                      { label: "認知決策力", desc: "獨特的思維模式與感知路徑，能在高壓或未知情境下迅速鎖定最佳解。" },
+                      { label: "長效影響力", desc: "持續向外輻射的正面能量與個人魅力，能有效帶動環境與他人共同進步。" }
+                    ][i] || { label: "專屬優勢", desc: "獨一無二的天賦本能，為你的心靈宇宙提供源源不絕的動力。" };
+
+                    return (
+                      <div key={i} className="trait-chip-item">
+                        <div className="chip-icon" style={{ background: 'rgba(99, 102, 241, 0.15)', color: '#818cf8', width: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold' }}>
+                          0{i + 1}
+                        </div>
+                        <div style={{ flex: 1 }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+                            <span className="chip-text-title" style={{ fontSize: '1.02rem' }}>{pw}</span>
+                            <span className="dim-code-badge" style={{ fontSize: '0.7rem', padding: '2px 8px', color: 'var(--primary-light)', borderColor: 'rgba(99, 102, 241, 0.3)' }}>
+                              {tagMeta.label}
+                            </span>
+                          </div>
+                          <div className="chip-text-desc">{tagMeta.desc}</div>
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
               <div>
                 <h4 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '16px', color: 'var(--secondary-light)' }}>
                   🌌 原型深度概述 (Archetype Essence)
                 </h4>
-                <p style={{ lineHeight: 1.8, color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
-                  {p.name}（{result.code}）屬於 {p.group}。{p.tagline}。
-                  在能量光譜上，你呈現出 {result.dimensions.EI.dominantLabel} 與 {result.dimensions.SN.dominantLabel} 的感知模式；
-                  決策時具備強烈的 {result.dimensions.TF.dominantLabel} 導向，以 {result.dimensions.JP.dominantLabel} 的方式組織生活；
-                  在逆境中展現 {result.dimensions.AR.dominantLabel} 的韌性，並以 {result.dimensions.DC.dominantLabel} 作為驅動周遭的核心方式。
-                </p>
+                <div className="glass-panel" style={{ padding: '20px', lineHeight: 1.8, fontSize: '0.94rem', color: 'var(--text-secondary)' }}>
+                  <p style={{ marginBottom: '12px', color: 'var(--text-primary)', fontWeight: 600 }}>
+                    ✦ {p.name}（{result.code}）屬於 <strong style={{ color: p.groupColor || 'var(--secondary-light)' }}>{p.group}</strong>。
+                  </p>
+                  <p style={{ marginBottom: '12px' }}>
+                    你的核心驅動力源於「{p.tagline}」。在心智模型中，你結合了 <strong style={{ color: 'var(--text-primary)' }}>{result.dimensions.EI.dominantLabel}</strong> 的充能路徑與 <strong style={{ color: 'var(--text-primary)' }}>{result.dimensions.SN.dominantLabel}</strong> 的資訊感知，形成極具辨識度的洞察視角。
+                  </p>
+                  <p>
+                    在面對抉擇與壓力時，你習慣運用 <strong style={{ color: 'var(--text-primary)' }}>{result.dimensions.TF.dominantLabel}</strong> 錨定準則，並以 <strong style={{ color: 'var(--text-primary)' }}>{result.dimensions.JP.dominantLabel}</strong> 的步調掌控局勢，展現出 <strong style={{ color: 'var(--text-primary)' }}>{result.dimensions.AR.dominantLabel}</strong> 與 <strong style={{ color: 'var(--text-primary)' }}>{result.dimensions.DC.dominantLabel}</strong> 的深層生命韌性。
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -217,15 +237,30 @@ export function ResultView({
                   ⚠️ 潛在盲點與成長挑戰
                 </h4>
                 <div className="trait-chip-list">
-                  {p.blindspots.map((bs, i) => (
-                    <div key={i} className="trait-chip-item">
-                      <div className="chip-icon">⚠️</div>
-                      <div>
-                        <div className="chip-text-title">{bs}</div>
-                        <div className="chip-text-desc">在高壓或疲倦時容易浮現的思維盲區，建議適時有意識抽離覆盤。</div>
+                  {p.blindspots.map((bs, i) => {
+                    const bsMeta = [
+                      { tag: "高壓失衡警示", desc: "在長時間處於高強度或緊繃狀態下容易浮現的思維盲區，建議設定定期覆盤的緩衝邊界。" },
+                      { tag: "人際互動磨礪", desc: "留意思維慣性對身邊夥伴感受的潛在影響，主動建立同理傾聽與情感反饋的暢通管道。" },
+                      { tag: "自我內耗防護", desc: "過度追求特定標準時可能產生的內在損耗，學會接納不確定性並適時對外尋求支援。" }
+                    ][i] || { tag: "成長契機", desc: "適時有意識地抽離自我觀察，能轉化為人格躍升的強大養分。" };
+
+                    return (
+                      <div key={i} className="trait-chip-item">
+                        <div className="chip-icon" style={{ background: 'rgba(245, 158, 11, 0.15)', color: '#f59e0b', width: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold' }}>
+                          !{i + 1}
+                        </div>
+                        <div style={{ flex: 1 }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+                            <span className="chip-text-title" style={{ fontSize: '1.02rem' }}>{bs}</span>
+                            <span className="dim-code-badge" style={{ fontSize: '0.7rem', padding: '2px 8px', color: 'var(--warning)', borderColor: 'rgba(245, 158, 11, 0.3)' }}>
+                              {bsMeta.tag}
+                            </span>
+                          </div>
+                          <div className="chip-text-desc">{bsMeta.desc}</div>
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
               <div>
@@ -235,14 +270,21 @@ export function ResultView({
                 <div
                   className="glass-panel"
                   style={{
-                    padding: '20px',
+                    padding: '24px',
                     background: 'rgba(16, 185, 129, 0.05)',
-                    borderColor: 'rgba(16, 185, 129, 0.2)'
+                    borderColor: 'rgba(16, 185, 129, 0.25)',
+                    lineHeight: 1.8
                   }}
                 >
-                  <p style={{ lineHeight: 1.8, color: 'var(--text-primary)', fontSize: '0.95rem' }}>
-                    🔋 建議充電儀式：{p.stressRecharge}
+                  <div style={{ fontSize: '1.05rem', fontWeight: 700, color: 'var(--success)', marginBottom: '8px' }}>
+                    🌿 專屬身心能量回充儀式
+                  </div>
+                  <p style={{ color: 'var(--text-primary)', fontSize: '0.98rem', marginBottom: '12px' }}>
+                    {p.stressRecharge}
                   </p>
+                  <div style={{ fontSize: '0.85rem', color: 'var(--text-tertiary)' }}>
+                    💡 建議在每週安排固定專屬時段執行上述充電儀式，切斷外界雜訊，回歸內在平衡。
+                  </div>
                 </div>
               </div>
             </div>
