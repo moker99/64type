@@ -1,0 +1,203 @@
+/* ==========================================================================
+   64-TYPE PERSONA DYNAMICS - 完美響應式適配 (Responsive CSS)
+   ========================================================================== */
+
+/* 平板與中型螢幕 (<= 992px) */
+@media (max-width: 992px) {
+  .result-charts-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .content-grid-2col {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .hero-stats-row {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .radar-card-wrapper {
+    min-height: 380px;
+  }
+}
+
+/* 手機與小型螢幕 (<= 768px) */
+@media (max-width: 768px) {
+  .app-container {
+    padding: 0 16px 40px;
+  }
+
+  .navbar {
+    padding: 16px 0;
+  }
+
+  .logo-title {
+    font-size: 1.15rem;
+  }
+
+  .hero-section {
+    padding: 24px 0 40px;
+    gap: 24px;
+  }
+
+  .hero-stats-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .stat-card {
+    padding: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .stat-number {
+    font-size: 1.6rem;
+  }
+
+  .stat-label {
+    margin-top: 0;
+  }
+
+  /* 測驗題目卡片手機端優化 */
+  .question-card {
+    padding: 28px 16px;
+    margin-bottom: 20px;
+  }
+
+  .question-text {
+    font-size: 1.18rem;
+    min-height: 70px;
+    margin-bottom: 28px;
+  }
+
+  /* 5 段選項量表手機端直向或自適應緊湊橫向排版 */
+  .scale-options-group {
+    gap: 6px;
+  }
+
+  .scale-size-large { width: 46px; height: 46px; }
+  .scale-size-medium { width: 38px; height: 38px; }
+  .scale-size-small { width: 30px; height: 30px; }
+
+  .scale-label {
+    font-size: 0.72rem;
+    white-space: normal;
+    max-width: 58px;
+    line-height: 1.2;
+  }
+
+  .scale-shortcut-hint {
+    display: none;
+  }
+
+  .keyboard-tips {
+    display: none;
+  }
+
+  /* 結果頁面手機端優化 */
+  .result-hero-banner {
+    padding: 32px 16px;
+  }
+
+  .result-badge-halo {
+    width: 72px;
+    height: 72px;
+    font-size: 36px;
+  }
+
+  .result-code-display {
+    font-size: 2.4rem;
+  }
+
+  .result-persona-name {
+    font-size: 1.35rem;
+  }
+
+  .dimension-bars-wrapper {
+    padding: 20px 16px;
+  }
+
+  .dim-bar-row {
+    gap: 4px;
+  }
+
+  .dim-bar-header {
+    font-size: 0.78rem;
+  }
+
+  .radar-card-wrapper {
+    padding: 16px;
+    min-height: 320px;
+  }
+
+  .radar-chart-canvas {
+    max-width: 300px;
+    height: 300px;
+  }
+
+  .tab-btn {
+    padding: 10px 14px;
+    font-size: 0.85rem;
+  }
+
+  .modal-content-wrapper {
+    max-height: 95vh;
+    border-radius: var(--radius-lg);
+  }
+
+  .modal-header,
+  .modal-body-scrollable {
+    padding: 16px 20px;
+  }
+
+  .codex-cards-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+  }
+
+  .codex-card {
+    padding: 14px;
+  }
+
+  .codex-card-badge {
+    font-size: 24px;
+  }
+
+  .codex-card-code {
+    font-size: 1rem;
+  }
+
+  .codex-card-name {
+    font-size: 0.85rem;
+  }
+
+  .share-image-preview {
+    max-width: 100%;
+  }
+
+  .result-actions-toolbar {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .result-actions-toolbar .btn {
+    width: 100%;
+  }
+}
+
+/* 超小螢幕手機 (<= 400px) */
+@media (max-width: 400px) {
+  .scale-size-large { width: 40px; height: 40px; }
+  .scale-size-medium { width: 32px; height: 32px; }
+  .scale-size-small { width: 26px; height: 26px; }
+
+  .scale-label {
+    font-size: 0.65rem;
+    max-width: 48px;
+  }
+}
