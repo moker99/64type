@@ -36,9 +36,16 @@ export function PersonaDetailModal({ code, isOpen, onClose }) {
           </button>
         </div>
         <div className="modal-body-scrollable">
-          <div style={{ textAlign: 'center', marginBottom: '20px' }}>
-            <span className="dim-code-badge" style={{ color: 'var(--secondary-light)' }}>
-              {p.group}
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', marginBottom: '20px' }}>
+            <div className="result-avatar-container" style={{ width: '120px', height: '120px', marginBottom: '12px' }}>
+              <img
+                src={p.avatar || './avatars/strategist.jpg'}
+                alt={p.name}
+                className="result-avatar-img"
+              />
+            </div>
+            <span className="dim-code-badge" style={{ color: p.groupColor || 'var(--secondary-light)', borderColor: p.groupColor }}>
+              {p.group} · {p.groupEnName}
             </span>
             <div
               style={{
@@ -104,16 +111,32 @@ export function PersonaDetailModal({ code, isOpen, onClose }) {
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginTop: '16px' }}>
-            <div className="glass-panel" style={{ padding: '12px', fontSize: '0.85rem' }}>
-              <div style={{ color: 'var(--accent-light)', fontWeight: 'bold' }}>💖 最佳靈魂拍檔</div>
-              <div style={{ fontWeight: 'bold', marginTop: '4px' }}>
-                {p.goldenMatch} {goldenP.name}
+            <div className="glass-panel" style={{ padding: '12px', fontSize: '0.85rem', display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <img
+                src={goldenP.avatar || './avatars/empath.jpg'}
+                alt={goldenP.name}
+                className="partner-avatar-img"
+                style={{ width: '48px', height: '48px' }}
+              />
+              <div>
+                <div style={{ color: 'var(--accent-light)', fontWeight: 'bold' }}>💖 最佳靈魂拍檔</div>
+                <div style={{ fontWeight: 'bold', marginTop: '2px' }}>
+                  {p.goldenMatch} {goldenP.name}
+                </div>
               </div>
             </div>
-            <div className="glass-panel" style={{ padding: '12px', fontSize: '0.85rem' }}>
-              <div style={{ color: 'var(--secondary-light)', fontWeight: 'bold' }}>🌱 成長磨礪拍檔</div>
-              <div style={{ fontWeight: 'bold', marginTop: '4px' }}>
-                {p.growthMatch} {growthP.name}
+            <div className="glass-panel" style={{ padding: '12px', fontSize: '0.85rem', display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <img
+                src={growthP.avatar || './avatars/sentinel.jpg'}
+                alt={growthP.name}
+                className="partner-avatar-img"
+                style={{ width: '48px', height: '48px' }}
+              />
+              <div>
+                <div style={{ color: 'var(--secondary-light)', fontWeight: 'bold' }}>🌱 成長磨礪拍檔</div>
+                <div style={{ fontWeight: 'bold', marginTop: '2px' }}>
+                  {p.growthMatch} {growthP.name}
+                </div>
               </div>
             </div>
           </div>

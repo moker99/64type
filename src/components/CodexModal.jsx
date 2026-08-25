@@ -96,15 +96,24 @@ export function CodexModal({ isOpen, onClose, onSelectPersona }) {
               <div
                 key={p.code}
                 className="codex-card"
+                style={{ '--card-accent': p.groupColor || '#6366f1' }}
                 onClick={() => {
                   soundFX.playClick();
                   onSelectPersona(p.code);
                 }}
               >
-                <div className="codex-card-badge">{p.badge || '✨'}</div>
-                <div className="codex-card-code">{p.code}</div>
+                <div className="codex-card-avatar">
+                  <img
+                    src={p.avatar || './avatars/strategist.jpg'}
+                    alt={p.name}
+                    className="codex-card-avatar-img"
+                  />
+                </div>
+                <div className="codex-card-code">{p.badge || '✨'} {p.code}</div>
                 <div className="codex-card-name">{p.name}</div>
-                <div className="codex-card-tag">{p.group || '矩陣原型'}</div>
+                <div className="codex-card-tag" style={{ color: p.groupColor }}>
+                  {p.group || '矩陣原型'}
+                </div>
               </div>
             ))}
           </div>

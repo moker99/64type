@@ -84,20 +84,61 @@ export class ShareCardGenerator {
     ctx.fillStyle = "rgba(226, 232, 240, 0.6)";
     ctx.fillText("60題深度性格維度分析報告", width / 2, 140);
 
-    // 6. 徽章與代碼
-    const badge = result.profile.badge || "✨";
-    ctx.font = "84px 'Segoe UI Emoji', 'Apple Color Emoji', sans-serif";
-    ctx.fillText(badge, width / 2, 260);
+    // 6. 繪製人物立繪圓形頭像
+    const loadImg = (src) => new Promise((resolve) => {
+      const img = new Image();
+      img.crossOrigin = "anonymous";
+      img.onload = () => resolve(img);
+      img.onerror = () => resolve(null);
+      img.src = src;
+    });
 
-    ctx.font = "900 78px 'Plus Jakarta Sans', sans-serif";
-    const textGrad = ctx.createLinearGradient(300, 300, 780, 360);
+    const avatarSrc = result.profile.avatar || "./avatars/strategist.jpg";
+    const avatarImg = await loadImg(avatarSrc);
+
+    const avatarCenterX = width / 2;
+    const avatarCenterY = 240;
+    const avatarRadius = 65;
+
+    if (avatarImg) {
+      ctx.save();
+      // 外發光環
+      ctx.beginPath();
+      ctx.arc(avatarCenterX, avatarCenterY, avatarRadius + 5, 0, Math.PI * 2);
+      ctx.fillStyle = result.profile.groupColor || "#6366f1";
+      ctx.shadowColor = result.profile.groupColor || "#6366f1";
+      ctx.shadowBlur = 25;
+      ctx.fill();
+      ctx.shadowBlur = 0;
+
+      // 剪切圓形頭像
+      ctx.beginPath();
+      ctx.arc(avatarCenterX, avatarCenterY, avatarRadius, 0, Math.PI * 2);
+      ctx.closePath();
+      ctx.clip();
+      ctx.drawImage(
+        avatarImg,
+        avatarCenterX - avatarRadius,
+        avatarCenterY - avatarRadius,
+        avatarRadius * 2,
+        avatarRadius * 2
+      );
+      ctx.restore();
+    } else {
+      const badge = result.profile.badge || "✨";
+      ctx.font = "84px 'Segoe UI Emoji', 'Apple Color Emoji', sans-serif";
+      ctx.fillText(badge, width / 2, 260);
+    }
+
+    ctx.font = "900 76px 'Plus Jakarta Sans', sans-serif";
+    const textGrad = ctx.createLinearGradient(300, 310, 780, 365);
     textGrad.addColorStop(0, "#a5b4fc");
     textGrad.addColorStop(0.5, "#38bdf8");
     textGrad.addColorStop(1, "#f472b6");
     ctx.fillStyle = textGrad;
     ctx.shadowColor = "rgba(99, 102, 241, 0.6)";
     ctx.shadowBlur = 24;
-    ctx.fillText(result.code, width / 2, 365);
+    ctx.fillText(result.code, width / 2, 370);
     ctx.shadowBlur = 0;
 
     // 人格名稱

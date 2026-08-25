@@ -54,6 +54,69 @@ export function HeroView({ onStartQuiz, onOpenCodex }) {
         </div>
       </div>
 
+      {/* 四大人格原型矩陣 (人物角色插畫展示區) */}
+      <div style={{ width: '100%', marginTop: '16px' }}>
+        <h3 style={{ fontSize: '1.25rem', fontWeight: 800, marginBottom: '6px' }}>
+          ✦ 四大人格原型矩陣 (Archetype Matrices)
+        </h3>
+        <p style={{ fontSize: '0.88rem', color: 'var(--text-tertiary)', marginBottom: '16px' }}>
+          點擊任一矩陣探索專屬人格立繪與天賦光譜
+        </p>
+        <div className="archetype-showcase-grid">
+          <div
+            className="archetype-character-card"
+            style={{ '--card-color': '#6366f1', cursor: 'pointer' }}
+            onClick={() => { soundFX.playClick(); onOpenCodex(); }}
+          >
+            <div className="character-avatar-frame">
+              <img src="./avatars/strategist.jpg" alt="戰略統御矩陣" className="character-avatar-img" />
+            </div>
+            <div className="character-group-name">👑 戰略統御矩陣</div>
+            <div className="character-en-name">Strategic & Command</div>
+            <p className="character-desc-text">宏觀遠見、意志堅定，善於破局與引領變革的統帥原型。</p>
+          </div>
+
+          <div
+            className="archetype-character-card"
+            style={{ '--card-color': '#ec4899', cursor: 'pointer' }}
+            onClick={() => { soundFX.playClick(); onOpenCodex(); }}
+          >
+            <div className="character-avatar-frame">
+              <img src="./avatars/empath.jpg" alt="心靈共鳴矩陣" className="character-avatar-img" />
+            </div>
+            <div className="character-group-name">✨ 心靈共鳴矩陣</div>
+            <div className="character-en-name">Resonant & Empath</div>
+            <p className="character-desc-text">深層同理、靈感共鳴，以純淨情感啟迪人心的藝術靈魂。</p>
+          </div>
+
+          <div
+            className="archetype-character-card"
+            style={{ '--card-color': '#10b981', cursor: 'pointer' }}
+            onClick={() => { soundFX.playClick(); onOpenCodex(); }}
+          >
+            <div className="character-avatar-frame">
+              <img src="./avatars/sentinel.jpg" alt="秩序精算矩陣" className="character-avatar-img" />
+            </div>
+            <div className="character-group-name">🛡️ 秩序精算矩陣</div>
+            <div className="character-en-name">Order & Sentinel</div>
+            <p className="character-desc-text">嚴謹務實、構建系統，守護穩定秩序與落實執行的高效柱石。</p>
+          </div>
+
+          <div
+            className="archetype-character-card"
+            style={{ '--card-color': '#06b6d4', cursor: 'pointer' }}
+            onClick={() => { soundFX.playClick(); onOpenCodex(); }}
+          >
+            <div className="character-avatar-frame">
+              <img src="./avatars/explorer.jpg" alt="自由探索矩陣" className="character-avatar-img" />
+            </div>
+            <div className="character-group-name">⚡ 自由探索矩陣</div>
+            <div className="character-en-name">Explorer & Pioneer</div>
+            <p className="character-desc-text">敏捷開拓、充滿好奇，勇於挑戰未知與擁抱冒險的先驅者。</p>
+          </div>
+        </div>
+      </div>
+
       {/* 6 大維度特色展示區 */}
       <div className="dimension-cards-grid">
         <div className="dim-feature-card glass-panel" style={{ '--accent-color': '#6366f1' }}>

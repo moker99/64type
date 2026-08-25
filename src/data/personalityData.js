@@ -868,11 +868,52 @@ export const TYPE_DEFINITIONS = {
   }
 };
 
+export const GROUP_META = {
+  "戰略統御矩陣": {
+    name: "戰略統御矩陣",
+    enName: "Strategic & Command",
+    badge: "👑",
+    avatar: "./avatars/strategist.jpg",
+    color: "#6366f1",
+    desc: "具備宏觀戰略眼光、意志堅定、善於破局與引領潮流的原型矩陣。"
+  },
+  "心靈共鳴矩陣": {
+    name: "心靈共鳴矩陣",
+    enName: "Resonant & Empath",
+    badge: "✨",
+    avatar: "./avatars/empath.jpg",
+    color: "#ec4899",
+    desc: "具備深度同理心、人文關懷與藝術感知，追求心靈啟發與溫暖連結。"
+  },
+  "秩序精算矩陣": {
+    name: "秩序精算矩陣",
+    enName: "Order & Sentinel",
+    badge: "🛡️",
+    avatar: "./avatars/sentinel.jpg",
+    color: "#10b981",
+    desc: "穩重可靠、嚴謹精確、守護秩序與落實執行力的高效柱石。"
+  },
+  "自由探索矩陣": {
+    name: "自由探索矩陣",
+    enName: "Explorer & Pioneer",
+    badge: "⚡",
+    avatar: "./avatars/explorer.jpg",
+    color: "#06b6d4",
+    desc: "敏捷隨變、充滿好奇與開拓精神，勇於挑戰未知與擁抱冒險。"
+  }
+};
+
 export function getPersonalityProfile(code) {
+  const fallbackGroup = GROUP_META["戰略統御矩陣"];
   if (TYPE_DEFINITIONS[code]) {
+    const item = TYPE_DEFINITIONS[code];
+    const groupMeta = GROUP_META[item.group] || fallbackGroup;
     return {
       code,
-      ...TYPE_DEFINITIONS[code]
+      ...item,
+      avatar: groupMeta.avatar,
+      groupColor: groupMeta.color,
+      groupEnName: groupMeta.enName
     };
   }
 
@@ -880,8 +921,11 @@ export function getPersonalityProfile(code) {
     code,
     name: `${code} 探索開拓者`,
     tagline: "在未知光譜中綻放獨特光芒的智慧靈魂",
-    group: "全面平衡矩陣",
+    group: "自由探索矩陣",
     badge: "✨",
+    avatar: "./avatars/explorer.jpg",
+    groupColor: "#06b6d4",
+    groupEnName: "Explorer & Pioneer",
     superpowers: ["多維度敏銳感知", "快速環境適應力", "獨立客觀思考"],
     blindspots: ["需注意在多元可能性中保持專注", "適時排解內在壓力"],
     careers: ["全方位跨界專家", "戰略創新顧問", "項目主理人"],
@@ -894,8 +938,6 @@ export function getPersonalityProfile(code) {
 
 export function getAllPersonalities() {
   const codes = Object.keys(TYPE_DEFINITIONS);
-  return codes.map(code => ({
-    code,
-    ...TYPE_DEFINITIONS[code]
-  }));
+  return codes.map(code => getPersonalityProfile(code));
 }
+

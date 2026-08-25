@@ -22,11 +22,21 @@ export function ResultView({
     <div className="result-container">
       {/* 頂部人格榮譽橫幅 */}
       <div className="result-hero-banner glass-panel">
-        <div className="result-badge-halo">{p.badge || '👑'}</div>
-        <div className="result-code-display">{result.code}</div>
-        <div className="result-persona-name">✦ {p.name} ✦</div>
-        <div className="result-group-tag">[ {p.group || '戰略統御矩陣'} ]</div>
-        <p className="result-tagline-quote">“ {p.tagline} ”</p>
+        <div className="result-persona-showcase">
+          <div className="result-avatar-container">
+            <img
+              src={p.avatar || './avatars/strategist.jpg'}
+              alt={p.name}
+              className="result-avatar-img"
+            />
+          </div>
+          <div>
+            <div className="result-code-display">{result.code}</div>
+            <div className="result-persona-name">✦ {p.name} ✦</div>
+            <div className="result-group-tag">[ {p.group || '戰略統御矩陣'} · {p.groupEnName || 'Strategic'} ]</div>
+            <p className="result-tagline-quote">“ {p.tagline} ”</p>
+          </div>
+        </div>
       </div>
 
       {/* 雙欄圖表展示區塊 (Canvas 雷達圖 + 六維度能量長條) */}
@@ -244,10 +254,14 @@ export function ResultView({
           <div className="tab-pane-content active">
             <div className="content-grid-2col">
               <div className="match-partner-card">
-                <div className="partner-badge">💖</div>
+                <img
+                  src={goldenProf.avatar || './avatars/empath.jpg'}
+                  alt={goldenProf.name}
+                  className="partner-avatar-img"
+                />
                 <div>
                   <div style={{ fontSize: '0.85rem', color: 'var(--accent-light)', fontWeight: 700 }}>
-                    最佳靈魂拍檔 (Golden Match)
+                    💖 最佳靈魂拍檔 (Golden Match)
                   </div>
                   <div style={{ fontSize: '1.25rem', fontWeight: 800, margin: '4px 0' }}>
                     {p.goldenMatch} ✦ {goldenProf.name}
@@ -259,10 +273,14 @@ export function ResultView({
               </div>
 
               <div className="match-partner-card">
-                <div className="partner-badge">🌱</div>
+                <img
+                  src={growthProf.avatar || './avatars/sentinel.jpg'}
+                  alt={growthProf.name}
+                  className="partner-avatar-img"
+                />
                 <div>
                   <div style={{ fontSize: '0.85rem', color: 'var(--secondary-light)', fontWeight: 700 }}>
-                    成長磨礪拍檔 (Growth Match)
+                    🌱 成長磨礪拍檔 (Growth Match)
                   </div>
                   <div style={{ fontSize: '1.25rem', fontWeight: 800, margin: '4px 0' }}>
                     {p.growthMatch} ✦ {growthProf.name}
