@@ -270,7 +270,8 @@
   left: 38px;
   right: 38px;
   height: 2.5px;
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--text-tertiary);
+  opacity: 0.35;
   transform: translateY(-50%);
   z-index: 0;
 }
@@ -299,12 +300,14 @@
 .scale-btn-circle {
   border-radius: 50%;
   background: var(--bg-secondary);
-  border: 2.5px solid rgba(255, 255, 255, 0.2);
+  border: 2.5px solid var(--btn-color, var(--primary));
+  opacity: 0.75;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all var(--transition-fast);
   cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
 }
 
 /* 尺寸依強度區分 */
@@ -314,13 +317,15 @@
 
 .scale-item:hover .scale-btn-circle {
   transform: scale(1.15);
-  border-color: var(--primary-light);
-  box-shadow: 0 0 16px rgba(99, 102, 241, 0.4);
+  opacity: 1;
+  border-color: var(--btn-color, var(--primary-light));
+  box-shadow: 0 0 16px var(--btn-color, rgba(99, 102, 241, 0.4));
 }
 
 .scale-item.selected .scale-btn-circle {
   background: var(--btn-color, var(--primary));
-  border-color: #ffffff;
+  border-color: var(--btn-color, var(--primary));
+  opacity: 1;
   transform: scale(1.18);
   box-shadow: 0 0 20px var(--btn-color, var(--primary));
 }
