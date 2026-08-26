@@ -66,65 +66,65 @@ export function HeroView({ onStartQuiz, onOpenCodex }) {
         </div>
       </div>
 
-      {/* 四大人格原型矩陣 (3D 角色立繪卡片展示區) */}
+      {/* 四大人格原型矩陣 (16Personalities 經典四大家族 2D 立繪展示區) */}
       <div style={{ width: '100%', marginTop: '36px' }}>
         <h2 className="home-section-title">
-          ✦ 四大人格原型矩陣 (Archetype Matrices) ✦
+          ✦ 64 型人格四大家族原型 (Archetype Families) ✦
         </h2>
         <p className="home-section-subtitle">
-          點擊任一矩陣探索專屬 3D 角色立繪與心靈維度解析
+          以 16Personalities 經典原型為基礎，擴展 64 型專屬心靈立繪與天賦光譜
         </p>
         <div className="archetype-showcase-grid">
           <div
             className="archetype-character-card"
-            style={{ '--card-color': '#6366f1', cursor: 'pointer' }}
+            style={{ '--card-color': '#88619a', cursor: 'pointer' }}
             onClick={() => { soundFX.playClick(); onOpenCodex(); }}
           >
-            <div className="character-avatar-frame">
-              <img src="./avatars/strategist.jpg" alt="戰略統御矩陣" className="character-avatar-img" />
+            <div className="character-avatar-frame" style={{ background: '#88619a' }}>
+              <img src="./avatars/strategist.jpg" alt="戰略分析家" className="character-avatar-img" />
             </div>
-            <div className="character-group-name">👑 戰略統御矩陣</div>
-            <div className="character-en-name">Strategic & Command</div>
-            <p className="character-desc-text">宏觀遠見、意志堅定，善於破局與引領變革的統帥原型。</p>
+            <div className="character-group-name" style={{ color: '#c084fc' }}>👑 戰略分析家 (Analysts)</div>
+            <div className="character-en-name">NT 型 · 戰略統御矩陣</div>
+            <p className="character-desc-text">宏觀遠見、意志堅定，善於破解複雜難題與引領變革的統帥原型。</p>
           </div>
 
           <div
             className="archetype-character-card"
-            style={{ '--card-color': '#ec4899', cursor: 'pointer' }}
+            style={{ '--card-color': '#33a474', cursor: 'pointer' }}
             onClick={() => { soundFX.playClick(); onOpenCodex(); }}
           >
-            <div className="character-avatar-frame">
-              <img src="./avatars/empath.jpg" alt="心靈共鳴矩陣" className="character-avatar-img" />
+            <div className="character-avatar-frame" style={{ background: '#33a474' }}>
+              <img src="./avatars/empath.jpg" alt="心靈外交家" className="character-avatar-img" />
             </div>
-            <div className="character-group-name">✨ 心靈共鳴矩陣</div>
-            <div className="character-en-name">Resonant & Empath</div>
-            <p className="character-desc-text">深層同理、靈感共鳴，以純淨情感啟迪人心的藝術靈魂。</p>
+            <div className="character-group-name" style={{ color: '#4ade80' }}>✨ 心靈外交家 (Diplomats)</div>
+            <div className="character-en-name">NF 型 · 心靈共鳴矩陣</div>
+            <p className="character-desc-text">深層同理、熱愛理想與和諧，以純淨情感啟迪人心的靈魂導師。</p>
           </div>
 
           <div
             className="archetype-character-card"
-            style={{ '--card-color': '#10b981', cursor: 'pointer' }}
+            style={{ '--card-color': '#4298b4', cursor: 'pointer' }}
             onClick={() => { soundFX.playClick(); onOpenCodex(); }}
           >
-            <div className="character-avatar-frame">
-              <img src="./avatars/sentinel.jpg" alt="秩序精算矩陣" className="character-avatar-img" />
+            <div className="character-avatar-frame" style={{ background: '#4298b4' }}>
+              <img src="./avatars/sentinel.jpg" alt="秩序守護者" className="character-avatar-img" />
             </div>
-            <div className="character-group-name">🛡️ 秩序精算矩陣</div>
-            <div className="character-en-name">Order & Sentinel</div>
+            <div className="character-group-name" style={{ color: '#38bdf8' }}>🛡️ 秩序守護者 (Sentinels)</div>
+            <div className="character-en-name">SJ 型 · 秩序精算矩陣</div>
             <p className="character-desc-text">嚴謹務實、構建系統，守護穩定秩序與落實執行的高效柱石。</p>
           </div>
 
           <div
             className="archetype-character-card"
-            style={{ '--card-color': '#06b6d4', cursor: 'pointer' }}
+            style={{ '--card-color': '#e4ae3a', cursor: 'pointer' }}
             onClick={() => { soundFX.playClick(); onOpenCodex(); }}
           >
-            <div className="character-avatar-frame">
-              <img src="./avatars/explorer.jpg" alt="自由探索矩陣" className="character-avatar-img" />
+            <div className="character-avatar-frame" style={{ background: '#e4ae3a' }}>
+              <img src="./avatars/explorer.jpg" alt="自由探險家" className="character-avatar-img" />
             </div>
-            <div className="character-group-name">⚡ 自由探索矩陣</div>
-            <div className="character-en-name">Explorer & Pioneer</div>
-            <p className="character-desc-text">敏捷開拓、充滿好奇，勇於挑戰未知與擁抱冒險的先驅者。</p>
+            <div className="character-group-name" style={{ color: '#facc15' }}>⚡ 自由探險家 (Explorers)</div>
+            <div className="character-en-name">SP 型 · 自由探索矩陣</div>
+            <p className="character-desc-text">敏捷隨性、熱愛實踐與冒險，勇於挑戰未知並享受當下的先驅者。</p>
           </div>
         </div>
       </div>

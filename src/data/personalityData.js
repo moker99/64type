@@ -871,35 +871,35 @@ export const TYPE_DEFINITIONS = {
 export const GROUP_META = {
   "戰略統御矩陣": {
     name: "戰略統御矩陣",
-    enName: "Strategic & Command",
+    enName: "Analysts · 戰略分析家",
     badge: "👑",
     avatar: "./avatars/strategist.jpg",
-    color: "#6366f1",
-    desc: "具備宏觀戰略眼光、意志堅定、善於破局與引領潮流的原型矩陣。"
+    color: "#88619a",
+    desc: "宏觀遠見、意志堅定，善於破解複雜問題與引領變革的統帥原型。"
   },
   "心靈共鳴矩陣": {
     name: "心靈共鳴矩陣",
-    enName: "Resonant & Empath",
+    enName: "Diplomats · 心靈外交家",
     badge: "✨",
     avatar: "./avatars/empath.jpg",
-    color: "#ec4899",
-    desc: "具備深度同理心、人文關懷與藝術感知，追求心靈啟發與溫暖連結。"
+    color: "#33a474",
+    desc: "深層同理、追求和諧與理想，以純淨情感啟迪人心的靈魂導師。"
   },
   "秩序精算矩陣": {
     name: "秩序精算矩陣",
-    enName: "Order & Sentinel",
+    enName: "Sentinels · 秩序守護者",
     badge: "🛡️",
     avatar: "./avatars/sentinel.jpg",
-    color: "#10b981",
-    desc: "穩重可靠、嚴謹精確、守護秩序與落實執行力的高效柱石。"
+    color: "#4298b4",
+    desc: "嚴謹務實、構建系統，守護穩定秩序與落實執行的高效柱石。"
   },
   "自由探索矩陣": {
     name: "自由探索矩陣",
-    enName: "Explorer & Pioneer",
+    enName: "Explorers · 自由探險家",
     badge: "⚡",
     avatar: "./avatars/explorer.jpg",
-    color: "#06b6d4",
-    desc: "敏捷隨變、充滿好奇與開拓精神，勇於挑戰未知與擁抱冒險。"
+    color: "#e4ae3a",
+    desc: "敏捷隨性、熱愛實踐與冒險，勇於挑戰未知並享受當下的先驅者。"
   }
 };
 
