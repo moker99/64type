@@ -79,17 +79,23 @@ export function ResultView({
       {/* 頂部人格榮譽立繪橫幅 */}
       <div className="result-hero-banner glass-panel">
         <div className="result-persona-showcase">
-          <div className="result-avatar-container">
+          <div className="result-avatar-container" style={{ background: `linear-gradient(135deg, ${p.groupColor || '#6366f1'}, #ffffff 60%, ${p.groupColor || '#06b6d4'})` }}>
             <img
-              src={p.avatar || './avatars/strategist.jpg'}
+              src={p.avatar || './avatars/entj.jpg'}
               alt={p.name}
               className="result-avatar-img"
             />
           </div>
           <div style={{ textAlign: 'left' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '4px', flexWrap: 'wrap' }}>
-              <span className="result-group-tag" style={{ margin: 0 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px', flexWrap: 'wrap' }}>
+              <span className="result-group-tag" style={{ margin: 0, color: p.groupColor, borderColor: p.groupColor }}>
                 [ {p.group || '戰略統御矩陣'} · {p.groupEnName || 'Strategic'} ]
+              </span>
+              <span className="dim-code-badge" style={{
+                color: result.code.includes('-AD') ? '#fbbf24' : result.code.includes('-AC') ? '#38bdf8' : result.code.includes('-RD') ? '#c084fc' : '#f472b6',
+                borderColor: 'rgba(255, 255, 255, 0.2)'
+              }}>
+                {result.code.includes('-AD') ? '☀️ 熾陽破局形態' : result.code.includes('-AC') ? '🏛️ 盛世盟約形態' : result.code.includes('-RD') ? '🌌 孤島深邃形態' : '🌊 深海微光形態'}
               </span>
               <span className="dim-code-badge" style={{ color: 'var(--gold-accent)', borderColor: 'rgba(251, 191, 36, 0.3)' }}>
                 ⭐ 全球罕見度：約 {rarityPct}%
