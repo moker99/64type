@@ -126,11 +126,6 @@ export function QuizView({
           <span>← 上一題</span>
         </button>
 
-        <div className="keyboard-tips">
-          <span className="kbd-badge">← 上一題</span>
-          <span className="kbd-badge">→ 下一題</span>
-        </div>
-
         <button
           className="btn btn-primary"
           onClick={() => {
