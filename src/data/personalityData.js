@@ -905,13 +905,17 @@ export const GROUP_META = {
 
 export function getPersonalityProfile(code) {
   const fallbackGroup = GROUP_META["戰略統御矩陣"];
+  const baseType = (code ? code.split('-')[0] : 'entj').toLowerCase();
+  const avatarPath = `./avatars/${baseType}.svg`;
+
   if (TYPE_DEFINITIONS[code]) {
     const item = TYPE_DEFINITIONS[code];
     const groupMeta = GROUP_META[item.group] || fallbackGroup;
     return {
       code,
       ...item,
-      avatar: groupMeta.avatar,
+      baseType: baseType.toUpperCase(),
+      avatar: avatarPath,
       groupColor: groupMeta.color,
       groupEnName: groupMeta.enName
     };
@@ -923,9 +927,10 @@ export function getPersonalityProfile(code) {
     tagline: "在未知光譜中綻放獨特光芒的智慧靈魂",
     group: "自由探索矩陣",
     badge: "✨",
-    avatar: "./avatars/explorer.jpg",
-    groupColor: "#06b6d4",
-    groupEnName: "Explorer & Pioneer",
+    baseType: baseType.toUpperCase(),
+    avatar: avatarPath,
+    groupColor: "#e4ae3a",
+    groupEnName: "Explorers · 自由探險家",
     superpowers: ["多維度敏銳感知", "快速環境適應力", "獨立客觀思考"],
     blindspots: ["需注意在多元可能性中保持專注", "適時排解內在壓力"],
     careers: ["全方位跨界專家", "戰略創新顧問", "項目主理人"],
