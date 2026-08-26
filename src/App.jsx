@@ -41,11 +41,33 @@ export function App() {
     localStorage.setItem('persona_theme', theme);
   }, [theme]);
 
+  // 支援網址參數 (如 ?code=ENTP-AD 或 ?result=ENTP-AD) 自動載入測驗結果頁
+  useEffect(() => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const targetCode = params.get('result') || params.get('code');
+      if (targetCode) {
+        const res = PersonalityEngine.generateResultFromCode(targetCode.toUpperCase());
+        setCurrentResult(res);
+        setCurrentView('result');
+      }
+    } catch (e) {}
+  }, []);
+
   const showToast = (message, icon = '✨') => {
     setToast({ message, isVisible: true, icon });
     setTimeout(() => {
       setToast((prev) => ({ ...prev, isVisible: false }));
     }, 2800);
+  };
+
+  const handleSelectHistoryItem = (item) => {
+    const res = PersonalityEngine.generateResultFromHistory(item);
+    setCurrentResult(res);
+    setCurrentView('result');
+    setIsHistoryDrawerOpen(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    showToast(`已載入 ${item.code} 測驗結果 📊`);
   };
 
   const toggleTheme = () => {
@@ -225,7 +247,7 @@ export function App() {
       <HistoryDrawer
         isOpen={isHistoryDrawerOpen}
         onClose={() => setIsHistoryDrawerOpen(false)}
-        onSelectHistoryItem={(code) => setDetailPersonaCode(code)}
+        onSelectHistoryItem={handleSelectHistoryItem}
         onShowToast={showToast}
       />
 

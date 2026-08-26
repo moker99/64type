@@ -66,9 +66,10 @@ export function HistoryDrawer({ isOpen, onClose, onSelectHistoryItem, onShowToas
               <div
                 key={item.id}
                 className="history-item-card"
+                style={{ cursor: 'pointer' }}
                 onClick={() => {
                   soundFX.playClick();
-                  onSelectHistoryItem(item.code);
+                  onSelectHistoryItem(item);
                   onClose();
                 }}
               >
@@ -79,8 +80,22 @@ export function HistoryDrawer({ isOpen, onClose, onSelectHistoryItem, onShowToas
                   <span style={{ fontSize: '0.75rem', color: 'var(--text-tertiary)' }}>{item.date}</span>
                 </div>
                 <div style={{ fontWeight: 700, fontSize: '0.95rem', marginBottom: '6px' }}>{item.name}</div>
-                <div style={{ fontSize: '0.75rem', color: 'var(--text-tertiary)', lineHeight: 1.4 }}>
+                <div style={{ fontSize: '0.75rem', color: 'var(--text-tertiary)', lineHeight: 1.4, marginBottom: '10px' }}>
                   {Object.values(item.dimensionsSummary || {}).join(' | ')}
+                </div>
+                <div style={{ display: 'flex', gap: '8px' }}>
+                  <button
+                    className="btn btn-primary btn-sm"
+                    style={{ fontSize: '0.78rem', padding: '6px 12px', flex: 1 }}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      soundFX.playClick();
+                      onSelectHistoryItem(item);
+                      onClose();
+                    }}
+                  >
+                    📊 查看完整分析報告
+                  </button>
                 </div>
               </div>
             ))

@@ -163,6 +163,97 @@ export class PersonalityEngine {
     }
   }
 
+  static generateResultFromHistory(item) {
+    const code = item.code || "ENTP-AD";
+    const baseCode = code.split('-')[0] || "ENTP";
+    const subCode = code.split('-')[1] || "AD";
+    const profile = getPersonalityProfile(code);
+
+    const parsePct = (str, defaultVal = 70) => {
+      if (!str) return defaultVal;
+      const match = String(str).match(/(\d+)%/);
+      return match ? parseInt(match[1], 10) : defaultVal;
+    };
+
+    const summary = item.dimensionsSummary || {};
+    const dimensionAnalysis = {};
+
+    Object.keys(DIMENSIONS).forEach(dimKey => {
+      const meta = DIMENSIONS[dimKey];
+      const summaryStr = summary[dimKey] || "";
+      const dominantCode = summaryStr.charAt(0) || (baseCode.includes(meta.codeA) ? meta.codeA : (subCode.includes(meta.codeA) ? meta.codeA : meta.codeB));
+      const dominantPct = parsePct(summaryStr, 70);
+      const isA = dominantCode === meta.codeA;
+      const pctA = isA ? dominantPct : (100 - dominantPct);
+      const pctB = 100 - pctA;
+
+      let traitStrength = "";
+      if (dominantPct >= 80) {
+        traitStrength = "極顯著 (Very Distinct)";
+      } else if (dominantPct >= 65) {
+        traitStrength = "顯著 (Distinct)";
+      } else if (dominantPct > 50) {
+        traitStrength = "輕微偏向 (Moderate)";
+      } else {
+        traitStrength = "高度平衡 (Balanced)";
+      }
+
+      dimensionAnalysis[dimKey] = {
+        key: dimKey,
+        name: meta.name,
+        color: meta.color,
+        codeA: meta.codeA,
+        labelA: meta.labelA,
+        pctA: pctA,
+        descA: meta.descA,
+        codeB: meta.codeB,
+        labelB: meta.labelB,
+        pctB: pctB,
+        descB: meta.descB,
+        dominantCode,
+        dominantPct,
+        secondaryCode: isA ? meta.codeB : meta.codeA,
+        secondaryPct: 100 - dominantPct,
+        dominantLabel: isA ? meta.labelA : meta.labelB,
+        dominantDesc: isA ? meta.descA : meta.descB,
+        traitStrength,
+        raw: 0
+      };
+    });
+
+    return {
+      code,
+      baseCode,
+      subCode,
+      profile,
+      dimensions: dimensionAnalysis,
+      completedAt: item.date || new Date().toISOString(),
+      radarData: [
+        { label: `能量 (${dimensionAnalysis.EI.dominantCode})`, value: dimensionAnalysis.EI.dominantPct, color: DIMENSIONS.EI.color, code: dimensionAnalysis.EI.dominantCode },
+        { label: `感知 (${dimensionAnalysis.SN.dominantCode})`, value: dimensionAnalysis.SN.dominantPct, color: DIMENSIONS.SN.color, code: dimensionAnalysis.SN.dominantCode },
+        { label: `決策 (${dimensionAnalysis.TF.dominantCode})`, value: dimensionAnalysis.TF.dominantPct, color: DIMENSIONS.TF.color, code: dimensionAnalysis.TF.dominantCode },
+        { label: `步調 (${dimensionAnalysis.JP.dominantCode})`, value: dimensionAnalysis.JP.dominantPct, color: DIMENSIONS.JP.color, code: dimensionAnalysis.JP.dominantCode },
+        { label: `心態 (${dimensionAnalysis.AR.dominantCode})`, value: dimensionAnalysis.AR.dominantPct, color: DIMENSIONS.AR.color, code: dimensionAnalysis.AR.dominantCode },
+        { label: `驅力 (${dimensionAnalysis.DC.dominantCode})`, value: dimensionAnalysis.DC.dominantPct, color: DIMENSIONS.DC.color, code: dimensionAnalysis.DC.dominantCode }
+      ]
+    };
+  }
+
+  static generateResultFromCode(code) {
+    const defaultItem = {
+      code,
+      dimensionsSummary: {
+        EI: "E (75%)",
+        SN: "N (68%)",
+        TF: "T (72%)",
+        JP: "P (70%)",
+        AR: "A (76%)",
+        DC: "D (65%)"
+      }
+    };
+    return PersonalityEngine.generateResultFromHistory(defaultItem);
+  }
+
   static clearHistory() {
     try {
       localStorage.removeItem("persona_64_history");
