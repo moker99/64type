@@ -1,44 +1,50 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
   <defs>
-    <filter id="facetShadow_enfj" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.2" />
+    <style>
+      .cls-1,.cls-10,.cls-11,.cls-12,.cls-13,.cls-14,.cls-15,.cls-16,.cls-17,.cls-18,.cls-19,.cls-2,.cls-20,.cls-21,.cls-3,.cls-4,.cls-5,.cls-6,.cls-7,.cls-8,.cls-9{fill-rule:evenodd;}.cls-1,.cls-5,.cls-6{opacity:0.1;}.cls-2{fill:#72c9a6;}.cls-3{fill:#3f8f6f;}.cls-4{fill:#54b08b;}.cls-5,.cls-6{stroke:#2b2b2b;stroke-miterlimit:22.93;stroke-width:0.57px;}.cls-6,.cls-9{fill:#2b2b2b;}.cls-7{fill:#474747;}.cls-8{fill:#6f7173;}.cls-10{fill:#5a753d;}.cls-11{fill:#738d57;}.cls-12{fill:#99c26d;}.cls-13{fill:#8b6651;}.cls-14{fill:#446125;}.cls-15{fill:#dddddc;}.cls-16{fill:#709d53;}.cls-17{fill:#dfbda5;}.cls-18{fill:#c3987b;}.cls-19{fill:#e8cab6;}.cls-20{fill:#fff;}.cls-21{fill:#35785d;}
+    </style>
+    <linearGradient id="pedestalTop_enfj" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#e2e8f0" />
+    </linearGradient>
+    <linearGradient id="pedestalSide_enfj" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#cbd5e1" />
+      <stop offset="100%" stop-color="#94a3b8" />
+    </linearGradient>
+    <filter id="shadow_enfj" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#0f172a" flood-opacity="0.18" />
     </filter>
   </defs>
 
-  <!-- 柔和純淨圓形背景 -->
-  <circle cx="150" cy="150" r="142" fill="#f0fdf4" stroke="#33a474" stroke-width="3.5" />
+  <!-- 現代圓形漸變背景 -->
+  <circle cx="200" cy="200" r="192" fill="#f2fbf6" stroke="#33a474" stroke-width="4" />
   
-  <!-- 幾何線條感光環 -->
-  <polygon points="150,30 235,80 270,165 235,250 150,270 65,250 30,165 65,80" fill="none" stroke="#33a474" stroke-width="1" stroke-dasharray="4,4" opacity="0.35" />
+  <!-- 幾何光環背景飾線 -->
+  <polygon points="200,30 320,80 370,200 320,320 200,370 80,320 30,200 80,80" fill="none" stroke="#33a474" stroke-width="1.5" stroke-dasharray="5,5" opacity="0.3" />
 
-  <!-- 幾何棱角折線人物 -->
-  <g filter="url(#facetShadow_enfj)">
+  <!-- 3D 浮空岩石基座 (3D Floating Hexagonal Pedestal) -->
+  <g filter="url(#shadow_enfj)">
+    <polygon points="70,335 200,365 330,335 330,355 200,385 70,355" fill="url(#pedestalSide_enfj)" />
+    <polygon points="200,365 330,335 330,355 200,385" fill="#64748b" opacity="0.35" />
+    <polygon points="200,305 330,335 200,365 70,335" fill="url(#pedestalTop_enfj)" stroke="#ffffff" stroke-width="2" />
     
-      <!-- ENFJ: 綠色披風英勇領袖、雙手扶持巨型長劍 -->
-      <polygon points="90,140 70,260 230,260 210,140" fill="#065f46" />
-      <polygon points="110,140 150,135 150,260 100,260" fill="#047857" />
-      <polygon points="150,135 190,140 200,260 150,260" fill="#064e3b" />
-      <!-- 臉部折線 -->
-      <polygon points="120,95 150,85 150,140 115,130" fill="#fde68a" />
-      <polygon points="150,85 180,95 185,130 150,140" fill="#fcd34d" />
-      <!-- 幾何黑髮長披髮 -->
-      <polygon points="110,95 125,60 150,55 150,85 120,95" fill="#0f172a" />
-      <polygon points="150,55 175,60 190,95 180,95 150,85" fill="#1e293b" />
-      <polygon points="100,120 115,95 105,150" fill="#0f172a" />
-      <!-- 堅毅眼神 -->
-      <polygon points="132,108 144,108 140,114 132,112" fill="#064e3b" />
-      <polygon points="156,108 168,108 168,112 160,114" fill="#064e3b" />
-      <line x1="142" y1="130" x2="158" y2="130" stroke="#064e3b" stroke-width="2.5" stroke-linecap="round" />
-      <!-- 身前巨型正義長劍 -->
-      <line x1="150" y1="160" x2="150" y2="260" stroke="#cbd5e1" stroke-width="7" stroke-linecap="round" />
-      <rect x="132" y="175" width="36" height="6" rx="2" fill="#fbbf24" />
-      <circle cx="150" cy="160" r="5" fill="#fbbf24" />
-    
+    <!-- 基座碎石點綴 -->
+    <polygon points="105,340 118,336 124,344 112,347" fill="#94a3b8" />
+    <polygon points="285,338 298,335 302,343 289,345" fill="#94a3b8" />
   </g>
 
-  <!-- 頂部棱角徽章 -->
+  <!-- 原汁原味 16Personalities 正版正統人物圖層 (等比例完美置中於基座上) -->
+  <g transform="translate(40, 20) scale(0.8)">
+    <polygon class="cls-1" points="137.32 391.48 243.54 379.07 348.8 392.28 261.13 400 137.32 391.48"/><polygon class="cls-2" points="181.24 3.45 140.01 22.62 153.53 61.47 166.28 65.68 184.08 53.28 200.12 35.91 194.11 21.47 181.24 3.45"/><polygon class="cls-3" points="140.01 22.62 127.42 45.01 135.89 72.94 155.74 100.05 168.97 75.85 153.53 56.92 140.01 22.62"/><polygon class="cls-4" points="157.05 98.84 87.19 130.71 102.93 88.74 51.16 76.14 127.42 45.01 157.05 98.84"/><polygon class="cls-3" points="188.75 0 349.9 277.12 342.69 281.08 200.1 35.87 181.24 3.45 188.75 0"/><polygon class="cls-5" points="319.77 225.32 323.11 231.06 318.18 238.94 312 228.31 319.77 225.32"/><polygon class="cls-6" points="264.19 129.73 268.42 137.01 264.68 146.93 256.1 132.18 264.19 129.73"/><polygon class="cls-7" points="211.37 363.73 218.12 372.34 222.4 381.99 217.74 391.65 211.27 391.64 209.03 375.49 211.37 363.73"/><polygon class="cls-8" points="255.54 391.79 228.32 391.79 211.37 363.73 224.77 359.19 255.54 391.79"/><polygon class="cls-7" points="168.57 126.97 155.74 153.45 180.54 177.15 186.6 130.48 168.57 126.97"/><polygon class="cls-9" points="201.62 142.26 153.81 121.69 160.79 111.25 167.86 108.18 193.66 118.5 201.62 142.26"/><polygon class="cls-10" points="263.46 167.4 269.04 164.26 277.14 163.09 289.2 210.29 280.31 224.95 266.82 224.95 263.46 167.4"/><polygon class="cls-11" points="263.41 167.41 277.14 163.09 252.84 152.93 263.41 167.41"/><polygon class="cls-12" points="289.2 210.29 296.02 209.79 299.28 216.71 303.75 231.12 268.93 242.25 272.87 229.99 289.2 210.29"/><polygon class="cls-13" points="299.25 211.04 310.13 215.24 314.22 232.13 303.75 231.12 300.74 223.01 299.25 211.04"/><polygon class="cls-14" points="258.45 342.69 256.42 357.03 243.54 379.07 211.37 363.73 221.35 317.19 258.45 342.69"/><polygon class="cls-7" points="290.77 351.61 291.15 361.01 305.07 371.25 310.13 367.84 305.33 356.37 297.78 350.57 290.77 351.61"/><polygon class="cls-8" points="316.36 342.76 345.72 345.3 321.06 361.51 290.77 351.61 298.18 342.82 306.91 341.64 316.36 342.76"/><polygon class="cls-15" points="252.84 152.93 228.3 164.68 213.85 157.44 210.94 179.73 211.6 196.48 252.47 200.15 273.98 181.9 252.84 152.93"/><polygon class="cls-14" points="273.98 181.9 286.43 201.52 270.73 261.64 237.22 273.02 203.17 260.99 207.29 224.42 211.6 196.48 258.38 188.78 273.98 181.9"/><polygon class="cls-16" points="286.43 201.52 207.29 224.42 199.55 199.5 211.6 196.48 258.27 185.94 273.98 181.9 286.43 201.52"/><polygon class="cls-11" points="213.85 157.44 188.14 178.9 203.4 179.8 212.67 178.01 213.85 157.44"/><polygon class="cls-10" points="188.14 178.9 172.68 222 185.04 227.33 197.3 226.65 211.6 196.48 212.67 178.01 188.14 178.9"/><polygon class="cls-17" points="267.35 47.28 271.07 56.77 271.4 66.27 285.43 132.07 253.71 141.63 242.13 165.7 200.19 129.98 186.61 123.28 180.22 126.97 167.86 108.18 175.37 99.63 183.85 96.88 187.99 98.84 189.36 107.36 189.76 84.74 196.52 63.26 211.32 48.26 231.52 39.01 252.47 40.09 267.35 47.28"/><polygon class="cls-18" points="196.52 63.26 209.89 75.25 227.57 150.53 247.85 149.63 251.48 164.51 249.2 187.99 213.85 157.44 201.62 142.26 196.52 132.76 192.13 130.48 189.36 107.36 189.56 96.05 192.13 90.32 190.8 81.42 196.52 63.26"/><polygon class="cls-18" points="244.06 100.05 225.12 79.53 209.89 75.25 226.15 68.64 232.76 67.53 244.06 100.05"/><polygon class="cls-18" points="242.13 64.78 248.19 62.58 264.45 61.47 254.14 70.35 249.12 84.42 242.13 64.78"/><polygon class="cls-13" points="253.71 97.3 249.99 103.77 244.06 100.05 253.71 97.3"/><polygon class="cls-7" points="248.19 62.58 256.19 57.61 264.45 61.47 248.19 62.58"/><polygon class="cls-7" points="226.15 68.64 217.06 67.81 209.89 75.25 226.15 68.64"/><polygon class="cls-19" points="232.76 67.53 244.06 100.05 253.71 97.3 242.13 64.78 232.76 67.53"/><polygon class="cls-14" points="225.25 118.5 251.23 107.69 268.93 109.07 251 116.66 225.25 118.5"/><polygon class="cls-11" points="225.25 118.5 256.29 129.07 268.93 109.07 251 116.66 225.25 118.5"/><polygon class="cls-20" points="230.78 118.1 249.49 123.28 258.63 121.16 264.93 110.76 251 115.59 230.78 118.1"/><polygon class="cls-13" points="173.96 109.32 182.43 103.85 187.71 115.08 173.96 109.32"/><polygon class="cls-9" points="183.85 96.88 184.5 92.39 192.13 90.32 189.36 107.36 183.85 96.88"/><polygon class="cls-7" points="153.81 121.69 153.53 92.47 173.3 74.87 196.52 63.26 192.13 90.32 183.85 96.88 167.86 108.18 153.81 121.69"/><polygon class="cls-9" points="274.79 49.21 271.4 66.27 267.35 47.28 274.79 49.21"/><polygon class="cls-7" points="210.85 6.49 276.44 35.15 274.79 49.21 267.35 47.28 231.52 39.01 219.91 28.2 210.85 6.49"/><polygon class="cls-8" points="153.53 92.47 153.53 56.92 210.85 6.49 231.52 39.01 196.52 63.26 153.53 92.47"/><polygon class="cls-13" points="253.71 141.63 218.37 150.81 251.48 164.51 253.71 141.63"/><polygon class="cls-13" points="196.52 125.82 201.62 142.26 192.13 130.48 196.52 125.82"/><polygon class="cls-11" points="270.73 261.64 268.42 338.8 221.35 317.19 203.17 260.99 270.73 261.64"/><polygon class="cls-16" points="270.73 261.64 281.03 305.29 307.91 341.64 243.54 379.07 221.35 317.19 270.73 261.64"/><polygon class="cls-21" points="183.85 119.67 192.13 130.48 196.52 125.82 190.28 115.08 183.85 119.67"/><path class="cls-9" d="M228.87,82.18a4.09,4.09,0,1,1-4.09-4.09A4.09,4.09,0,0,1,228.87,82.18Z"/><path class="cls-9" d="M261,72.77a4.09,4.09,0,1,1-4.09-4.09A4.09,4.09,0,0,1,261,72.77Z"/><polygon class="cls-12" points="221.35 317.19 307.91 341.64 270.73 261.64 221.35 317.19"/><polygon class="cls-12" points="197.3 226.65 203.17 260.99 185.04 264.51 172.68 222 197.3 226.65"/><polygon class="cls-18" points="203.17 260.99 204.04 274.72 217.26 277.71 220.06 273.42 203.17 260.99"/><polygon class="cls-17" points="203.17 260.99 212.54 280.43 201.67 289.75 190.02 285.98 185.04 264.51 203.17 260.99"/><polygon class="cls-18" points="212.54 280.43 215.19 298.15 199.27 299.6 190.02 285.98 212.54 280.43"/><polygon class="cls-18" points="299.25 206.38 309.77 222.01 300.74 223.01 296.02 209.79 299.25 206.38"/><polygon class="cls-17" points="299.25 206.38 319.09 196.11 327.31 227.46 314.22 232.13 299.25 206.38"/>
+
+
+
+
+  </g>
+
+  <!-- 頂部標誌性對話泡泡 (Speech Bubble Tag) -->
   <g transform="translate(0, -2)">
-    <polygon points="105,16 195,16 205,30 195,44 105,44 95,30" fill="#33a474" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.25))" />
-    <text x="150" y="34" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-weight="900" font-size="13" fill="#ffffff" text-anchor="middle" letter-spacing="1.5">ENFJ</text>
+    <path d="M140 32 Q140 16 160 16 L240 16 Q260 16 260 32 L260 48 Q260 64 240 64 L208 64 L200 74 L192 64 L160 64 Q140 64 140 48 Z" fill="#33a474" filter="drop-shadow(0 4px 6px rgba(0,0,0,0.25))" />
+    <text x="200" y="45" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-weight="900" font-size="16" fill="#ffffff" text-anchor="middle" letter-spacing="2">ENFJ</text>
   </g>
 </svg>

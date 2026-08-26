@@ -1,43 +1,50 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
   <defs>
-    <filter id="facetShadow_isfj" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.2" />
+    <style>
+      .cls-1,.cls-10,.cls-11,.cls-12,.cls-13,.cls-14,.cls-15,.cls-16,.cls-17,.cls-18,.cls-2,.cls-3,.cls-4,.cls-5,.cls-6,.cls-7,.cls-8,.cls-9{fill-rule:evenodd;}.cls-1{opacity:0.1;}.cls-2{fill:#c3987b;}.cls-3{fill:#27788c;}.cls-4{fill:#8b6651;}.cls-5{fill:#50a9aa;}.cls-6{fill:#72cbcc;}.cls-7{fill:#369496;}.cls-15,.cls-8{fill:#2b2b2b;}.cls-8{opacity:0.2;}.cls-9{fill:#dfbda5;}.cls-10{fill:#fff;}.cls-11{fill:#4f5253;}.cls-12{fill:#8ce0dc;}.cls-13{fill:#318fa6;}.cls-14{fill:#e8cab6;}.cls-16{fill:#6f7173;}.cls-17{fill:#1c7678;}.cls-18{fill:#3aa0ba;}
+    </style>
+    <linearGradient id="pedestalTop_isfj" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#e2e8f0" />
+    </linearGradient>
+    <linearGradient id="pedestalSide_isfj" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#cbd5e1" />
+      <stop offset="100%" stop-color="#94a3b8" />
+    </linearGradient>
+    <filter id="shadow_isfj" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#0f172a" flood-opacity="0.18" />
     </filter>
   </defs>
 
-  <!-- 柔和純淨圓形背景 -->
-  <circle cx="150" cy="150" r="142" fill="#f0f9ff" stroke="#4298b4" stroke-width="3.5" />
+  <!-- 現代圓形漸變背景 -->
+  <circle cx="200" cy="200" r="192" fill="#f1f9fc" stroke="#4298b4" stroke-width="4" />
   
-  <!-- 幾何線條感光環 -->
-  <polygon points="150,30 235,80 270,165 235,250 150,270 65,250 30,165 65,80" fill="none" stroke="#4298b4" stroke-width="1" stroke-dasharray="4,4" opacity="0.35" />
+  <!-- 幾何光環背景飾線 -->
+  <polygon points="200,30 320,80 370,200 320,320 200,370 80,320 30,200 80,80" fill="none" stroke="#4298b4" stroke-width="1.5" stroke-dasharray="5,5" opacity="0.3" />
 
-  <!-- 幾何棱角折線人物 -->
-  <g filter="url(#facetShadow_isfj)">
+  <!-- 3D 浮空岩石基座 (3D Floating Hexagonal Pedestal) -->
+  <g filter="url(#shadow_isfj)">
+    <polygon points="70,335 200,365 330,335 330,355 200,385 70,355" fill="url(#pedestalSide_isfj)" />
+    <polygon points="200,365 330,335 330,355 200,385" fill="#64748b" opacity="0.35" />
+    <polygon points="200,305 330,335 200,365 70,335" fill="url(#pedestalTop_isfj)" stroke="#ffffff" stroke-width="2" />
     
-      <!-- ISFJ: 護士帽、醫護守衛套裝、親切守護姿態 -->
-      <polygon points="105,145 150,135 150,260 90,260" fill="#0ea5e9" />
-      <polygon points="150,135 195,145 210,260 150,260" fill="#0284c7" />
-      <polygon points="135,140 165,140 150,195" fill="#f8fafc" />
-      <!-- 臉部折線 -->
-      <polygon points="120,95 150,85 150,140 115,130" fill="#fde68a" />
-      <polygon points="150,85 180,95 185,130 150,140" fill="#fcd34d" />
-      <!-- 柔順幾何短髮與護士帽 -->
-      <polygon points="110,95 125,60 150,55 150,85 120,95" fill="#334155" />
-      <polygon points="150,55 175,60 190,95 180,95 150,85" fill="#1e293b" />
-      <!-- 幾何護士帽與十字 -->
-      <polygon points="130,68 170,68 162,48 138,48" fill="#ffffff" stroke="#38bdf8" stroke-width="1.5" />
-      <line x1="150" y1="52" x2="150" y2="64" stroke="#ef4444" stroke-width="2" stroke-linecap="round" />
-      <line x1="144" y1="58" x2="156" y2="58" stroke="#ef4444" stroke-width="2" stroke-linecap="round" />
-      <!-- 溫柔眼神與微笑 -->
-      <circle cx="136" cy="112" r="3" fill="#0f172a" />
-      <circle cx="164" cy="112" r="3" fill="#0f172a" />
-      <path d="M142 128 Q150 136 158 128" fill="none" stroke="#0f172a" stroke-width="2" stroke-linecap="round" />
-    
+    <!-- 基座碎石點綴 -->
+    <polygon points="105,340 118,336 124,344 112,347" fill="#94a3b8" />
+    <polygon points="285,338 298,335 302,343 289,345" fill="#94a3b8" />
   </g>
 
-  <!-- 頂部棱角徽章 -->
+  <!-- 原汁原味 16Personalities 正版正統人物圖層 (等比例完美置中於基座上) -->
+  <g transform="translate(40, 20) scale(0.8)">
+    <polygon class="cls-1" points="110.6 392.44 205.69 377.17 285.24 391.5 212.06 400.11 110.6 392.44"/><polygon class="cls-2" points="205.65 341.36 220.9 366.51 229.25 368.12 233.14 364.44 231.25 344.04 205.65 341.36"/><polygon class="cls-2" points="190.72 339.88 188.08 368.14 177.52 371.63 175.16 366.87 165.69 337.31 190.72 339.88"/><polygon class="cls-3" points="233.14 364.44 244.7 375.11 233.58 387.46 220.05 385.58 220.9 366.51 233.14 364.44"/><polygon class="cls-3" points="188.08 368.14 195.99 389.08 182.08 391.16 168.3 389.08 175.16 366.87 188.08 368.14"/><polygon class="cls-4" points="231.25 344.04 210.59 349.5 205.65 341.36 218.45 340.14 231.25 344.04"/><polygon class="cls-4" points="165.69 337.31 190.04 347.14 190.72 339.88 178.74 337.31 165.69 337.31"/><polygon class="cls-5" points="158.25 174.02 127.92 238.35 153.26 224.13 169.93 215.96 158.25 174.02"/><polygon class="cls-5" points="211.82 165.79 222.07 170.39 256.32 220.95 231.25 209.09 211.82 196.63 211.82 165.79"/><polygon class="cls-6" points="211.82 165.79 200.35 195.08 184.22 201.98 200.7 189.61 179.24 163.38 158.25 174.02 165.37 213.78 156.33 240.85 143.55 268.54 175.69 268.54 211.82 262.08 221.5 248.88 231.25 209.09 211.82 165.79"/><polygon class="cls-7" points="165.37 213.78 156.33 240.85 187.4 240.7 221.22 246.13 230.55 218.75 231.25 209.09 165.37 213.78"/><polygon class="cls-7" points="211.82 262.08 193.12 295.85 161.76 325.29 143.55 268.54 211.82 262.08"/><polygon class="cls-5" points="211.82 262.08 219.9 275.63 228.74 318.5 228.74 340.14 165.69 337.31 161.76 325.29 211.82 262.08"/><polygon class="cls-7" points="165.69 337.31 228.74 318.5 231.25 344.04 165.69 337.31"/><polygon class="cls-8" points="153.37 247.28 156.33 240.85 196.51 240.7 221.5 248.88 211.82 262.08 153.37 247.28"/><polygon class="cls-7" points="211.82 262.08 228.74 318.5 221.5 248.88 211.82 262.08"/><polygon class="cls-9" points="165.37 213.78 194.71 232.17 196.51 237.84 194.71 244.23 127.92 238.35 165.37 213.78"/><polygon class="cls-4" points="229.42 238.35 221.5 248.88 194.71 244.23 216.56 235.59 229.42 238.35"/><polygon class="cls-10" points="211.82 165.79 175.69 164.93 175.69 206.72 200.35 195.08 227.68 201.13 211.82 165.79"/><polygon class="cls-11" points="248.98 58.36 271.05 72.44 253.68 95.96 248.98 77.16 248.98 58.36"/><polygon class="cls-6" points="148.97 58.36 140.25 51.67 129.72 33.07 203.7 0.11 210.17 19.77 211.17 35.06 178.4 52.67 148.97 58.36"/><polygon class="cls-12" points="203.7 0.11 255 21.5 248.98 58.36 227.05 49.09 211.17 35.06 203.7 0.11"/><polygon class="cls-7" points="129.72 33.07 134.23 77.16 144.44 68.39 148.97 58.36 129.72 33.07"/><polygon class="cls-3" points="205.22 7.2 202.26 8.41 203.86 16.87 196.76 19.71 197.83 25.32 205.2 22.53 206.88 30.27 209.92 29.24 210.17 19.77 205.22 7.2"/><polygon class="cls-13" points="205.22 7.2 208.71 8.92 210.39 16.14 217.61 19.6 217.51 24.64 211.6 22 213.24 30.3 209.92 29.24 205.22 7.2"/><polygon class="cls-9" points="248.98 58.36 259.95 146.17 216.56 153.15 200.35 195.08 165.59 146.25 141.24 122.82 157.92 113.64 162.21 118.47 178.16 78.88 192.48 70.27 210.17 62.41 248.98 58.36"/><polygon class="cls-2" points="178.16 78.88 188.91 158.26 216.56 153.15 207.87 161.42 210.17 169.69 200.35 195.08 157.63 142.69 154.55 135.88 150.09 133.44 136.68 117 153.37 102.88 161.04 120.21 166.72 103.88 178.16 78.88"/><polygon class="cls-2" points="241.71 81.29 225.7 103.37 217.97 113.67 194.89 88.82 241.71 81.29"/><polygon class="cls-14" points="213.91 85.69 217.97 113.67 227.05 112.42 222.82 84.23 213.91 85.69"/><polygon class="cls-4" points="227.05 112.42 223.1 118.47 217.97 113.67 227.05 112.42"/><polygon class="cls-4" points="216.56 153.15 210.17 169.69 180.64 158.34 216.56 153.15"/><polygon class="cls-4" points="160.8 126.72 157.63 142.69 150.09 133.45 160.8 126.72"/><polygon class="cls-4" points="157.3 124.03 151.43 113.85 143.55 118.47 157.3 124.03"/><polygon class="cls-11" points="207.87 70.27 213.01 52.67 211.17 35.06 148.97 58.36 119.43 95.76 149.3 88.82 178.16 78.88 191.06 75.14 207.87 70.27"/><polygon class="cls-15" points="178.16 78.88 162.04 122.21 153.37 107.83 136.68 117 119.43 95.76 178.16 78.88"/><polygon class="cls-16" points="211.17 35.06 248.98 58.36 207.87 70.27 211.17 35.06"/><polygon class="cls-11" points="213.91 85.69 212.97 79.5 194.89 88.82 213.91 85.69"/><polygon class="cls-11" points="222.82 84.23 241.71 81.29 222.13 78.25 222.82 84.23"/><polygon class="cls-17" points="214.84 130.25 224.11 124.47 234.25 127.15 225.19 132.56 214.84 130.25"/><polygon class="cls-18" points="187.34 380.99 177.09 380.99 168.3 389.08 168.3 392.38 195.99 392.38 195.99 389.08 187.34 380.99"/><polygon class="cls-9" points="231.25 209.09 226.88 225.22 229.42 238.35 254.76 232.46 256.32 220.95 231.25 209.09"/><polygon class="cls-2" points="229.42 238.35 221.5 248.88 218.45 239.21 229.42 238.35"/><polygon class="cls-2" points="194.71 232.17 213.01 220.95 217.97 227.88 218.45 239.21 194.71 244.23 194.71 232.17"/><polygon class="cls-14" points="213.01 220.95 226.88 225.22 229.42 238.35 218.45 239.21 213.01 220.95"/><polygon class="cls-18" points="244.7 375.11 229.8 385.58 220.05 385.58 220.05 388.76 259.61 388.76 259.61 381.58 244.7 375.11"/><polygon class="cls-5" points="207.04 129.26 226.23 137.41 240.69 124.03 225.19 131.56 207.04 129.26"/><path class="cls-15" d="M210.78,99.6a4.28,4.28,0,1,1-4.28-4.27A4.28,4.28,0,0,1,210.78,99.6Z"/><path class="cls-15" d="M237.42,95.33a4.28,4.28,0,1,1-4.27-4.28A4.27,4.27,0,0,1,237.42,95.33Z"/>
+
+
+
+
+  </g>
+
+  <!-- 頂部標誌性對話泡泡 (Speech Bubble Tag) -->
   <g transform="translate(0, -2)">
-    <polygon points="105,16 195,16 205,30 195,44 105,44 95,30" fill="#4298b4" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.25))" />
-    <text x="150" y="34" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-weight="900" font-size="13" fill="#ffffff" text-anchor="middle" letter-spacing="1.5">ISFJ</text>
+    <path d="M140 32 Q140 16 160 16 L240 16 Q260 16 260 32 L260 48 Q260 64 240 64 L208 64 L200 74 L192 64 L160 64 Q140 64 140 48 Z" fill="#4298b4" filter="drop-shadow(0 4px 6px rgba(0,0,0,0.25))" />
+    <text x="200" y="45" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-weight="900" font-size="16" fill="#ffffff" text-anchor="middle" letter-spacing="2">ISFJ</text>
   </g>
 </svg>
