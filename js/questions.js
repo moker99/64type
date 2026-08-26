@@ -7,60 +7,60 @@ const DIMENSIONS = {
   EI: {
     name: "能量獲取",
     codeA: "E",
-    labelA: "外向 Extravert",
+    labelA: "外向",
     descA: "透過社交互動、外在探索與行動來獲取能量",
     codeB: "I",
-    labelB: "內向 Introvert",
+    labelB: "內向",
     descB: "透過獨處沉澱、深度反思與內在世界獲取能量",
     color: "#6366f1"
   },
   SN: {
     name: "資訊感知",
     codeA: "S",
-    labelA: "實感 Sensing",
+    labelA: "實感",
     descA: "專注具體細節、現實經驗與可驗證的事實",
     codeB: "N",
-    labelB: "直覺 Intuition",
+    labelB: "直覺",
     descB: "洞察潛在關聯、未來趨勢與抽象宏觀願景",
     color: "#06b6d4"
   },
   TF: {
     name: "決策邏輯",
     codeA: "T",
-    labelA: "理智 Thinking",
+    labelA: "理智",
     descA: "依據客觀規律、邏輯因果與客觀標準做判斷",
     codeB: "F",
-    labelB: "情感 Feeling",
+    labelB: "情感",
     descB: "基於人際和諧、價值認同與同理共感做決定",
     color: "#ec4899"
   },
   JP: {
     name: "生活處事",
     codeA: "J",
-    labelA: "條理 Judging",
+    labelA: "條理",
     descA: "喜好明確計畫、結構秩序、預先安排與掌控感",
     codeB: "P",
-    labelB: "靈活 Perceiving",
+    labelB: "靈活",
     descB: "喜好隨機應變、保持彈性、開放可能性與自發性",
     color: "#10b981"
   },
   AR: {
     name: "心態韌性",
     codeA: "A",
-    labelA: "篤定自信 Assertive",
+    labelA: "篤定自信",
     descA: "面對壓力與未知從容自信，較少自我懷疑或焦慮",
     codeB: "R",
-    labelB: "審慎敏銳 Reflective",
+    labelB: "審慎敏銳",
     descB: "對環境細節極具洞察，精益求精且常做深度自省",
     color: "#f59e0b"
   },
   DC: {
     name: "行動驅力",
     codeA: "D",
-    labelA: "開拓主導 Driver",
+    labelA: "開拓主導",
     descA: "目標導向、敢於引領變革、追求突破與影響力",
     codeB: "C",
-    labelB: "協同共鳴 Connective",
+    labelB: "協同共鳴",
     descB: "凝聚團隊、倡導共好、注重關係連結與集體共識",
     color: "#8b5cf6"
   }

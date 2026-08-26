@@ -30,13 +30,13 @@ export function CodexModal({ isOpen, onClose, onSelectPersona }) {
     const sub = code.split('-')[1] || 'AD';
     switch (sub) {
       case 'AD':
-        return { label: '☀️ 熾陽破局 (A-Driver)', color: '#fbbf24', bg: 'rgba(251, 191, 36, 0.15)', border: '#f59e0b' };
+        return { label: '☀️ 熾陽破局（篤定開拓）', color: '#fbbf24', bg: 'rgba(251, 191, 36, 0.15)', border: '#f59e0b' };
       case 'AC':
-        return { label: '🏛️ 盛世盟約 (A-Collab)', color: '#38bdf8', bg: 'rgba(56, 189, 248, 0.15)', border: '#0284c7' };
+        return { label: '🏛️ 盛世盟約（篤定協同）', color: '#38bdf8', bg: 'rgba(56, 189, 248, 0.15)', border: '#0284c7' };
       case 'RD':
-        return { label: '🌌 孤島深邃 (R-Driver)', color: '#c084fc', bg: 'rgba(192, 132, 252, 0.15)', border: '#9333ea' };
+        return { label: '🌌 孤島深邃（審慎開拓）', color: '#c084fc', bg: 'rgba(192, 132, 252, 0.15)', border: '#9333ea' };
       case 'RC':
-        return { label: '🌊 深海微光 (R-Collab)', color: '#f472b6', bg: 'rgba(244, 114, 182, 0.15)', border: '#db2777' };
+        return { label: '🌊 深海微光（審慎協同）', color: '#f472b6', bg: 'rgba(244, 114, 182, 0.15)', border: '#db2777' };
       default:
         return { label: '✦ 核心維度', color: '#818cf8', bg: 'rgba(99, 102, 241, 0.15)', border: '#6366f1' };
     }
@@ -138,25 +138,25 @@ export function CodexModal({ isOpen, onClose, onSelectPersona }) {
                 className={`filter-pill-btn btn-sm ${subTypeFilter === 'AD' ? 'active' : ''}`}
                 onClick={() => { soundFX.playClick(); setSubTypeFilter('AD'); }}
               >
-                ☀️ 熾陽破局 (-AD)
+                ☀️ 熾陽破局（篤定開拓）
               </button>
               <button
                 className={`filter-pill-btn btn-sm ${subTypeFilter === 'AC' ? 'active' : ''}`}
                 onClick={() => { soundFX.playClick(); setSubTypeFilter('AC'); }}
               >
-                🏛️ 盛世盟約 (-AC)
+                🏛️ 盛世盟約（篤定協同）
               </button>
               <button
                 className={`filter-pill-btn btn-sm ${subTypeFilter === 'RD' ? 'active' : ''}`}
                 onClick={() => { soundFX.playClick(); setSubTypeFilter('RD'); }}
               >
-                🌌 孤島深邃 (-RD)
+                🌌 孤島深邃（審慎開拓）
               </button>
               <button
                 className={`filter-pill-btn btn-sm ${subTypeFilter === 'RC' ? 'active' : ''}`}
                 onClick={() => { soundFX.playClick(); setSubTypeFilter('RC'); }}
               >
-                🌊 深海微光 (-RC)
+                🌊 深海微光（審慎協同）
               </button>
             </div>
           </div>

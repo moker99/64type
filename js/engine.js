@@ -75,13 +75,13 @@ class PersonalityEngine {
 
       // 特質強度判定
       if (dominantPct >= 80) {
-        traitStrength = "極顯著 (Very Distinct)";
+        traitStrength = "極度顯著";
       } else if (dominantPct >= 65) {
-        traitStrength = "顯著 (Distinct)";
+        traitStrength = "顯著偏向";
       } else if (dominantPct > 50) {
-        traitStrength = "輕微偏向 (Moderate)";
+        traitStrength = "輕微偏向";
       } else {
-        traitStrength = "高度平衡 (Balanced)";
+        traitStrength = "高度平衡";
       }
 
       selectedLetters[dimKey] = dominantCode;

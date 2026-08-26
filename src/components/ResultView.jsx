@@ -115,7 +115,7 @@ export function ResultView({
         {/* 六維度動態雷達圖 */}
         <div className="radar-card-wrapper glass-panel">
           <h3 style={{ marginBottom: '14px', fontSize: '1.15rem', fontWeight: 800 }}>
-            ✦ 六維心智能力光譜雷達 (Cognitive Spectrum)
+            ✦ 六維心智能力光譜雷達
           </h3>
           <RadarChartComponent data={result.radarData} isDarkMode={isDarkMode} />
           <div style={{ fontSize: '0.78rem', color: 'var(--text-tertiary)', marginTop: '8px' }}>
@@ -126,7 +126,7 @@ export function ResultView({
         {/* 六維度能量百分比長條圖 */}
         <div className="dimension-bars-wrapper glass-panel">
           <h3 style={{ fontSize: '1.15rem', fontWeight: 800, marginBottom: '6px' }}>
-            ✦ 雙極維度能量深度量測 (Dimension Metrics)
+            ✦ 雙極維度能量深度量測
           </h3>
           <p style={{ fontSize: '0.82rem', color: 'var(--text-tertiary)', marginBottom: '14px' }}>
             每項指標皆由 10 道對稱題組經標準常態化計分得出
@@ -232,7 +232,7 @@ export function ResultView({
             <div className="content-grid-2col">
               <div>
                 <h4 style={{ fontSize: '1.15rem', fontWeight: 800, marginBottom: '16px', color: 'var(--primary-light)' }}>
-                  ⚡ 核心天賦超能力 (Superpowers)
+                  ⚡ 核心天賦超能力
                 </h4>
                 <div className="trait-chip-list">
                   {p.superpowers.map((pw, i) => {
@@ -263,7 +263,7 @@ export function ResultView({
               </div>
               <div>
                 <h4 style={{ fontSize: '1.15rem', fontWeight: 800, marginBottom: '16px', color: 'var(--secondary-light)' }}>
-                  🌌 原型深度概述 (Archetype Essence)
+                  🌌 原型深度概述
                 </h4>
                 <div className="glass-panel" style={{ padding: '24px', lineHeight: 1.85, fontSize: '0.96rem', color: 'var(--text-secondary)' }}>
                   <p style={{ marginBottom: '12px', color: 'var(--text-primary)', fontWeight: 700 }}>
@@ -285,7 +285,7 @@ export function ResultView({
         {activeTab === 'careers' && (
           <div className="tab-pane-content active">
             <h4 style={{ fontSize: '1.15rem', fontWeight: 800, marginBottom: '12px', color: 'var(--secondary-light)' }}>
-              💼 推薦適合職業與天賦跑道 (Executive Career Blueprint)
+              💼 推薦適合職業與天賦跑道
             </h4>
             <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', marginBottom: '18px' }}>
               根據你的 6 維度能力光譜，你在需要發揮戰略前瞻、獨立決斷與跨界開拓的環境中能爆發出最大潛能：
@@ -323,7 +323,7 @@ export function ResultView({
         {activeTab === 'love' && (
           <div className="tab-pane-content active">
             <h4 style={{ fontSize: '1.15rem', fontWeight: 800, marginBottom: '16px', color: 'var(--accent-light)' }}>
-              ❤️ 親密關係與人際相處哲學 (Love & Attachment Dynamics)
+              ❤️ 親密關係與人際相處哲學
             </h4>
             <div
               className="glass-panel"
@@ -353,7 +353,7 @@ export function ResultView({
             <div className="content-grid-2col">
               <div>
                 <h4 style={{ fontSize: '1.15rem', fontWeight: 800, marginBottom: '16px', color: 'var(--warning)' }}>
-                  ⚠️ 潛在盲點與成長挑戰 (Blindspots & Shadow Self)
+                  ⚠️ 潛在盲點與成長挑戰
                 </h4>
                 <div className="trait-chip-list">
                   {p.blindspots.map((bs, i) => {
@@ -384,7 +384,7 @@ export function ResultView({
               </div>
               <div>
                 <h4 style={{ fontSize: '1.15rem', fontWeight: 800, marginBottom: '16px', color: 'var(--success)' }}>
-                  🔋 專屬身心能量回充儀式 (Recharge Ritual)
+                  🔋 專屬身心能量回充儀式
                 </h4>
                 <div
                   className="glass-panel"
@@ -416,13 +416,13 @@ export function ResultView({
             <div className="content-grid-2col">
               <div className="match-partner-card">
                 <img
-                  src={goldenProf.avatar || './avatars/empath.jpg'}
+                  src={goldenProf.avatar || './avatars/empath.svg'}
                   alt={goldenProf.name}
                   className="partner-avatar-img"
                 />
                 <div>
                   <div style={{ fontSize: '0.85rem', color: 'var(--accent-light)', fontWeight: 800 }}>
-                    💖 最佳靈魂拍檔 (Golden Match)
+                    💖 最佳靈魂拍檔
                   </div>
                   <div style={{ fontSize: '1.3rem', fontWeight: 900, margin: '4px 0' }}>
                     {p.goldenMatch} ✦ {goldenProf.name}
@@ -435,13 +435,13 @@ export function ResultView({
 
               <div className="match-partner-card">
                 <img
-                  src={growthProf.avatar || './avatars/sentinel.jpg'}
+                  src={growthProf.avatar || './avatars/sentinel.svg'}
                   alt={growthProf.name}
                   className="partner-avatar-img"
                 />
                 <div>
                   <div style={{ fontSize: '0.85rem', color: 'var(--secondary-light)', fontWeight: 800 }}>
-                    🌱 成長磨礪拍檔 (Growth Match)
+                    🌱 成長磨礪拍檔
                   </div>
                   <div style={{ fontSize: '1.3rem', fontWeight: 900, margin: '4px 0' }}>
                     {p.growthMatch} ✦ {growthProf.name}

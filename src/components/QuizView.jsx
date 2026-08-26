@@ -60,13 +60,13 @@ export function QuizView({
       <div className="quiz-header">
         <div className="quiz-meta-bar">
           <div className="question-counter">
-            Q {String(currentIndex + 1).padStart(2, '0')} / {total}
+            第 {currentIndex + 1} 題 / 共 {total} 題
           </div>
           <div
             className="dimension-indicator-badge"
             style={{ borderColor: dimMeta.color }}
           >
-            <span>{dimMeta.name} ({dimMeta.codeA} vs {dimMeta.codeB})</span>
+            <span>{dimMeta.name}（{dimMeta.codeA} / {dimMeta.codeB}）</span>
           </div>
         </div>
         <div className="quiz-progress-track">
