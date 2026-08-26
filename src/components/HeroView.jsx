@@ -81,7 +81,7 @@ export function HeroView({ onStartQuiz, onOpenCodex }) {
             onClick={() => { soundFX.playClick(); onOpenCodex(); }}
           >
             <div className="character-avatar-frame" style={{ background: '#88619a' }}>
-              <img src="./avatars/strategist.svg" alt="戰略分析家" className="character-avatar-img" />
+              <img src="./avatars/strategist.jpg" alt="戰略分析家" className="character-avatar-img" />
             </div>
             <div className="character-group-name" style={{ color: '#c084fc' }}>👑 戰略分析家 (Analysts)</div>
             <div className="character-en-name">NT 型 · 戰略統御矩陣</div>
@@ -94,7 +94,7 @@ export function HeroView({ onStartQuiz, onOpenCodex }) {
             onClick={() => { soundFX.playClick(); onOpenCodex(); }}
           >
             <div className="character-avatar-frame" style={{ background: '#33a474' }}>
-              <img src="./avatars/empath.svg" alt="心靈外交家" className="character-avatar-img" />
+              <img src="./avatars/empath.jpg" alt="心靈外交家" className="character-avatar-img" />
             </div>
             <div className="character-group-name" style={{ color: '#4ade80' }}>✨ 心靈外交家 (Diplomats)</div>
             <div className="character-en-name">NF 型 · 心靈共鳴矩陣</div>
@@ -107,7 +107,7 @@ export function HeroView({ onStartQuiz, onOpenCodex }) {
             onClick={() => { soundFX.playClick(); onOpenCodex(); }}
           >
             <div className="character-avatar-frame" style={{ background: '#4298b4' }}>
-              <img src="./avatars/sentinel.svg" alt="秩序守護者" className="character-avatar-img" />
+              <img src="./avatars/sentinel.jpg" alt="秩序守護者" className="character-avatar-img" />
             </div>
             <div className="character-group-name" style={{ color: '#38bdf8' }}>🛡️ 秩序守護者 (Sentinels)</div>
             <div className="character-en-name">SJ 型 · 秩序精算矩陣</div>
@@ -120,7 +120,7 @@ export function HeroView({ onStartQuiz, onOpenCodex }) {
             onClick={() => { soundFX.playClick(); onOpenCodex(); }}
           >
             <div className="character-avatar-frame" style={{ background: '#e4ae3a' }}>
-              <img src="./avatars/explorer.svg" alt="自由探險家" className="character-avatar-img" />
+              <img src="./avatars/explorer.jpg" alt="自由探險家" className="character-avatar-img" />
             </div>
             <div className="character-group-name" style={{ color: '#facc15' }}>⚡ 自由探險家 (Explorers)</div>
             <div className="character-en-name">SP 型 · 自由探索矩陣</div>
