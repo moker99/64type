@@ -94,7 +94,7 @@ export class ShareCardGenerator {
       img.src = src;
     });
 
-    const avatarSrc = result.profile.avatar || "./avatars/strategist.jpg";
+    const avatarSrc = result.profile.avatar || "./avatars/strategist.svg";
     const avatarImg = await loadImg(avatarSrc);
 
     const avatarCenterX = width / 2;

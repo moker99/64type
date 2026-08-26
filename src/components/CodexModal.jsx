@@ -177,7 +177,7 @@ export function CodexModal({ isOpen, onClose, onSelectPersona }) {
                 >
                   <div className="codex-card-avatar" style={{ background: `linear-gradient(135deg, ${p.groupColor}, ${subMeta.color})` }}>
                     <img
-                      src={p.avatar || './avatars/entj.jpg'}
+                      src={p.avatar || './avatars/entj.svg'}
                       alt={p.name}
                       className="codex-card-avatar-img"
                     />

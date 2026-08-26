@@ -7,10 +7,10 @@ export function HeroView({ onStartQuiz, onOpenCodex }) {
       {/* 頂級社會認同與信任標籤 */}
       <div className="social-proof-strip">
         <div className="user-avatar-group">
-          <img src="./avatars/strategist.jpg" alt="User 1" className="user-avatar-tiny" />
-          <img src="./avatars/empath.jpg" alt="User 2" className="user-avatar-tiny" />
-          <img src="./avatars/sentinel.jpg" alt="User 3" className="user-avatar-tiny" />
-          <img src="./avatars/explorer.jpg" alt="User 4" className="user-avatar-tiny" />
+          <img src="./avatars/strategist.svg" alt="User 1" className="user-avatar-tiny" />
+          <img src="./avatars/empath.svg" alt="User 2" className="user-avatar-tiny" />
+          <img src="./avatars/sentinel.svg" alt="User 3" className="user-avatar-tiny" />
+          <img src="./avatars/explorer.svg" alt="User 4" className="user-avatar-tiny" />
         </div>
         <span className="stars-rating">★★★★★</span>
         <span><strong>4.98 / 5.0</strong> (超過 250,000+ 人次完成測驗)</span>
@@ -191,7 +191,7 @@ export function HeroView({ onStartQuiz, onOpenCodex }) {
               「過去測傳統 MBTI 總覺得差了臨門一腳，64 型加入心態韌性 (A/R) 與驅力 (D/C) 後，測出來的結果精準到令我起雞皮疙瘩！特別是職涯與盲點分析，幫我解決了換工作時的長久焦慮。」
             </p>
             <div className="testimonial-user">
-              <img src="./avatars/strategist.jpg" alt="Eva L." className="user-avatar-tiny" style={{ width: '36px', height: '36px' }} />
+              <img src="./avatars/strategist.svg" alt="Eva L." className="user-avatar-tiny" style={{ width: '36px', height: '36px' }} />
               <div>
                 <div style={{ fontWeight: 800 }}>Eva Lin</div>
                 <div className="user-role-badge">科技業產品總監 · ENTJ-AD</div>
@@ -205,7 +205,7 @@ export function HeroView({ onStartQuiz, onOpenCodex }) {
               「海報一鍵生成非常漂亮，我轉發到 Instagram 後朋友都在問在哪測的！圖鑑功能也非常強大，查同事跟伴侶的人格超方便，強烈推薦每個人都來測一次！」
             </p>
             <div className="testimonial-user">
-              <img src="./avatars/empath.jpg" alt="Marcus T." className="user-avatar-tiny" style={{ width: '36px', height: '36px' }} />
+              <img src="./avatars/empath.svg" alt="Marcus T." className="user-avatar-tiny" style={{ width: '36px', height: '36px' }} />
               <div>
                 <div style={{ fontWeight: 800 }}>Marcus Tseng</div>
                 <div className="user-role-badge">獨立設計師 / 創作者 · INFP-RC</div>
@@ -219,7 +219,7 @@ export function HeroView({ onStartQuiz, onOpenCodex }) {
               「60 題的節奏設計非常舒適，每道題都切中真實生活情境。雷達圖很直觀，特別是最佳拍檔和成長拍檔的解析，為我和伴侶的溝通帶來了很大的啟發！」
             </p>
             <div className="testimonial-user">
-              <img src="./avatars/sentinel.jpg" alt="Dr. Sophia Chen" className="user-avatar-tiny" style={{ width: '36px', height: '36px' }} />
+              <img src="./avatars/sentinel.svg" alt="Dr. Sophia Chen" className="user-avatar-tiny" style={{ width: '36px', height: '36px' }} />
               <div>
                 <div style={{ fontWeight: 800 }}>Dr. Sophia Chen</div>
                 <div className="user-role-badge">心理諮商督導 · INFJ-AD</div>

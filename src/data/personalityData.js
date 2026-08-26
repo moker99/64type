@@ -873,7 +873,7 @@ export const GROUP_META = {
     name: "戰略統御矩陣",
     enName: "Analysts · 戰略分析家",
     badge: "👑",
-    avatar: "./avatars/strategist.jpg",
+    avatar: "./avatars/strategist.svg",
     color: "#88619a",
     desc: "宏觀遠見、意志堅定，善於破解複雜問題與引領變革的統帥原型。"
   },
@@ -881,7 +881,7 @@ export const GROUP_META = {
     name: "心靈共鳴矩陣",
     enName: "Diplomats · 心靈外交家",
     badge: "✨",
-    avatar: "./avatars/empath.jpg",
+    avatar: "./avatars/empath.svg",
     color: "#33a474",
     desc: "深層同理、追求和諧與理想，以純淨情感啟迪人心的靈魂導師。"
   },
@@ -889,7 +889,7 @@ export const GROUP_META = {
     name: "秩序精算矩陣",
     enName: "Sentinels · 秩序守護者",
     badge: "🛡️",
-    avatar: "./avatars/sentinel.jpg",
+    avatar: "./avatars/sentinel.svg",
     color: "#4298b4",
     desc: "嚴謹務實、構建系統，守護穩定秩序與落實執行的高效柱石。"
   },
@@ -897,7 +897,7 @@ export const GROUP_META = {
     name: "自由探索矩陣",
     enName: "Explorers · 自由探險家",
     badge: "⚡",
-    avatar: "./avatars/explorer.jpg",
+    avatar: "./avatars/explorer.svg",
     color: "#e4ae3a",
     desc: "敏捷隨性、熱愛實踐與冒險，勇於挑戰未知並享受當下的先驅者。"
   }

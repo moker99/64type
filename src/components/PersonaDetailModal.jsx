@@ -39,7 +39,7 @@ export function PersonaDetailModal({ code, isOpen, onClose }) {
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', marginBottom: '20px' }}>
             <div className="result-avatar-container" style={{ width: '120px', height: '120px', marginBottom: '12px' }}>
               <img
-                src={p.avatar || './avatars/strategist.jpg'}
+                src={p.avatar || './avatars/strategist.svg'}
                 alt={p.name}
                 className="result-avatar-img"
               />
@@ -113,7 +113,7 @@ export function PersonaDetailModal({ code, isOpen, onClose }) {
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginTop: '16px' }}>
             <div className="glass-panel" style={{ padding: '12px', fontSize: '0.85rem', display: 'flex', alignItems: 'center', gap: '10px' }}>
               <img
-                src={goldenP.avatar || './avatars/empath.jpg'}
+                src={goldenP.avatar || './avatars/empath.svg'}
                 alt={goldenP.name}
                 className="partner-avatar-img"
                 style={{ width: '48px', height: '48px' }}
@@ -127,7 +127,7 @@ export function PersonaDetailModal({ code, isOpen, onClose }) {
             </div>
             <div className="glass-panel" style={{ padding: '12px', fontSize: '0.85rem', display: 'flex', alignItems: 'center', gap: '10px' }}>
               <img
-                src={growthP.avatar || './avatars/sentinel.jpg'}
+                src={growthP.avatar || './avatars/sentinel.svg'}
                 alt={growthP.name}
                 className="partner-avatar-img"
                 style={{ width: '48px', height: '48px' }}

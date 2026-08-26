@@ -81,7 +81,7 @@ export function ResultView({
         <div className="result-persona-showcase">
           <div className="result-avatar-container" style={{ background: `linear-gradient(135deg, ${p.groupColor || '#6366f1'}, #ffffff 60%, ${p.groupColor || '#06b6d4'})` }}>
             <img
-              src={p.avatar || './avatars/entj.jpg'}
+              src={p.avatar || './avatars/entj.svg'}
               alt={p.name}
               className="result-avatar-img"
             />
