@@ -913,7 +913,7 @@ const GROUP_META = {
 function getPersonalityProfile(code) {
   const fallbackGroup = GROUP_META["戰略統御矩陣"];
   const baseType = (code ? code.split('-')[0] : 'entj').toLowerCase();
-  const avatarPath = `./avatars/${baseType}.jpg`;
+  const avatarPath = `./avatars/${baseType}.svg`;
 
   if (TYPE_DEFINITIONS[code]) {
     const data = TYPE_DEFINITIONS[code];
