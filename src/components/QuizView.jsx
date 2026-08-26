@@ -84,6 +84,7 @@ export function QuizView({
 
         {/* 5 段式李克特選項組 */}
         <div className="scale-options-group">
+          <div className="scale-connecting-line" />
           {SCALE_OPTIONS.map((opt, optIdx) => {
             const isSelected = answers[q.id] === opt.value;
             return (
@@ -93,15 +94,17 @@ export function QuizView({
                 style={{ '--btn-color': opt.color }}
                 onClick={() => handleSelect(opt.value)}
               >
-                <div
-                  className={`scale-btn-circle scale-size-${opt.scaleSize}`}
-                  style={{ borderColor: isSelected ? opt.color : undefined }}
-                >
-                  {isSelected && (
-                    <span style={{ color: '#fff', fontSize: '14px', fontWeight: 'bold' }}>
-                      ✓
-                    </span>
-                  )}
+                <div className="scale-circle-anchor">
+                  <div
+                    className={`scale-btn-circle scale-size-${opt.scaleSize}`}
+                    style={{ borderColor: isSelected ? opt.color : undefined }}
+                  >
+                    {isSelected && (
+                      <span style={{ color: '#fff', fontSize: '14px', fontWeight: 'bold' }}>
+                        ✓
+                      </span>
+                    )}
+                  </div>
                 </div>
                 <div className="scale-label">{opt.label}</div>
                 <div className="scale-shortcut-hint">[ {optIdx + 1} ]</div>

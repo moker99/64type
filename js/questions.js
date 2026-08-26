@@ -546,9 +546,9 @@ const QUESTIONS = [
     id: 59,
     dimension: "DC",
     dimensionName: "行動驅力",
-    text: "我習慣以結果為導向（Outcome-driven），敢於打破陳規舊習以追求效率與突破。",
+    text: "我習慣以成果為導向，敢於打破陳規舊習以追求最高效率與實質突破。",
     direction: 1,
-    scenario: "結果導向變革"
+    scenario: "成果導向變革"
   },
   {
     id: 60,

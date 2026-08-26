@@ -256,22 +256,21 @@
 .scale-options-group {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   gap: 12px;
   width: 100%;
-  max-width: 680px;
+  max-width: 720px;
   margin: 0 auto;
   position: relative;
 }
 
-.scale-options-group::before {
-  content: '';
+.scale-connecting-line {
   position: absolute;
-  top: 50%;
-  left: 30px;
-  right: 30px;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.08);
+  top: 32px;
+  left: 38px;
+  right: 38px;
+  height: 2.5px;
+  background: rgba(255, 255, 255, 0.15);
   transform: translateY(-50%);
   z-index: 0;
 }
@@ -280,7 +279,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   cursor: pointer;
   z-index: 1;
   position: relative;
@@ -288,10 +287,19 @@
   transition: transform var(--transition-fast);
 }
 
+.scale-circle-anchor {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
 .scale-btn-circle {
   border-radius: 50%;
   background: var(--bg-secondary);
-  border: 2px solid rgba(255, 255, 255, 0.15);
+  border: 2.5px solid rgba(255, 255, 255, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -302,7 +310,7 @@
 /* 尺寸依強度區分 */
 .scale-size-large { width: 56px; height: 56px; }
 .scale-size-medium { width: 44px; height: 44px; }
-.scale-size-small { width: 34px; height: 34px; }
+.scale-size-small { width: 32px; height: 32px; }
 
 .scale-item:hover .scale-btn-circle {
   transform: scale(1.15);
@@ -313,17 +321,18 @@
 .scale-item.selected .scale-btn-circle {
   background: var(--btn-color, var(--primary));
   border-color: #ffffff;
-  transform: scale(1.2);
+  transform: scale(1.18);
   box-shadow: 0 0 20px var(--btn-color, var(--primary));
 }
 
 .scale-label {
-  font-size: 0.82rem;
-  font-weight: 600;
+  font-size: 0.85rem;
+  font-weight: 700;
   color: var(--text-tertiary);
   transition: color var(--transition-fast);
   text-align: center;
   white-space: nowrap;
+  line-height: 1.3;
 }
 
 .scale-item:hover .scale-label,
