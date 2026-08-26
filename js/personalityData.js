@@ -504,7 +504,8 @@ const TYPE_DEFINITIONS = {
     loveStyle: "笨拙卻純真，喜歡與伴侶探討宇宙奧秘，將對方視為自己世界中最獨特的存在。",
     stressRecharge: "獨自編程探索新技術、拆解研究精密玩具、打硬核策略遊戲。",
     goldenMatch: "ENFJ-AC",
-    growthMatch: "ESFJ-RD"
+    growthMatch: "ESFJ-RD",
+    avatar: "./avatars/intp.jpg"
   },
   "INTP-AC": {
     name: "智慧花火漫遊者",
