@@ -188,34 +188,40 @@ export class ShareCardGenerator {
       ctx.fillStyle = "#94a3b8";
       ctx.fillText(dim.name, cardX + 20, y + 28);
 
-      const isDominantA = dim.dominantCode === dim.codeA;
-      ctx.font = isDominantA ? "bold 18px 'Plus Jakarta Sans', 'Noto Sans TC'" : "16px 'Noto Sans TC'";
-      ctx.fillStyle = isDominantA ? "#ffffff" : "#64748b";
-      ctx.fillText(`${dim.codeA} ${dim.labelA.split(' ')[0]}`, cardX + 130, y + 28);
+      const isA = dim.dominantCode === dim.codeA;
+      ctx.textAlign = "left";
+      ctx.font = isA ? "bold 18px 'Plus Jakarta Sans', 'Noto Sans TC'" : "16px 'Noto Sans TC'";
+      ctx.fillStyle = isA ? "#ffffff" : "#64748b";
+      ctx.fillText(`${dim.codeA} ${dim.labelA.split(' ')[0]} ${dim.pctA}%`, cardX + 30, y + 28);
 
       ctx.textAlign = "right";
-      const isDominantB = dim.dominantCode === dim.codeB;
+      const isDominantB = !isA;
       ctx.font = isDominantB ? "bold 18px 'Plus Jakarta Sans', 'Noto Sans TC'" : "16px 'Noto Sans TC'";
       ctx.fillStyle = isDominantB ? "#ffffff" : "#64748b";
-      ctx.fillText(`${dim.labelB.split(' ')[0]} ${dim.codeB}`, cardX + cardW - 130, y + 28);
+      ctx.fillText(`${dim.pctB}% ${dim.labelB.split(' ')[0]} ${dim.codeB}`, cardX + cardW - 130, y + 28);
 
-      const barX = cardX + 270;
-      const barW = cardW - 420;
+      const barX = cardX + 310;
+      const barW = cardW - 460;
       const barY = y + 16;
       const barH = 12;
 
+      // 軌道背景
       ctx.fillStyle = "rgba(255, 255, 255, 0.12)";
       ctx.beginPath();
       ctx.roundRect(barX, barY, barW, barH, 6);
       ctx.fill();
 
-      const fillW = (dim.pctA / 100) * barW;
-      const barGrad = ctx.createLinearGradient(barX, barY, barX + barW, barY);
-      barGrad.addColorStop(0, dim.color || "#6366f1");
-      barGrad.addColorStop(1, "#38bdf8");
-      ctx.fillStyle = barGrad;
+      // 50% 中線
+      ctx.fillStyle = "rgba(255, 255, 255, 0.4)";
+      ctx.fillRect(barX + barW / 2 - 1, barY - 2, 2, barH + 4);
+
+      // 主導維度填色 (A 從左到右，B 從右到左)
+      const fillW = (dim.dominantPct / 100) * barW;
+      const fillX = isA ? barX : barX + barW - fillW;
+
+      ctx.fillStyle = dim.color || "#6366f1";
       ctx.beginPath();
-      ctx.roundRect(barX, barY, Math.max(8, fillW), barH, 6);
+      ctx.roundRect(fillX, barY, Math.max(8, fillW), barH, 6);
       ctx.fill();
 
       ctx.textAlign = "right";

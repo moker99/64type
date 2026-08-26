@@ -503,26 +503,32 @@
 }
 
 .dim-bar-track {
-  height: 12px;
+  height: 14px;
   background: rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-full);
-  overflow: hidden;
   position: relative;
-  display: flex;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.dim-bar-fill-a {
-  height: 100%;
-  background: var(--dim-color, var(--primary));
-  border-radius: var(--radius-full) 0 0 var(--radius-full);
-  transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
+.dim-bar-center-mark {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(255, 255, 255, 0.35);
+  transform: translateX(-50%);
+  z-index: 2;
 }
 
-.dim-bar-fill-b {
-  height: 100%;
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 0 var(--radius-full) var(--radius-full) 0;
+.dim-bar-active-fill {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-radius: var(--radius-full);
   transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
 }
 
 /* 深度剖析標籤頁體系 (Deep Dive Tabs) */

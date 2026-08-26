@@ -428,19 +428,19 @@ class PersonaApp {
       const isA = dim.dominantCode === dim.codeA;
       row.innerHTML = `
         <div class="dim-bar-header">
-          <div class="dim-bar-label-left" style="color: ${isA ? 'var(--text-primary)' : 'var(--text-tertiary)'};">
-            <span style="color: ${dim.color}; font-weight:bold;">${dim.codeA}</span> ${dim.labelA.split(' ')[0]}
+          <div class="dim-bar-label-left" style="color: ${isA ? 'var(--text-primary)' : 'var(--text-tertiary)'}; font-weight: ${isA ? '800' : '500'};">
+            <span style="color: ${isA ? dim.color : 'inherit'}; font-weight:bold;">${dim.codeA}</span> ${dim.labelA.split(' ')[0]} <span style="opacity:0.85; font-size:0.82rem;">${dim.pctA}%</span>
           </div>
-          <div style="font-family: var(--font-mono); font-weight: bold; color: ${dim.color}; font-size: 0.85rem;">
-            ${dim.dominantCode} ${dim.dominantPct}%
+          <div style="font-family: var(--font-mono); font-weight: bold; color: ${dim.color}; font-size: 0.88rem;">
+            ${dim.dominantCode} ${dim.dominantPct}% · ${dim.traitStrength || ''}
           </div>
-          <div class="dim-bar-label-right" style="color: ${!isA ? 'var(--text-primary)' : 'var(--text-tertiary)'};">
-            ${dim.labelB.split(' ')[0]} <span style="color: ${dim.color}; font-weight:bold;">${dim.codeB}</span>
+          <div class="dim-bar-label-right" style="color: ${!isA ? 'var(--text-primary)' : 'var(--text-tertiary)'}; font-weight: ${!isA ? '800' : '500'};">
+            <span style="opacity:0.85; font-size:0.82rem;">${dim.pctB}%</span> ${dim.labelB.split(' ')[0]} <span style="color: ${!isA ? dim.color : 'inherit'}; font-weight:bold;">${dim.codeB}</span>
           </div>
         </div>
         <div class="dim-bar-track">
-          <div class="dim-bar-fill-a" style="width: ${dim.pctA}%; --dim-color: ${dim.color};"></div>
-          <div class="dim-bar-fill-b" style="width: ${dim.pctB}%;"></div>
+          <div class="dim-bar-center-mark"></div>
+          <div class="dim-bar-active-fill" style="left: ${isA ? '0' : 'auto'}; right: ${!isA ? '0' : 'auto'}; width: ${dim.dominantPct}%; background: linear-gradient(${isA ? '90deg' : '270deg'}, ${dim.color}, ${dim.color}cc); box-shadow: 0 0 10px ${dim.color}88;"></div>
         </div>
       `;
       this.resDimensionBarsContainer.appendChild(row);

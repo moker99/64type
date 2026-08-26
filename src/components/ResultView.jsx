@@ -140,10 +140,13 @@ export function ResultView({
                 <div className="dim-bar-header">
                   <div
                     className="dim-bar-label-left"
-                    style={{ color: isA ? 'var(--text-primary)' : 'var(--text-tertiary)' }}
+                    style={{
+                      color: isA ? 'var(--text-primary)' : 'var(--text-tertiary)',
+                      fontWeight: isA ? '800' : '500'
+                    }}
                   >
-                    <span style={{ color: dim.color, fontWeight: 'bold' }}>{dim.codeA}</span>{' '}
-                    {dim.labelA.split(' ')[0]}
+                    <span style={{ color: isA ? dim.color : 'inherit', fontWeight: 'bold' }}>{dim.codeA}</span>{' '}
+                    {dim.labelA.split(' ')[0]} <span style={{ opacity: 0.85, fontSize: '0.82rem' }}>{dim.pctA}%</span>
                   </div>
                   <div
                     style={{
@@ -157,21 +160,30 @@ export function ResultView({
                   </div>
                   <div
                     className="dim-bar-label-right"
-                    style={{ color: !isA ? 'var(--text-primary)' : 'var(--text-tertiary)' }}
+                    style={{
+                      color: !isA ? 'var(--text-primary)' : 'var(--text-tertiary)',
+                      fontWeight: !isA ? '800' : '500'
+                    }}
                   >
+                    <span style={{ opacity: 0.85, fontSize: '0.82rem' }}>{dim.pctB}%</span>{' '}
                     {dim.labelB.split(' ')[0]}{' '}
-                    <span style={{ color: dim.color, fontWeight: 'bold' }}>{dim.codeB}</span>
+                    <span style={{ color: !isA ? dim.color : 'inherit', fontWeight: 'bold' }}>{dim.codeB}</span>
                   </div>
                 </div>
                 <div className="dim-bar-track">
+                  {/* 50% 中位平衡標記線 */}
+                  <div className="dim-bar-center-mark" />
+                  {/* 主導維度動態填色 (A 從左往右填滿 dominantPct%，B 從右往左填滿 dominantPct%) */}
                   <div
-                    className="dim-bar-fill-a"
+                    className="dim-bar-active-fill"
                     style={{
-                      width: `${dim.pctA}%`,
-                      '--dim-color': dim.color
+                      left: isA ? 0 : 'auto',
+                      right: !isA ? 0 : 'auto',
+                      width: `${dim.dominantPct}%`,
+                      background: `linear-gradient(${isA ? '90deg' : '270deg'}, ${dim.color}, ${dim.color}cc)`,
+                      boxShadow: `0 0 10px ${dim.color}88`
                     }}
                   />
-                  <div className="dim-bar-fill-b" style={{ width: `${dim.pctB}%` }} />
                 </div>
               </div>
             );
