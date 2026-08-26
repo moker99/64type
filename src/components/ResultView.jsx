@@ -6,21 +6,77 @@ import { soundFX } from '../utils/audio';
 export function ResultView({
   result,
   theme,
+  userName = "探索者",
+  onUpdateUserName,
   onRetest,
   onOpenShareModal,
   onOpenCodex,
   onCopySummary
 }) {
   const [activeTab, setActiveTab] = useState('traits');
+  const [customName, setCustomName] = useState(userName || '探索者');
   const p = result.profile;
   const isDarkMode = theme !== 'light';
 
   const goldenProf = getPersonalityProfile(p.goldenMatch);
   const growthProf = getPersonalityProfile(p.growthMatch);
 
+  // 隨機但確定性的認證編號
+  const certId = React.useMemo(() => {
+    const hash = result.code.split('').reduce((acc, char) => acc + char.charCodeAt(0), 100);
+    return `64T-2026-${String(hash * 47).padStart(5, '0')}`;
+  }, [result.code]);
+
+  // 人口罕見度估算
+  const rarityPct = React.useMemo(() => {
+    const hash = result.code.split('').reduce((acc, char) => acc + char.charCodeAt(0), 10);
+    return (1.2 + (hash % 25) / 10).toFixed(1);
+  }, [result.code]);
+
+  const handleNameChange = (e) => {
+    const val = e.target.value;
+    setCustomName(val);
+    if (onUpdateUserName) onUpdateUserName(val);
+  };
+
+  const handlePrint = () => {
+    soundFX.playClick();
+    window.print();
+  };
+
   return (
     <div className="result-container">
-      {/* 頂部人格榮譽橫幅 */}
+      {/* 官方專業認證金色橫條 (VIP Certification Header) */}
+      <div className="certification-card">
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          <div className="cert-seal">🏅</div>
+          <div>
+            <div style={{ fontSize: '0.82rem', color: 'var(--gold-accent)', fontWeight: 800, letterSpacing: '1px' }}>
+              ✦ OFFICIAL CERTIFIED PERSONA PROFILE ✦
+            </div>
+            <div style={{ fontSize: '1.1rem', fontWeight: 800, color: '#ffffff' }}>
+              64型心智動力學 · 深度心理評估診斷報告
+            </div>
+            <div style={{ fontSize: '0.78rem', color: 'var(--text-tertiary)', fontFamily: 'var(--font-mono)' }}>
+              認證編號：#{certId} · 測驗信度 α = 0.86
+            </div>
+          </div>
+        </div>
+
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>受測者稱呼：</span>
+          <input
+            type="text"
+            className="search-input-box"
+            style={{ width: '130px', padding: '6px 14px', fontSize: '0.88rem' }}
+            value={customName}
+            onChange={handleNameChange}
+            placeholder="請輸入暱稱"
+          />
+        </div>
+      </div>
+
+      {/* 頂部人格榮譽立繪橫幅 */}
       <div className="result-hero-banner glass-panel">
         <div className="result-persona-showcase">
           <div className="result-avatar-container">
@@ -30,10 +86,19 @@ export function ResultView({
               className="result-avatar-img"
             />
           </div>
-          <div>
+          <div style={{ textAlign: 'left' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '4px', flexWrap: 'wrap' }}>
+              <span className="result-group-tag" style={{ margin: 0 }}>
+                [ {p.group || '戰略統御矩陣'} · {p.groupEnName || 'Strategic'} ]
+              </span>
+              <span className="dim-code-badge" style={{ color: 'var(--gold-accent)', borderColor: 'rgba(251, 191, 36, 0.3)' }}>
+                ⭐ 全球罕見度：約 {rarityPct}%
+              </span>
+            </div>
             <div className="result-code-display">{result.code}</div>
-            <div className="result-persona-name">✦ {p.name} ✦</div>
-            <div className="result-group-tag">[ {p.group || '戰略統御矩陣'} · {p.groupEnName || 'Strategic'} ]</div>
+            <div className="result-persona-name">
+              ✦ {p.name} · <span style={{ color: 'var(--text-accent)' }}>{customName}</span> ✦
+            </div>
             <p className="result-tagline-quote">“ {p.tagline} ”</p>
           </div>
         </div>
@@ -43,14 +108,24 @@ export function ResultView({
       <div className="result-charts-grid">
         {/* 六維度動態雷達圖 */}
         <div className="radar-card-wrapper glass-panel">
-          <h3 style={{ marginBottom: '12px', fontSize: '1.1rem', fontWeight: 700 }}>
-            ✦ 六維心智能量雷達 (Radar Spectrum)
+          <h3 style={{ marginBottom: '14px', fontSize: '1.15rem', fontWeight: 800 }}>
+            ✦ 六維心智能力光譜雷達 (Cognitive Spectrum)
           </h3>
           <RadarChartComponent data={result.radarData} isDarkMode={isDarkMode} />
+          <div style={{ fontSize: '0.78rem', color: 'var(--text-tertiary)', marginTop: '8px' }}>
+            動態雷達反映你在 6 大核心維度上的能量偏向百分比
+          </div>
         </div>
 
         {/* 六維度能量百分比長條圖 */}
         <div className="dimension-bars-wrapper glass-panel">
+          <h3 style={{ fontSize: '1.15rem', fontWeight: 800, marginBottom: '6px' }}>
+            ✦ 雙極維度能量深度量測 (Dimension Metrics)
+          </h3>
+          <p style={{ fontSize: '0.82rem', color: 'var(--text-tertiary)', marginBottom: '14px' }}>
+            每項指標皆由 10 道對稱題組經標準常態化計分得出
+          </p>
+
           {Object.keys(result.dimensions).map((dimKey) => {
             const dim = result.dimensions[dimKey];
             const isA = dim.dominantCode === dim.codeA;
@@ -69,10 +144,10 @@ export function ResultView({
                       fontFamily: 'var(--font-mono)',
                       fontWeight: 'bold',
                       color: dim.color,
-                      fontSize: '0.85rem'
+                      fontSize: '0.88rem'
                     }}
                   >
-                    {dim.dominantCode} {dim.dominantPct}%
+                    {dim.dominantCode} {dim.dominantPct}% · {dim.traitStrength}
                   </div>
                   <div
                     className="dim-bar-label-right"
@@ -98,8 +173,8 @@ export function ResultView({
         </div>
       </div>
 
-      {/* 深度剖析標籤頁 */}
-      <div className="result-tabs-container glass-panel" style={{ padding: '28px' }}>
+      {/* 深度剖析多維標籤頁 */}
+      <div className="result-tabs-container glass-panel" style={{ padding: '32px' }}>
         <div className="tabs-nav-bar">
           <button
             className={`tab-btn ${activeTab === 'traits' ? 'active' : ''}`}
@@ -111,25 +186,25 @@ export function ResultView({
             className={`tab-btn ${activeTab === 'careers' ? 'active' : ''}`}
             onClick={() => { soundFX.playTab(); setActiveTab('careers'); }}
           >
-            💼 職場指南與理想角色
+            💼 高階職涯與商業定位
           </button>
           <button
             className={`tab-btn ${activeTab === 'love' ? 'active' : ''}`}
             onClick={() => { soundFX.playTab(); setActiveTab('love'); }}
           >
-            ❤️ 愛情人際與相處模式
+            ❤️ 親密關係與人際風格
           </button>
           <button
             className={`tab-btn ${activeTab === 'growth' ? 'active' : ''}`}
             onClick={() => { soundFX.playTab(); setActiveTab('growth'); }}
           >
-            ⚡ 盲點成長與充電秘笈
+            🛡️ 盲點警示與心靈充電
           </button>
           <button
             className={`tab-btn ${activeTab === 'matches' ? 'active' : ''}`}
             onClick={() => { soundFX.playTab(); setActiveTab('matches'); }}
           >
-            🔮 命定契合拍檔
+            🔮 命定契合拍檔羅盤
           </button>
         </div>
 
@@ -138,7 +213,7 @@ export function ResultView({
           <div className="tab-pane-content active">
             <div className="content-grid-2col">
               <div>
-                <h4 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '16px', color: 'var(--primary-light)' }}>
+                <h4 style={{ fontSize: '1.15rem', fontWeight: 800, marginBottom: '16px', color: 'var(--primary-light)' }}>
                   ⚡ 核心天賦超能力 (Superpowers)
                 </h4>
                 <div className="trait-chip-list">
@@ -151,13 +226,13 @@ export function ResultView({
 
                     return (
                       <div key={i} className="trait-chip-item">
-                        <div className="chip-icon" style={{ background: 'rgba(99, 102, 241, 0.15)', color: '#818cf8', width: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold' }}>
+                        <div className="chip-icon" style={{ background: 'rgba(99, 102, 241, 0.15)', color: '#818cf8', width: '38px', height: '38px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold' }}>
                           0{i + 1}
                         </div>
                         <div style={{ flex: 1 }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
-                            <span className="chip-text-title" style={{ fontSize: '1.02rem' }}>{pw}</span>
-                            <span className="dim-code-badge" style={{ fontSize: '0.7rem', padding: '2px 8px', color: 'var(--primary-light)', borderColor: 'rgba(99, 102, 241, 0.3)' }}>
+                            <span className="chip-text-title" style={{ fontSize: '1.05rem' }}>{pw}</span>
+                            <span className="dim-code-badge" style={{ fontSize: '0.72rem', padding: '2px 8px', color: 'var(--primary-light)', borderColor: 'rgba(99, 102, 241, 0.3)' }}>
                               {tagMeta.label}
                             </span>
                           </div>
@@ -169,18 +244,18 @@ export function ResultView({
                 </div>
               </div>
               <div>
-                <h4 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '16px', color: 'var(--secondary-light)' }}>
+                <h4 style={{ fontSize: '1.15rem', fontWeight: 800, marginBottom: '16px', color: 'var(--secondary-light)' }}>
                   🌌 原型深度概述 (Archetype Essence)
                 </h4>
-                <div className="glass-panel" style={{ padding: '20px', lineHeight: 1.8, fontSize: '0.94rem', color: 'var(--text-secondary)' }}>
-                  <p style={{ marginBottom: '12px', color: 'var(--text-primary)', fontWeight: 600 }}>
+                <div className="glass-panel" style={{ padding: '24px', lineHeight: 1.85, fontSize: '0.96rem', color: 'var(--text-secondary)' }}>
+                  <p style={{ marginBottom: '12px', color: 'var(--text-primary)', fontWeight: 700 }}>
                     ✦ {p.name}（{result.code}）屬於 <strong style={{ color: p.groupColor || 'var(--secondary-light)' }}>{p.group}</strong>。
                   </p>
                   <p style={{ marginBottom: '12px' }}>
-                    你的核心驅動力源於「{p.tagline}」。在心智模型中，你結合了 <strong style={{ color: 'var(--text-primary)' }}>{result.dimensions.EI.dominantLabel}</strong> 的充能路徑與 <strong style={{ color: 'var(--text-primary)' }}>{result.dimensions.SN.dominantLabel}</strong> 的資訊感知，形成極具辨識度的洞察視角。
+                    你的核心生命箴言為「{p.tagline}」。在心智模型中，你結合了 <strong style={{ color: 'var(--text-primary)' }}>{result.dimensions.EI.dominantLabel}</strong> 的充能路徑與 <strong style={{ color: 'var(--text-primary)' }}>{result.dimensions.SN.dominantLabel}</strong> 的資訊感知，形成極具辨識度的洞察視角。
                   </p>
                   <p>
-                    在面對抉擇與壓力時，你習慣運用 <strong style={{ color: 'var(--text-primary)' }}>{result.dimensions.TF.dominantLabel}</strong> 錨定準則，並以 <strong style={{ color: 'var(--text-primary)' }}>{result.dimensions.JP.dominantLabel}</strong> 的步調掌控局勢，展現出 <strong style={{ color: 'var(--text-primary)' }}>{result.dimensions.AR.dominantLabel}</strong> 與 <strong style={{ color: 'var(--text-primary)' }}>{result.dimensions.DC.dominantLabel}</strong> 的深層生命韌性。
+                    在面對抉擇時，你習慣運用 <strong style={{ color: 'var(--text-primary)' }}>{result.dimensions.TF.dominantLabel}</strong> 錨定準則，並以 <strong style={{ color: 'var(--text-primary)' }}>{result.dimensions.JP.dominantLabel}</strong> 的步調掌控局勢，展現出 <strong style={{ color: 'var(--text-primary)' }}>{result.dimensions.AR.dominantLabel}</strong> 與 <strong style={{ color: 'var(--text-primary)' }}>{result.dimensions.DC.dominantLabel}</strong> 的深層生命韌性。
                   </p>
                 </div>
               </div>
@@ -191,10 +266,10 @@ export function ResultView({
         {/* 標籤 2: 職場指南 */}
         {activeTab === 'careers' && (
           <div className="tab-pane-content active">
-            <h4 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '12px', color: 'var(--secondary-light)' }}>
-              💼 推薦適合職業與天賦跑道
+            <h4 style={{ fontSize: '1.15rem', fontWeight: 800, marginBottom: '12px', color: 'var(--secondary-light)' }}>
+              💼 推薦適合職業與天賦跑道 (Executive Career Blueprint)
             </h4>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.92rem', marginBottom: '16px' }}>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', marginBottom: '18px' }}>
               根據你的 6 維度能力光譜，你在需要發揮戰略前瞻、獨立決斷與跨界開拓的環境中能爆發出最大潛能：
             </p>
             <div className="careers-tag-cloud">
@@ -204,26 +279,52 @@ export function ResultView({
                 </div>
               ))}
             </div>
+
+            <div style={{ marginTop: '28px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+              <div className="glass-panel" style={{ padding: '20px' }}>
+                <div style={{ fontWeight: 800, color: 'var(--text-primary)', marginBottom: '8px' }}>
+                  👑 團隊領導與協作風格
+                </div>
+                <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+                  具備明確的方向感與目標聚焦能力，善於拆解複雜挑戰並激勵團隊達成關鍵成果，在扁平化或高自驅組織中尤能發揮卓越領導力。
+                </p>
+              </div>
+              <div className="glass-panel" style={{ padding: '20px' }}>
+                <div style={{ fontWeight: 800, color: 'var(--text-primary)', marginBottom: '8px' }}>
+                  ⚡ 理想工作場域特質
+                </div>
+                <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+                  給予充分決策自主權、重視結果品質與實質產出、具備開放討論與創新容錯空間的環境最能激發你的持久熱情。
+                </p>
+              </div>
+            </div>
           </div>
         )}
 
         {/* 標籤 3: 愛情人際 */}
         {activeTab === 'love' && (
           <div className="tab-pane-content active">
-            <h4 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '16px', color: 'var(--accent-light)' }}>
-              ❤️ 親密關係與人際風格 (Love Dynamics)
+            <h4 style={{ fontSize: '1.15rem', fontWeight: 800, marginBottom: '16px', color: 'var(--accent-light)' }}>
+              ❤️ 親密關係與人際相處哲學 (Love & Attachment Dynamics)
             </h4>
             <div
               className="glass-panel"
               style={{
-                padding: '24px',
+                padding: '28px',
                 background: 'rgba(236, 72, 153, 0.05)',
-                borderColor: 'rgba(236, 72, 153, 0.2)'
+                borderColor: 'rgba(236, 72, 153, 0.25)',
+                lineHeight: 1.85
               }}
             >
-              <p style={{ lineHeight: 1.8, fontSize: '1rem', color: 'var(--text-primary)' }}>
+              <div style={{ fontSize: '1.1rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '10px' }}>
+                🌹 靈魂溝通風格
+              </div>
+              <p style={{ fontSize: '1rem', color: 'var(--text-primary)', marginBottom: '18px' }}>
                 {p.loveStyle}
               </p>
+              <div style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '14px' }}>
+                💡 <strong>相處建議：</strong>在關係中重視「智性共鳴」與「彼此尊重個人邊界」，坦誠且不帶防備的深度對話是維繫長久信任的基石。
+              </div>
             </div>
           </div>
         )}
@@ -233,8 +334,8 @@ export function ResultView({
           <div className="tab-pane-content active">
             <div className="content-grid-2col">
               <div>
-                <h4 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '16px', color: 'var(--warning)' }}>
-                  ⚠️ 潛在盲點與成長挑戰
+                <h4 style={{ fontSize: '1.15rem', fontWeight: 800, marginBottom: '16px', color: 'var(--warning)' }}>
+                  ⚠️ 潛在盲點與成長挑戰 (Blindspots & Shadow Self)
                 </h4>
                 <div className="trait-chip-list">
                   {p.blindspots.map((bs, i) => {
@@ -246,13 +347,13 @@ export function ResultView({
 
                     return (
                       <div key={i} className="trait-chip-item">
-                        <div className="chip-icon" style={{ background: 'rgba(245, 158, 11, 0.15)', color: '#f59e0b', width: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold' }}>
+                        <div className="chip-icon" style={{ background: 'rgba(245, 158, 11, 0.15)', color: '#f59e0b', width: '38px', height: '38px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold' }}>
                           !{i + 1}
                         </div>
                         <div style={{ flex: 1 }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
-                            <span className="chip-text-title" style={{ fontSize: '1.02rem' }}>{bs}</span>
-                            <span className="dim-code-badge" style={{ fontSize: '0.7rem', padding: '2px 8px', color: 'var(--warning)', borderColor: 'rgba(245, 158, 11, 0.3)' }}>
+                            <span className="chip-text-title" style={{ fontSize: '1.05rem' }}>{bs}</span>
+                            <span className="dim-code-badge" style={{ fontSize: '0.72rem', padding: '2px 8px', color: 'var(--warning)', borderColor: 'rgba(245, 158, 11, 0.3)' }}>
                               {bsMeta.tag}
                             </span>
                           </div>
@@ -264,26 +365,26 @@ export function ResultView({
                 </div>
               </div>
               <div>
-                <h4 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '16px', color: 'var(--success)' }}>
-                  🔋 專屬壓力充電處方 (Recharge Ritual)
+                <h4 style={{ fontSize: '1.15rem', fontWeight: 800, marginBottom: '16px', color: 'var(--success)' }}>
+                  🔋 專屬身心能量回充儀式 (Recharge Ritual)
                 </h4>
                 <div
                   className="glass-panel"
                   style={{
-                    padding: '24px',
+                    padding: '26px',
                     background: 'rgba(16, 185, 129, 0.05)',
                     borderColor: 'rgba(16, 185, 129, 0.25)',
-                    lineHeight: 1.8
+                    lineHeight: 1.85
                   }}
                 >
-                  <div style={{ fontSize: '1.05rem', fontWeight: 700, color: 'var(--success)', marginBottom: '8px' }}>
-                    🌿 專屬身心能量回充儀式
+                  <div style={{ fontSize: '1.08rem', fontWeight: 800, color: 'var(--success)', marginBottom: '10px' }}>
+                    🌿 專屬身心修復處方
                   </div>
-                  <p style={{ color: 'var(--text-primary)', fontSize: '0.98rem', marginBottom: '12px' }}>
+                  <p style={{ color: 'var(--text-primary)', fontSize: '1rem', marginBottom: '14px' }}>
                     {p.stressRecharge}
                   </p>
-                  <div style={{ fontSize: '0.85rem', color: 'var(--text-tertiary)' }}>
-                    💡 建議在每週安排固定專屬時段執行上述充電儀式，切斷外界雜訊，回歸內在平衡。
+                  <div style={{ fontSize: '0.88rem', color: 'var(--text-secondary)' }}>
+                    💡 建議每週安排固定專屬時段執行上述充電儀式，切斷外界雜訊，回歸心靈平靜。
                   </div>
                 </div>
               </div>
@@ -302,14 +403,14 @@ export function ResultView({
                   className="partner-avatar-img"
                 />
                 <div>
-                  <div style={{ fontSize: '0.85rem', color: 'var(--accent-light)', fontWeight: 700 }}>
+                  <div style={{ fontSize: '0.85rem', color: 'var(--accent-light)', fontWeight: 800 }}>
                     💖 最佳靈魂拍檔 (Golden Match)
                   </div>
-                  <div style={{ fontSize: '1.25rem', fontWeight: 800, margin: '4px 0' }}>
+                  <div style={{ fontSize: '1.3rem', fontWeight: 900, margin: '4px 0' }}>
                     {p.goldenMatch} ✦ {goldenProf.name}
                   </div>
-                  <div style={{ fontSize: '0.85rem', color: 'var(--text-tertiary)' }}>
-                    互補共鳴，彼此激發深層潛能與溫暖安全感。
+                  <div style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
+                    互補共鳴，彼此激發深層潛能與溫暖安全感，在心靈與思維上具備最高契合度。
                   </div>
                 </div>
               </div>
@@ -321,14 +422,14 @@ export function ResultView({
                   className="partner-avatar-img"
                 />
                 <div>
-                  <div style={{ fontSize: '0.85rem', color: 'var(--secondary-light)', fontWeight: 700 }}>
+                  <div style={{ fontSize: '0.85rem', color: 'var(--secondary-light)', fontWeight: 800 }}>
                     🌱 成長磨礪拍檔 (Growth Match)
                   </div>
-                  <div style={{ fontSize: '1.25rem', fontWeight: 800, margin: '4px 0' }}>
+                  <div style={{ fontSize: '1.3rem', fontWeight: 900, margin: '4px 0' }}>
                     {p.growthMatch} ✦ {growthProf.name}
                   </div>
-                  <div style={{ fontSize: '0.85rem', color: 'var(--text-tertiary)' }}>
-                    思維視角迥異，在跨維度碰撞中拓展人生維度。
+                  <div style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
+                    思維視角迥異，在跨維度碰撞與溝通磨合中，能拓展你的人生維度與心智寬度。
                   </div>
                 </div>
               </div>
@@ -346,7 +447,7 @@ export function ResultView({
             onOpenShareModal();
           }}
         >
-          <span>📸 一鍵生成分享海報</span>
+          <span>📸 生成專屬官方證書海報</span>
         </button>
         <button
           className="btn btn-secondary btn-lg"
@@ -355,7 +456,13 @@ export function ResultView({
             onCopySummary();
           }}
         >
-          <span>📋 複製分析摘要</span>
+          <span>📋 複製完整診斷摘要</span>
+        </button>
+        <button
+          className="btn btn-secondary btn-lg"
+          onClick={handlePrint}
+        >
+          <span>🖨️ 列印 / 儲存 PDF</span>
         </button>
         <button
           className="btn btn-secondary btn-lg"

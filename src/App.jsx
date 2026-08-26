@@ -19,6 +19,7 @@ export function App() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState({});
   const [currentResult, setCurrentResult] = useState(null);
+  const [userName, setUserName] = useState('探索者');
 
   // 主題與音效
   const [theme, setTheme] = useState(() => {
@@ -181,6 +182,8 @@ export function App() {
           <ResultView
             result={currentResult}
             theme={theme}
+            userName={userName}
+            onUpdateUserName={setUserName}
             onRetest={handleStartQuiz}
             onOpenShareModal={() => setIsShareModalOpen(true)}
             onOpenCodex={() => setIsCodexOpen(true)}
@@ -215,6 +218,7 @@ export function App() {
         isOpen={isShareModalOpen}
         onClose={() => setIsShareModalOpen(false)}
         onShowToast={showToast}
+        defaultUserName={userName}
       />
 
       {/* 歷史記錄側拉抽屜 */}
