@@ -107,7 +107,6 @@ export function QuizView({
                   </div>
                 </div>
                 <div className="scale-label">{opt.label}</div>
-                <div className="scale-shortcut-hint">[ {optIdx + 1} ]</div>
               </div>
             );
           })}
@@ -128,8 +127,6 @@ export function QuizView({
         </button>
 
         <div className="keyboard-tips">
-          <span>鍵盤快捷鍵：</span>
-          <span className="kbd-badge">1~5 選取</span>
           <span className="kbd-badge">← 上一題</span>
           <span className="kbd-badge">→ 下一題</span>
         </div>

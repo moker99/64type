@@ -311,11 +311,12 @@ class PersonaApp {
       itemEl.style.setProperty("--btn-color", opt.color);
 
       itemEl.innerHTML = `
-        <div class="scale-btn-circle scale-size-${opt.scaleSize}" style="border-color: ${isSelected ? opt.color : ''};">
-          ${isSelected ? `<span style="color:#fff; font-size: 14px; font-weight: bold;">✓</span>` : ''}
+        <div class="scale-circle-anchor">
+          <div class="scale-btn-circle scale-size-${opt.scaleSize}" style="border-color: ${isSelected ? opt.color : ''};">
+            ${isSelected ? `<span style="color:#fff; font-size: 14px; font-weight: bold;">✓</span>` : ''}
+          </div>
         </div>
         <div class="scale-label">${opt.label}</div>
-        <div class="scale-shortcut-hint">[ ${optIdx + 1} ]</div>
       `;
 
       itemEl.addEventListener("click", () => {
