@@ -563,7 +563,7 @@ const QUESTIONS = [
 const SCALE_OPTIONS = [
   { value: 2, label: "非常符合", shortLabel: "非常符合", color: "#6366f1", scaleSize: "large" },
   { value: 1, label: "偏向符合", shortLabel: "偏符合", color: "#818cf8", scaleSize: "medium" },
-  { value: 0, label: "中立 / 視情況", shortLabel: "中立", color: "#94a3b8", scaleSize: "small" },
+  { value: 0, label: "中立", shortLabel: "中立", color: "#94a3b8", scaleSize: "small" },
   { value: -1, label: "偏向不符", shortLabel: "偏不符", color: "#f472b6", scaleSize: "medium" },
   { value: -2, label: "非常不符", shortLabel: "非常不符", color: "#ec4899", scaleSize: "large" }
 ];
