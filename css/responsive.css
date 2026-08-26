@@ -27,19 +27,56 @@
 /* 手機與小型螢幕 (<= 768px) */
 @media (max-width: 768px) {
   .app-container {
-    padding: 0 16px 40px;
+    padding: 0 12px 40px;
   }
 
   .navbar {
-    padding: 16px 0;
+    padding: 12px 0;
+    margin-bottom: 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .logo-brand {
+    gap: 8px;
+  }
+
+  .logo-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+    border-radius: 10px;
   }
 
   .logo-title {
-    font-size: 1.15rem;
+    font-size: 1.12rem;
+    line-height: 1.1;
+  }
+
+  .logo-subtitle {
+    font-size: 0.62rem;
+    letter-spacing: 0.8px;
+  }
+
+  .nav-actions {
+    gap: 6px;
+  }
+
+  .btn-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 0.95rem;
+    padding: 0;
+  }
+
+  .nav-codex-btn {
+    padding: 6px 12px;
+    font-size: 0.78rem;
+    white-space: nowrap;
   }
 
   .hero-section {
-    padding: 24px 0 40px;
+    padding: 20px 0 36px;
     gap: 24px;
   }
 

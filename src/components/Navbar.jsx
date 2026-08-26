@@ -49,7 +49,7 @@ export function Navbar({
         </button>
 
         <button
-          className="btn btn-secondary btn-sm"
+          className="btn btn-secondary btn-sm nav-codex-btn"
           onClick={() => { soundFX.playClick(); openCodex(); }}
         >
           <span>📚 64型圖鑑</span>
