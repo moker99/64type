@@ -32,10 +32,10 @@ export function RadarChartComponent({ data, isDarkMode = true }) {
       const angleStep = (Math.PI * 2) / numAxes;
       const startAngle = -Math.PI / 2;
 
-      const gridColor = isDarkMode ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.08)';
-      const textColor = isDarkMode ? '#e2e8f0' : '#334155';
+      const gridColor = isDarkMode ? 'rgba(255, 255, 255, 0.08)' : 'rgba(60, 50, 40, 0.1)';
+      const textColor = isDarkMode ? '#f5f4ef' : '#22201e';
 
-      // 1. 同心多邊形網格
+      // 1. 同心多邊形網格 (侘寂簡潔線條)
       for (let level = 1; level <= 5; level++) {
         const radius = (maxRadius / 5) * level;
         ctx.beginPath();
@@ -52,7 +52,7 @@ export function RadarChartComponent({ data, isDarkMode = true }) {
         ctx.stroke();
 
         if (level % 2 === 0) {
-          ctx.fillStyle = isDarkMode ? 'rgba(255, 255, 255, 0.015)' : 'rgba(0, 0, 0, 0.015)';
+          ctx.fillStyle = isDarkMode ? 'rgba(229, 154, 88, 0.02)' : 'rgba(168, 90, 45, 0.02)';
           ctx.fill();
         }
       }
@@ -67,7 +67,7 @@ export function RadarChartComponent({ data, isDarkMode = true }) {
         ctx.moveTo(centerX, centerY);
         ctx.lineTo(x, y);
         ctx.strokeStyle = gridColor;
-        ctx.lineWidth = 1.2;
+        ctx.lineWidth = 1;
         ctx.stroke();
       }
 
@@ -90,17 +90,24 @@ export function RadarChartComponent({ data, isDarkMode = true }) {
       });
       ctx.closePath();
 
+      // 侘寂心靈科技自然漸變 (琥珀陶土 + 鼠尾草綠 + 靜謐靛藍)
       const gradient = ctx.createRadialGradient(centerX, centerY, 10, centerX, centerY, maxRadius);
-      gradient.addColorStop(0, 'rgba(99, 102, 241, 0.45)');
-      gradient.addColorStop(0.5, 'rgba(6, 182, 212, 0.35)');
-      gradient.addColorStop(1, 'rgba(236, 72, 153, 0.15)');
+      if (isDarkMode) {
+        gradient.addColorStop(0, 'rgba(229, 154, 88, 0.42)');
+        gradient.addColorStop(0.5, 'rgba(125, 165, 133, 0.3)');
+        gradient.addColorStop(1, 'rgba(126, 140, 248, 0.15)');
+      } else {
+        gradient.addColorStop(0, 'rgba(168, 90, 45, 0.35)');
+        gradient.addColorStop(0.5, 'rgba(74, 99, 80, 0.25)');
+        gradient.addColorStop(1, 'rgba(79, 88, 153, 0.12)');
+      }
       ctx.fillStyle = gradient;
       ctx.fill();
 
-      ctx.strokeStyle = '#818cf8';
-      ctx.lineWidth = 2.5;
-      ctx.shadowColor = 'rgba(99, 102, 241, 0.6)';
-      ctx.shadowBlur = 10;
+      ctx.strokeStyle = isDarkMode ? '#e59a58' : '#a85a2d';
+      ctx.lineWidth = 2.2;
+      ctx.shadowColor = isDarkMode ? 'rgba(229, 154, 88, 0.5)' : 'rgba(168, 90, 45, 0.3)';
+      ctx.shadowBlur = 8;
       ctx.stroke();
       ctx.shadowBlur = 0;
 
@@ -108,9 +115,9 @@ export function RadarChartComponent({ data, isDarkMode = true }) {
       points.forEach((pt) => {
         ctx.beginPath();
         ctx.arc(pt.x, pt.y, 4, 0, Math.PI * 2);
-        ctx.fillStyle = pt.item.color || '#6366f1';
+        ctx.fillStyle = isDarkMode ? '#ecc276' : '#b8782a';
         ctx.fill();
-        ctx.strokeStyle = '#ffffff';
+        ctx.strokeStyle = isDarkMode ? '#0e1014' : '#ffffff';
         ctx.lineWidth = 1.5;
         ctx.stroke();
 
@@ -121,13 +128,13 @@ export function RadarChartComponent({ data, isDarkMode = true }) {
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
 
-        ctx.font = "bold 13px 'Plus Jakarta Sans', 'Noto Sans TC', sans-serif";
+        ctx.font = "bold 13px 'Noto Serif TC', 'Plus Jakarta Sans', sans-serif";
         ctx.fillStyle = textColor;
         ctx.fillText(pt.item.label, lx, ly - 7);
 
         const currentPct = Math.round(pt.item.value * progress);
         ctx.font = "600 12px 'JetBrains Mono', monospace";
-        ctx.fillStyle = pt.item.color || '#6366f1';
+        ctx.fillStyle = isDarkMode ? '#e59a58' : '#a85a2d';
         ctx.fillText(`${currentPct}%`, lx, ly + 8);
       });
 
@@ -164,3 +171,4 @@ export function RadarChartComponent({ data, isDarkMode = true }) {
     />
   );
 }
+

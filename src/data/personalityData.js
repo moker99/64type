@@ -1,6 +1,7 @@
 /**
  * 64型人格資料庫 (64-Type Persona Dynamics Database)
  */
+import { getDeepPersonalityDetails } from './deepReportData.js';
 
 export const TYPE_DEFINITIONS = {
   // ==================== 1. ENTJ 系列 (天生統御者) ====================
@@ -907,6 +908,7 @@ export function getPersonalityProfile(code) {
   const fallbackGroup = GROUP_META["戰略統御矩陣"];
   const baseType = (code ? code.split('-')[0] : 'entj').toLowerCase();
   const avatarPath = `./avatars/${baseType}.svg`;
+  const deepDetails = getDeepPersonalityDetails(code);
 
   if (TYPE_DEFINITIONS[code]) {
     const item = TYPE_DEFINITIONS[code];
@@ -914,6 +916,7 @@ export function getPersonalityProfile(code) {
     return {
       code,
       ...item,
+      ...deepDetails,
       baseType: baseType.toUpperCase(),
       avatar: avatarPath,
       groupColor: groupMeta.color,
@@ -931,6 +934,7 @@ export function getPersonalityProfile(code) {
     avatar: avatarPath,
     groupColor: "#e4ae3a",
     groupEnName: "Explorers · 自由探險家",
+    ...deepDetails,
     superpowers: ["多維度敏銳感知", "快速環境適應力", "獨立客觀思考"],
     blindspots: ["需注意在多元可能性中保持專注", "適時排解內在壓力"],
     careers: ["全方位跨界專家", "戰略創新顧問", "項目主理人"],

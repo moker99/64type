@@ -10,23 +10,26 @@ export function QuizView({
   onNextQuestion,
   onFinishQuiz
 }) {
-  const q = QUESTIONS[currentIndex];
   const total = QUESTIONS.length;
-  const progressPct = ((currentIndex + 1) / total) * 100;
-  const dimMeta = DIMENSIONS[q.dimension];
+  const safeIndex = Math.max(0, Math.min(currentIndex || 0, total - 1));
+  const q = QUESTIONS[safeIndex] || QUESTIONS[0];
+  const progressPct = ((safeIndex + 1) / total) * 100;
+  const dimMeta = DIMENSIONS[q?.dimension] || DIMENSIONS.EI;
 
   const handleSelect = useCallback((val) => {
     soundFX.playSelect(val);
-    onSelectOption(q.id, val);
+    if (q?.id) {
+      onSelectOption(q.id, val);
+    }
 
     setTimeout(() => {
-      if (currentIndex < total - 1) {
+      if (safeIndex < total - 1) {
         onNextQuestion();
       } else {
         onFinishQuiz();
       }
     }, 220);
-  }, [currentIndex, total, q.id, onSelectOption, onNextQuestion, onFinishQuiz]);
+  }, [safeIndex, total, q?.id, onSelectOption, onNextQuestion, onFinishQuiz]);
 
   // 鍵盤操作快捷鍵
   useEffect(() => {
@@ -114,7 +117,7 @@ export function QuizView({
       </div>
 
       {/* 底部導航控制器 */}
-      <div className="quiz-nav-toolbar">
+      <div className="quiz-nav-toolbar" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
         <button
           className="btn btn-secondary"
           disabled={currentIndex === 0}
@@ -122,9 +125,33 @@ export function QuizView({
             soundFX.playClick();
             onPrevQuestion();
           }}
+          style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}
         >
-          <span>← 上一題</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"/>
+            <polyline points="12 19 5 12 12 5"/>
+          </svg>
+          <span>上一題</span>
         </button>
+
+        {new URLSearchParams(window.location.search).get('admin') === '1' && (
+          <button
+            type="button"
+            className="btn btn-outline"
+            style={{ borderColor: 'var(--gold-accent)', color: 'var(--gold-accent)', fontSize: '0.8rem', padding: '6px 14px' }}
+            onClick={() => {
+              soundFX.playVictory?.();
+              const sampleAnswers = {};
+              QUESTIONS.forEach((q, idx) => {
+                const choices = [2, 1, 2, -1, 2, 2, -2, 1, 2, -1];
+                sampleAnswers[q.id] = choices[idx % choices.length];
+              });
+              onFinishQuiz(sampleAnswers);
+            }}
+          >
+            Admin 快速模擬填答
+          </button>
+        )}
 
         <button
           className="btn btn-primary"
@@ -136,8 +163,13 @@ export function QuizView({
               onFinishQuiz();
             }
           }}
+          style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', minWidth: '130px', justifyContent: 'center' }}
         >
-          <span>{currentIndex === total - 1 ? '完成測驗 🚀' : '下一題 →'}</span>
+          <span>{currentIndex === total - 1 ? '查看心智動力診斷結果' : '下一題'}</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"/>
+            <polyline points="12 5 19 12 12 19"/>
+          </svg>
         </button>
       </div>
     </div>

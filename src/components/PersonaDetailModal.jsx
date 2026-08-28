@@ -59,6 +59,39 @@ export function PersonaDetailModal({ code, isOpen, onClose }) {
             </div>
           </div>
 
+          {/* 認知功能運算棧 */}
+          {p.cognitiveStack && (
+            <div style={{ marginBottom: '18px' }}>
+              <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--primary-light)', marginBottom: '8px' }}>
+                🧠 4 階認知功能運算棧
+              </h4>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
+                {p.cognitiveStack.map((item, idx) => (
+                  <div
+                    key={idx}
+                    className="glass-panel"
+                    style={{
+                      padding: '8px 12px',
+                      fontSize: '0.82rem',
+                      borderColor: `${item.info.color}33`,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between'
+                    }}
+                  >
+                    <div>
+                      <span style={{ fontWeight: 800, color: item.info.color, marginRight: '6px' }}>{item.fn}</span>
+                      <span style={{ color: 'var(--text-secondary)' }}>{item.level.split(' ')[0]}</span>
+                    </div>
+                    <span style={{ fontFamily: 'var(--font-mono)', color: item.info.color, fontWeight: 'bold' }}>
+                      {item.strength}%
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
           <div style={{ marginBottom: '18px' }}>
             <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--primary-light)', marginBottom: '8px' }}>
               ⚡ 天賦超能力

@@ -60,7 +60,7 @@ export function CodexModal({ isOpen, onClose, onSelectPersona }) {
             <div>
               <h3 className="modal-title" style={{ margin: 0 }}>64 型人格全圖鑑百科 (64-Type Codex)</h3>
               <div style={{ fontSize: '0.82rem', color: 'var(--text-tertiary)' }}>
-                探索 16 大核心 MBTI 衍生之 64 種獨立心智動力學原型
+                探索 16 大心智基底衍生之 64 種獨立心智動力學原型
               </div>
             </div>
           </div>

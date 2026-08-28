@@ -1,85 +1,106 @@
 /* ==========================================================================
-   64-TYPE PERSONA DYNAMICS - 頂級商業販售級設計系統 (Flagship Commercial Design System)
+   64-TYPE PERSONA DYNAMICS - 侘寂心靈科技設計系統 (Wabi-Sabi Mind Tech Design System)
+   Aesop 靜奢大地底蘊 × PersonalityHub 現代精準心靈導航
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700;900&family=Noto+Serif+TC:wght@400;500;600;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap');
 
 :root {
-  /* 旗艦暗黑奢華調色盤 (Dark Luxury) */
-  --bg-primary: #070913;
-  --bg-secondary: #0d1124;
-  --bg-tertiary: #151b36;
-  --bg-card: rgba(13, 17, 36, 0.78);
-  --bg-card-hover: rgba(22, 29, 58, 0.9);
-  --bg-glass: rgba(13, 17, 36, 0.65);
-  --border-glass: rgba(255, 255, 255, 0.09);
-  --border-glass-hover: rgba(129, 140, 248, 0.45);
-  --border-glow: rgba(99, 102, 241, 0.5);
+  /* 墨夜黑曜主題 (Obsidian Zen - 深色侘寂科技) */
+  --bg-primary: #0e1014;
+  --bg-secondary: #161920;
+  --bg-tertiary: #20242e;
+  --bg-card: rgba(22, 25, 32, 0.85);
+  --bg-card-hover: rgba(32, 36, 46, 0.95);
+  --bg-glass: rgba(18, 20, 26, 0.82);
+  --border-glass: rgba(255, 255, 255, 0.08);
+  --border-glass-hover: rgba(229, 154, 88, 0.4);
+  --border-glow: rgba(229, 154, 88, 0.25);
 
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --text-tertiary: #64748b;
-  --text-accent: #818cf8;
-  --gold-accent: #fbbf24;
-  --gold-glow: rgba(251, 191, 36, 0.4);
+  --text-primary: #f5f4ef;
+  --text-secondary: #9da3b0;
+  --text-tertiary: #6b7280;
+  --text-accent: #e59a58;
+  --gold-accent: #ecc276;
+  --gold-glow: rgba(236, 194, 118, 0.25);
 
-  /* 主色與漸變 */
-  --primary: #6366f1;
-  --primary-light: #818cf8;
-  --primary-dark: #4f46e5;
-  --secondary: #06b6d4;
-  --secondary-light: #38bdf8;
-  --accent: #ec4899;
-  --accent-light: #f472b6;
-  --success: #10b981;
-  --warning: #f59e0b;
+  /* 主色與漸變 (自然大地 + 心靈紫羅蘭 + 鼠尾草綠) */
+  --primary: #b26b3e;
+  --primary-light: #e59a58;
+  --primary-dark: #8e4e26;
+  --secondary: #5a7560;
+  --secondary-light: #7da585;
+  --accent: #7e8cf8;
+  --accent-light: #a5b4fc;
+  --success: #4ade80;
+  --warning: #ecc276;
 
-  --grad-primary: linear-gradient(135deg, #6366f1 0%, #06b6d4 100%);
-  --grad-accent: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
-  --grad-gold: linear-gradient(135deg, #fbbf24 0%, #d97706 50%, #f59e0b 100%);
-  --grad-aurora: linear-gradient(135deg, #818cf8 0%, #38bdf8 35%, #ec4899 70%, #fbbf24 100%);
-  --grad-card: linear-gradient(180deg, rgba(30, 41, 59, 0.5) 0%, rgba(15, 23, 42, 0.8) 100%);
+  --grad-primary: linear-gradient(135deg, #e59a58 0%, #7da585 100%);
+  --grad-accent: linear-gradient(135deg, #7e8cf8 0%, #e59a58 100%);
+  --grad-gold: linear-gradient(135deg, #ecc276 0%, #b26b3e 100%);
+  --grad-aurora: linear-gradient(135deg, #e59a58 0%, #ecc276 50%, #7da585 100%);
+  --grad-card: linear-gradient(180deg, rgba(32, 36, 46, 0.7) 0%, rgba(22, 25, 32, 0.95) 100%);
 
-  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.25);
-  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.6);
-  --glow-primary: 0 0 35px rgba(99, 102, 241, 0.4);
-  --glow-gold: 0 0 35px rgba(251, 191, 36, 0.35);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 8px 24px -4px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 20px 40px -8px rgba(0, 0, 0, 0.55);
+  --glow-primary: 0 0 30px rgba(229, 154, 88, 0.25);
+  --glow-gold: 0 0 30px rgba(236, 194, 118, 0.2);
 
+  --font-serif: 'Noto Serif TC', 'Cinzel', serif;
   --font-sans: 'Plus Jakarta Sans', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-serif: 'Cinzel', serif;
   --font-mono: 'JetBrains Mono', monospace;
 
   --radius-sm: 8px;
   --radius-md: 14px;
-  --radius-lg: 22px;
-  --radius-xl: 32px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
   --radius-full: 9999px;
   
   --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-smooth: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 [data-theme="light"] {
-  --bg-primary: #f8fafc;
-  --bg-secondary: #ffffff;
-  --bg-tertiary: #f1f5f9;
-  --bg-card: rgba(255, 255, 255, 0.88);
-  --bg-card-hover: rgba(255, 255, 255, 0.98);
-  --bg-glass: rgba(255, 255, 255, 0.8);
-  --border-glass: rgba(0, 0, 0, 0.08);
-  --border-glass-hover: rgba(99, 102, 241, 0.45);
-  --border-glow: rgba(99, 102, 241, 0.25);
+  /* 晨曦燕麥主題 (Oatmeal Zen - 亮色 Aesop 靜奢大地) */
+  --bg-primary: #f7f5f0;
+  --bg-secondary: #ede8df;
+  --bg-tertiary: #e2dcce;
+  --bg-card: #ffffff;
+  --bg-card-hover: #ffffff;
+  --bg-glass: rgba(255, 255, 255, 0.9);
+  --border-glass: rgba(60, 50, 40, 0.08);
+  --border-glass-hover: rgba(178, 107, 62, 0.35);
+  --border-glow: rgba(178, 107, 62, 0.15);
 
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --text-tertiary: #94a3b8;
-  --text-accent: #4f46e5;
-  --gold-accent: #d97706;
+  --text-primary: #22201e;
+  --text-secondary: #5c554c;
+  --text-tertiary: #8c8477;
+  --text-accent: #a85a2d;
+  --gold-accent: #b8782a;
 
-  --shadow-md: 0 10px 30px rgba(99, 102, 241, 0.08);
-  --shadow-lg: 0 20px 50px rgba(99, 102, 241, 0.14);
+  --primary: #a85a2d;
+  --primary-light: #c97948;
+  --primary-dark: #7a3a16;
+  --secondary: #4a6350;
+  --secondary-light: #67876e;
+  --accent: #4f5899;
+  --accent-light: #6c78c2;
+  --success: #2e7d4b;
+  --warning: #b8782a;
+
+  --grad-primary: linear-gradient(135deg, #a85a2d 0%, #4a6350 100%);
+  --grad-accent: linear-gradient(135deg, #4f5899 0%, #a85a2d 100%);
+  --grad-gold: linear-gradient(135deg, #c98a3c 0%, #a85a2d 100%);
+  --grad-aurora: linear-gradient(135deg, #a85a2d 0%, #c98a3c 50%, #4a6350 100%);
+  --grad-card: linear-gradient(180deg, #ffffff 0%, #faf8f5 100%);
+
+  --shadow-sm: 0 1px 4px rgba(45, 38, 30, 0.05);
+  --shadow-md: 0 4px 20px -2px rgba(45, 38, 30, 0.07), 0 2px 6px -1px rgba(45, 38, 30, 0.03);
+  --shadow-lg: 0 12px 32px -4px rgba(45, 38, 30, 0.09), 0 4px 12px -2px rgba(45, 38, 30, 0.04);
+  --glow-primary: 0 0 30px rgba(168, 90, 45, 0.15);
+  --glow-gold: 0 0 30px rgba(184, 120, 42, 0.15);
 }
 
 *, *::before, *::after {
@@ -99,14 +120,14 @@ body {
   font-family: var(--font-sans);
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  line-height: 1.6;
+  line-height: 1.65;
   min-height: 100vh;
   overflow-x: hidden;
   position: relative;
   transition: background-color var(--transition-normal), color var(--transition-normal);
 }
 
-/* 環境動態流光光暈背景 */
+/* 環境動態流光光暈背景 (侘寂自然溫潤色) */
 .ambient-bg {
   position: fixed;
   top: 0;
@@ -121,8 +142,8 @@ body {
 .orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(120px);
-  opacity: 0.38;
+  filter: blur(140px);
+  opacity: 0.28;
   will-change: transform;
   animation: orbFloat 24s ease-in-out infinite alternate;
 }
@@ -130,34 +151,35 @@ body {
 .orb-1 {
   width: 650px;
   height: 650px;
-  background: radial-gradient(circle, #6366f1 0%, rgba(99, 102, 241, 0) 70%);
+  background: radial-gradient(circle, var(--primary) 0%, rgba(178, 107, 62, 0) 70%);
   top: -180px;
   left: -120px;
-  animation-duration: 20s;
+  animation-duration: 22s;
 }
 
 .orb-2 {
   width: 700px;
   height: 700px;
-  background: radial-gradient(circle, #06b6d4 0%, rgba(6, 182, 212, 0) 70%);
+  background: radial-gradient(circle, var(--secondary) 0%, rgba(90, 117, 96, 0) 70%);
   bottom: -180px;
   right: -120px;
-  animation-duration: 26s;
+  animation-duration: 28s;
   animation-delay: -5s;
 }
 
 .orb-3 {
   width: 520px;
   height: 520px;
-  background: radial-gradient(circle, #ec4899 0%, rgba(236, 72, 153, 0) 70%);
+  background: radial-gradient(circle, var(--gold-accent) 0%, rgba(236, 194, 118, 0) 70%);
   top: 35%;
   left: 45%;
-  opacity: 0.28;
-  animation-duration: 22s;
+  opacity: 0.2;
+  animation-duration: 24s;
   animation-delay: -10s;
 }
 
 @keyframes orbFloat {
+
   0% { transform: translate(0, 0) scale(1); }
   50% { transform: translate(60px, 40px) scale(1.12); }
   100% { transform: translate(-40px, 80px) scale(0.95); }
@@ -1481,14 +1503,297 @@ body {
 
 .footer {
   margin-top: auto;
-  padding-top: 56px;
+  padding-top: 48px;
+  padding-bottom: 24px;
   text-align: center;
   color: var(--text-tertiary);
   font-size: 0.88rem;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  align-items: center;
+  gap: 8px;
   border-top: 1px solid var(--border-glass);
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.footer-link-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 0.86rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.footer-link-btn:hover {
+  color: var(--primary-light);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.footer-sep {
+  color: var(--border-glass);
+  font-weight: 300;
+  user-select: none;
+}
+
+/* 法律條款彈窗分頁欄 */
+.legal-tabs-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--border-glass);
+  overflow-x: auto;
+  scrollbar-width: none;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.legal-tab-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-glass);
+  color: var(--text-secondary);
+  font-size: 0.86rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+}
+
+.legal-tab-item:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.legal-tab-item.active {
+  background: var(--grad-aurora);
+  color: #ffffff;
+  border-color: transparent;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
+}
+
+/* 獨立條款頁面樣式 (Legal Page View) */
+.legal-page-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+  padding-bottom: 40px;
+}
+
+.legal-page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.legal-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  background: rgba(99, 102, 241, 0.15);
+  border: 1px solid rgba(99, 102, 241, 0.35);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--primary-light);
+}
+
+.legal-hero-banner {
+  padding: 32px 36px;
+  margin-bottom: 32px;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.12), rgba(6, 182, 212, 0.08));
+}
+
+.legal-hero-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: var(--radius-md);
+  background: var(--grad-aurora);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  box-shadow: var(--glow-primary);
+  flex-shrink: 0;
+}
+
+.legal-hero-title {
+  font-size: clamp(1.4rem, 2.8vw, 1.85rem);
+  font-weight: 900;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.legal-hero-subtitle {
+  font-size: 0.88rem;
+  color: var(--text-tertiary);
+}
+
+.legal-content-grid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.legal-sidebar {
+  position: sticky;
+  top: 90px;
+}
+
+.legal-nav-card {
+  padding: 20px;
+}
+
+.legal-sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.legal-sidebar-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-align: left;
+  width: 100%;
+}
+
+.legal-sidebar-btn:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-primary);
+  transform: translateX(4px);
+}
+
+.legal-sidebar-btn.active {
+  background: rgba(99, 102, 241, 0.18);
+  border-color: rgba(99, 102, 241, 0.4);
+  color: #ffffff;
+  font-weight: 700;
+  box-shadow: var(--shadow-sm);
+}
+
+.legal-article-card {
+  padding: 40px 36px;
+}
+
+.legal-article {
+  line-height: 1.85;
+  color: var(--text-secondary);
+  font-size: 0.96rem;
+}
+
+.legal-section-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-glass);
+}
+
+.legal-article h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary-light);
+  margin-top: 28px;
+  margin-bottom: 12px;
+}
+
+.legal-article p {
+  margin-bottom: 16px;
+}
+
+.legal-article ul {
+  padding-left: 24px;
+  margin-bottom: 20px;
+}
+
+.legal-article li {
+  margin-bottom: 8px;
+}
+
+.legal-alert-box {
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+.alert-warning {
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  color: #fca5a5;
+}
+
+.alert-info {
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: #fcd34d;
+}
+
+@media (max-width: 992px) {
+  .legal-content-grid {
+    grid-template-columns: 1fr;
+  }
+  .legal-sidebar {
+    position: static;
+  }
+  .legal-sidebar-menu {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .legal-sidebar-btn {
+    width: auto;
+    flex: 1 1 calc(50% - 6px);
+  }
+}
+
+@media (max-width: 768px) {
+  .legal-hero-banner {
+    padding: 24px 16px;
+  }
+  .legal-hero-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+  }
+  .legal-article-card {
+    padding: 24px 16px;
+  }
+  .legal-sidebar-btn {
+    flex: 1 1 100%;
+  }
 }
 
 /* 響應式適配 */
@@ -1667,3 +1972,328 @@ body {
     line-height: 1.15;
   }
 }
+
+/* ==========================================================================
+   一頁式全景深度報告 (Single-Page Seamless Comprehensive Dossier)
+   對標 16Personalities / PersonalityHub / Type64 高效能流暢滾動
+   ========================================================================== */
+
+.dossier-container {
+  max-width: 980px;
+  margin: 0 auto 100px auto;
+  padding: 0 16px;
+}
+
+.dossier-sticky-nav-wrapper {
+  position: sticky;
+  top: 12px;
+  z-index: 90;
+  margin-bottom: 20px;
+}
+
+.dossier-sticky-header {
+  padding: 10px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-glass);
+  border-radius: 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+.dossier-main-canvas {
+  background: var(--bg-card);
+  border: 1px solid var(--border-glass);
+  border-radius: 24px;
+  padding: 44px 48px;
+  box-shadow: var(--shadow-md);
+  color: var(--text-primary);
+  line-height: 1.85;
+}
+
+.dossier-section {
+  scroll-margin-top: 90px;
+  padding-top: 36px;
+  margin-bottom: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@media (max-width: 768px) {
+  .dossier-main-canvas {
+    padding: 26px 18px;
+    border-radius: 18px;
+  }
+}
+
+/* ==========================================================================
+   無縫無限滾動評價輪播 (Infinite Marquee Testimonials Carousel)
+   對標 PersonalityHub.ai
+   ========================================================================== */
+
+.testimonials-carousel-wrapper {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  overflow: hidden;
+  padding: 16px 0 32px;
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+
+.testimonials-marquee-track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  animation: marqueeScroll 45s linear infinite;
+  will-change: transform;
+}
+
+.testimonials-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.testimonial-hub-card {
+  width: 350px;
+  min-width: 350px;
+  max-width: 350px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-glass);
+  border-radius: 22px;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+  flex-shrink: 0;
+  user-select: none;
+  text-align: left;
+}
+
+.testimonial-hub-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--border-glass-hover);
+  box-shadow: var(--shadow-md);
+}
+
+.testimonial-stars-row {
+  display: flex;
+  gap: 4px;
+  color: #f59e0b;
+  margin-bottom: 16px;
+}
+
+.testimonial-hub-quote {
+  font-size: 0.94rem;
+  color: var(--text-primary);
+  line-height: 1.75;
+  margin: 0 0 24px 0;
+  font-weight: 500;
+}
+
+.testimonial-author-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.testimonial-avatar-frame {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: rgba(229, 154, 88, 0.12);
+  border: 1.5px solid var(--border-glass);
+  flex-shrink: 0;
+}
+
+.testimonial-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.testimonial-author-name {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.testimonial-author-role {
+  font-size: 0.78rem;
+  color: var(--text-tertiary);
+  margin-top: 3px;
+}
+
+
+.font-serif {
+  font-family: var(--font-serif);
+  letter-spacing: -0.01em;
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* 典雅詩意引用區塊 (Aesop Editorial Style) */
+.editorial-quote-box {
+  border-left: 3px solid var(--primary-light);
+  padding: 16px 20px;
+  background: rgba(178, 107, 62, 0.05);
+  border-radius: 0 14px 14px 0;
+  margin: 18px 0;
+  font-family: var(--font-serif);
+  font-size: 1.02rem;
+  line-height: 1.8;
+  color: var(--text-primary);
+  position: relative;
+}
+
+/* 亞洲共鳴四模組容器 (Asian Resonance Grid) */
+.asian-resonance-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 18px;
+  margin-top: 24px;
+}
+
+.resonance-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-lg);
+  padding: 22px 20px;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-normal);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  display: flex;
+  flex-direction: column;
+}
+
+.resonance-card:hover {
+  border-color: var(--border-glass-hover);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.resonance-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.resonance-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  font-weight: 700;
+  background: rgba(229, 154, 88, 0.12);
+  color: var(--primary-light);
+  border: 1px solid rgba(229, 154, 88, 0.25);
+}
+
+.resonance-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+/* 社交電量量規 (Social Battery Gauge) */
+.battery-gauge-wrapper {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  margin: 10px 0;
+}
+
+.battery-gauge-track {
+  height: 10px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  position: relative;
+}
+
+.battery-gauge-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 內耗微處方晶片 (Somatic Grounding Chip) */
+.grounding-step-box {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  border-radius: var(--radius-md);
+  background: rgba(90, 117, 96, 0.08);
+  border: 1px solid rgba(90, 117, 96, 0.2);
+  margin-top: 8px;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.grounding-icon-badge {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--secondary);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+/* 侘寂金句裝飾線 (Wabi-Sabi Divider) */
+.zen-ornament-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 28px 0;
+  color: var(--text-tertiary);
+  font-size: 0.85rem;
+}
+
+.zen-ornament-line::before,
+.zen-ornament-line::after {
+  content: '';
+  height: 1px;
+  background: var(--border-glass);
+  flex: 1;
+}
+
+

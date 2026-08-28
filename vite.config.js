@@ -10,7 +10,12 @@ export default defineConfig({
       configureServer(server) {
         server.middlewares.use((req, res, next) => {
           if (req.url && req.url.startsWith('/64type/')) {
-            req.url = req.url.replace('/64type', '');
+            const subpath = req.url.slice(8); // 去掉 /64type/
+            if (!subpath.includes('.')) {
+              req.url = '/';
+            } else {
+              req.url = req.url.replace('/64type', '');
+            }
           }
           next();
         });

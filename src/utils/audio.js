@@ -131,6 +131,37 @@ class SoundFX {
       osc.stop(this.ctx.currentTime + 0.05);
     } catch (e) {}
   }
+
+  playVictory() {
+    this.playComplete();
+  }
+
+  playUnlock() {
+    if (this.muted) return;
+    this.init();
+    if (!this.ctx) return;
+
+    try {
+      const notes = [587.33, 739.99, 880.00, 1174.66];
+      notes.forEach((freq, idx) => {
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        const startTime = this.ctx.currentTime + idx * 0.09;
+
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(freq, startTime);
+
+        gain.gain.setValueAtTime(0.18, startTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, startTime + 0.5);
+
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+
+        osc.start(startTime);
+        osc.stop(startTime + 0.5);
+      });
+    } catch (e) {}
+  }
 }
 
 export const soundFX = new SoundFX();
