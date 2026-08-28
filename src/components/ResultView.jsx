@@ -26,6 +26,7 @@ export function ResultView({
   const [customName, setCustomName] = useState(userName || '探索者');
   const [isPaywallOpen, setIsPaywallOpen] = useState(false);
   const [isWhitepaperOpen, setIsWhitepaperOpen] = useState(false);
+  const [expandedDim, setExpandedDim] = useState(null);
 
   // 全功能完整解鎖模式 (直接開放完整報告)
   const isUnlocked = true;
@@ -252,6 +253,62 @@ export function ResultView({
         </div>
       </div>
 
+      {/* ══ 靈魂命運敘事開場段落 (Soul Narrative) ══ */}
+      {dynamicData?.soulNarrative && (
+        <div className="glass-panel" style={{
+          margin: '24px 0',
+          padding: '36px 32px',
+          background: 'linear-gradient(135deg, rgba(99,102,241,0.08), rgba(168,85,247,0.06), rgba(229,154,88,0.05))',
+          border: '1px solid rgba(99,102,241,0.2)',
+          borderRadius: '24px',
+          position: 'relative',
+          overflow: 'hidden'
+        }}>
+          <div style={{ position: 'absolute', top: '-40px', right: '-40px', width: '180px', height: '180px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%)', pointerEvents: 'none' }} />
+          <div style={{ position: 'absolute', bottom: '-20px', left: '-20px', width: '120px', height: '120px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(229,154,88,0.1) 0%, transparent 70%)', pointerEvents: 'none' }} />
+
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <div style={{ fontSize: '0.8rem', fontWeight: 800, color: 'var(--text-accent)', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <span style={{ width: '20px', height: '1px', background: 'var(--text-accent)', display: 'inline-block' }} />
+              Soul Fingerprint · 你的靈魂指紋解碼
+              <span style={{ width: '20px', height: '1px', background: 'var(--text-accent)', display: 'inline-block' }} />
+            </div>
+
+            <div className="font-serif" style={{ fontSize: '1.65rem', fontWeight: 900, color: 'var(--text-primary)', marginBottom: '20px', lineHeight: 1.3, letterSpacing: '0.3px' }}>
+              {dynamicData.soulNarrative.intro}
+            </div>
+
+            <div style={{ fontSize: '0.97rem', color: 'var(--text-secondary)', lineHeight: 2.1, marginBottom: '24px' }}>
+              {dynamicData.soulNarrative.lines.map((line, i) => (
+                <span key={i}>
+                  {i > 0 && ' '}
+                  <span style={{ color: i === 0 ? 'var(--primary-light)' : i === 1 ? 'var(--secondary-light)' : i === 2 ? 'var(--gold-accent)' : i === 3 ? '#c084fc' : i === 4 ? '#34d399' : '#f472b6', fontWeight: 600 }}>
+                    {line}
+                  </span>
+                </span>
+              ))}
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '14px', marginBottom: '20px' }}>
+              <div style={{ padding: '16px 18px', background: 'rgba(99,102,241,0.08)', border: '1px solid rgba(99,102,241,0.2)', borderRadius: '14px' }}>
+                <div style={{ fontSize: '0.75rem', color: 'var(--primary-light)', fontWeight: 800, letterSpacing: '1px', marginBottom: '6px' }}>⚡ 你最鮮明的心理能量核心</div>
+                <div style={{ fontSize: '0.95rem', color: 'var(--text-primary)', fontWeight: 600 }}>{dynamicData.soulNarrative.peakLabel}</div>
+                <div style={{ fontSize: '0.8rem', color: 'var(--text-tertiary)', marginTop: '4px' }}>維度 {dynamicData.soulNarrative.peak.code} · {dynamicData.soulNarrative.peak.pct}%</div>
+              </div>
+              <div style={{ padding: '16px 18px', background: 'rgba(229,154,88,0.08)', border: '1px solid rgba(229,154,88,0.2)', borderRadius: '14px' }}>
+                <div style={{ fontSize: '0.75rem', color: 'var(--gold-accent)', fontWeight: 800, letterSpacing: '1px', marginBottom: '6px' }}>🌱 你最值得探索的成長空間</div>
+                <div style={{ fontSize: '0.95rem', color: 'var(--text-primary)', fontWeight: 600 }}>{dynamicData.soulNarrative.tensionLabel}</div>
+                <div style={{ fontSize: '0.8rem', color: 'var(--text-tertiary)', marginTop: '4px' }}>維度 {dynamicData.soulNarrative.tension.code} · {dynamicData.soulNarrative.tension.pct}%</div>
+              </div>
+            </div>
+
+            <div style={{ padding: '18px 20px', background: 'rgba(255,255,255,0.04)', borderLeft: '3px solid var(--gold-accent)', borderRadius: '8px', fontSize: '0.97rem', color: 'var(--text-primary)', lineHeight: 1.9, fontStyle: 'italic' }}>
+              ✦ {dynamicData.soulNarrative.closingLine}
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* 雙欄圖表展示區塊 (Canvas 雷達圖 + 六維度能量長條) */}
       <div className="result-charts-grid">
         {/* 六維度動態雷達圖 */}
@@ -332,6 +389,129 @@ export function ResultView({
           })}
         </div>
       </div>
+
+      {/* ══ 六大維度深度解碼全景閱讀區 ══ */}
+      {dynamicData?.dimDiagnoses && (
+        <div className="glass-panel" style={{ margin: '24px 0', padding: '32px 28px' }}>
+          <div style={{ marginBottom: '24px' }}>
+            <div style={{ fontSize: '0.78rem', fontWeight: 800, color: 'var(--text-accent)', letterSpacing: '1.5px', textTransform: 'uppercase', marginBottom: '6px' }}>
+              ✦ Six-Dimension Deep Resonance
+            </div>
+            <h3 className="font-serif" style={{ fontSize: '1.5rem', fontWeight: 900, color: 'var(--text-primary)', margin: '0 0 8px 0' }}>
+              六大維度深度解碼
+            </h3>
+            <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', margin: 0 }}>
+              以下是根據你真實的六個百分比數值，為你量身撰寫的心理學深度解析——這不是模板，這是只屬於你的心靈報告。點擊任一維度展開完整解讀。
+            </p>
+          </div>
+
+          {[
+            { key: 'EI', icon: '⚡', color: 'var(--primary-light)', rgb: '99,102,241' },
+            { key: 'SN', icon: '🔮', color: 'var(--secondary-light)', rgb: '125,165,133' },
+            { key: 'TF', icon: '⚖️', color: 'var(--gold-accent)', rgb: '229,154,88' },
+            { key: 'JP', icon: '🧭', color: '#c084fc', rgb: '192,132,252' },
+            { key: 'AR', icon: '🛡️', color: '#34d399', rgb: '52,211,153' },
+            { key: 'DC', icon: '🎯', color: '#f472b6', rgb: '244,114,182' },
+          ].map(({ key, icon, color, rgb }) => {
+            const diag = dynamicData.dimDiagnoses[key];
+            if (!diag) return null;
+            const isExpanded = expandedDim === key;
+            const tierLabel = diag.tier === 'extreme' ? '極限態' : diag.tier === 'strong' ? '顯著態' : diag.tier === 'moderate' ? '成熟態' : '平衡態';
+            const tierBg = diag.tier === 'extreme' ? 'rgba(239,68,68,0.15)' : diag.tier === 'strong' ? 'rgba(229,154,88,0.15)' : diag.tier === 'moderate' ? 'rgba(125,165,133,0.15)' : 'rgba(99,102,241,0.15)';
+            const tierTextColor = diag.tier === 'extreme' ? '#f87171' : diag.tier === 'strong' ? 'var(--gold-accent)' : diag.tier === 'moderate' ? 'var(--secondary-light)' : 'var(--primary-light)';
+
+            return (
+              <div
+                key={key}
+                style={{
+                  marginBottom: '12px',
+                  background: isExpanded ? `rgba(${rgb},0.06)` : 'rgba(255,255,255,0.03)',
+                  border: `1px solid rgba(${rgb},${isExpanded ? '0.3' : '0.15'})`,
+                  borderRadius: '18px',
+                  overflow: 'hidden',
+                  transition: 'all 0.3s ease',
+                  boxShadow: isExpanded ? `0 8px 32px rgba(${rgb},0.15)` : '0 2px 8px rgba(0,0,0,0.06)'
+                }}
+              >
+                <button
+                  onClick={() => setExpandedDim(isExpanded ? null : key)}
+                  style={{
+                    width: '100%',
+                    background: 'none',
+                    border: 'none',
+                    cursor: 'pointer',
+                    padding: '18px 22px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '14px',
+                    textAlign: 'left'
+                  }}
+                >
+                  <div style={{ width: '46px', height: '46px', borderRadius: '13px', background: `rgba(${rgb},0.12)`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.35rem', flexShrink: 0 }}>
+                    {icon}
+                  </div>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px', flexWrap: 'wrap' }}>
+                      <span style={{ fontSize: '1.01rem', fontWeight: 800, color: 'var(--text-primary)', lineHeight: 1.2 }}>{diag.levelTitle}</span>
+                      <span style={{ fontSize: '0.7rem', fontWeight: 800, color: tierTextColor, background: tierBg, padding: '2px 9px', borderRadius: '6px', whiteSpace: 'nowrap' }}>{tierLabel}</span>
+                    </div>
+                    <div style={{ fontSize: '0.83rem', color: 'var(--text-tertiary)', lineHeight: 1.5, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: '480px' }}>
+                      {diag.summary.slice(0, 68)}…
+                    </div>
+                  </div>
+                  <div style={{ color: 'var(--text-tertiary)', fontSize: '0.75rem', flexShrink: 0, transition: 'transform 0.3s', transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)', marginLeft: '4px' }}>
+                    ▼
+                  </div>
+                </button>
+
+                {isExpanded && (
+                  <div style={{ padding: '0 22px 26px' }}>
+                    <div style={{ height: '1px', background: `rgba(${rgb},0.15)`, marginBottom: '22px' }} />
+
+                    {diag.deepNarrative && (
+                      <div style={{ marginBottom: '22px' }}>
+                        {diag.deepNarrative.split('\n\n').map((para, pi) => (
+                          <p key={pi} className={pi === 0 ? 'font-serif' : ''} style={{
+                            fontSize: pi === 0 ? '1.06rem' : '0.95rem',
+                            color: pi === 0 ? 'var(--text-primary)' : 'var(--text-secondary)',
+                            lineHeight: pi === 0 ? 2.0 : 1.85,
+                            margin: `0 0 ${pi < diag.deepNarrative.split('\n\n').length - 1 ? '14px' : '0'} 0`,
+                            fontStyle: pi === 0 ? 'italic' : 'normal',
+                            fontWeight: pi === 0 ? 600 : 400
+                          }}>
+                            {pi === 0 ? `"${para}"` : para}
+                          </p>
+                        ))}
+                      </div>
+                    )}
+
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '12px' }}>
+                      <div style={{ padding: '14px 16px', background: `rgba(${rgb},0.08)`, border: `1px solid rgba(${rgb},0.2)`, borderRadius: '12px' }}>
+                        <div style={{ fontSize: '0.77rem', color, fontWeight: 800, marginBottom: '8px' }}>🌟 天賦超能力</div>
+                        <p style={{ fontSize: '0.87rem', color: 'var(--text-primary)', lineHeight: 1.75, margin: 0 }}>{diag.superpower}</p>
+                      </div>
+                      <div style={{ padding: '14px 16px', background: 'rgba(239,68,68,0.06)', border: '1px solid rgba(239,68,68,0.15)', borderRadius: '12px' }}>
+                        <div style={{ fontSize: '0.77rem', color: '#f87171', fontWeight: 800, marginBottom: '8px' }}>🪞 心理盲區</div>
+                        <p style={{ fontSize: '0.87rem', color: 'var(--text-primary)', lineHeight: 1.75, margin: 0 }}>{diag.blindspot}</p>
+                      </div>
+                      <div style={{ padding: '14px 16px', background: 'rgba(52,211,153,0.06)', border: '1px solid rgba(52,211,153,0.15)', borderRadius: '12px' }}>
+                        <div style={{ fontSize: '0.77rem', color: '#34d399', fontWeight: 800, marginBottom: '8px' }}>🧭 成長指引</div>
+                        <p style={{ fontSize: '0.87rem', color: 'var(--text-primary)', lineHeight: 1.75, margin: 0 }}>{diag.growthAdvice}</p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+
+          {expandedDim === null && (
+            <div style={{ textAlign: 'center', marginTop: '8px', fontSize: '0.82rem', color: 'var(--text-tertiary)' }}>
+              點擊任一維度卡片，展開你的專屬深度解讀 ↑
+            </div>
+          )}
+        </div>
+      )}
 
       {/* ══ 亞洲人設共鳴與心靈自救面板 (Asian Resonance & Somatic Grounding Matrix) ══ */}
       <div className="glass-panel" style={{ margin: '24px 0', padding: '28px 24px' }}>
@@ -515,7 +695,7 @@ export function ResultView({
             className={`tab-btn ${activeTab === 'traits' ? 'active' : ''}`}
             onClick={() => { soundFX.playTab(); setActiveTab('traits'); }}
           >
-            核心天賦特質
+            靈魂特質與原型
           </button>
           <button
             className={`tab-btn ${activeTab === 'cognitive' ? 'active' : ''}`}
@@ -533,13 +713,13 @@ export function ResultView({
             className={`tab-btn ${activeTab === 'love' ? 'active' : ''}`}
             onClick={() => { soundFX.playTab(); setActiveTab('love'); }}
           >
-            親密關係與相處
+            親密關係與手冊
           </button>
           <button
             className={`tab-btn ${activeTab === 'growth' ? 'active' : ''}`}
             onClick={() => { soundFX.playTab(); setActiveTab('growth'); }}
           >
-            壓力陰影自救
+            壓力自救與身心學
           </button>
           <button
             className={`tab-btn ${activeTab === 'matches' ? 'active' : ''}`}
@@ -547,11 +727,115 @@ export function ResultView({
           >
             命定契合拍檔
           </button>
+          <button
+            className={`tab-btn ${activeTab === 'letter' ? 'active' : ''}`}
+            onClick={() => { soundFX.playTab(); setActiveTab('letter'); }}
+          >
+            ✉️ 致內在小孩的信
+          </button>
         </div>
 
-        {/* 標籤 1: 核心特質 */}
+        {/* 標籤 1: 核心特質與靈魂畫像 */}
         {activeTab === 'traits' && (
           <div className="tab-pane-content active">
+            {/* 靈魂畫像長文 */}
+            {(deep?.subTypeMeta?.soulPortrait || p.description) && (
+              <div
+                className="glass-panel"
+                style={{
+                  padding: '24px 28px',
+                  marginBottom: '24px',
+                  background: 'linear-gradient(135deg, rgba(229, 154, 88, 0.08), rgba(255, 255, 255, 0.02))',
+                  border: '1px solid rgba(229, 154, 88, 0.25)',
+                  borderRadius: '16px'
+                }}
+              >
+                <div style={{ fontSize: '0.85rem', color: 'var(--gold-accent)', fontWeight: 800, letterSpacing: '1px', marginBottom: '10px', textTransform: 'uppercase' }}>
+                  ✦ 靈魂畫像深度解碼 (Soul Portrait)
+                </div>
+                <p className="font-serif" style={{ fontSize: '1.02rem', color: 'var(--text-primary)', lineHeight: 2, margin: 0, fontStyle: 'italic' }}>
+                  "{deep?.subTypeMeta?.soulPortrait || p.description}"
+                </p>
+              </div>
+            )}
+
+            {/* 童年印記與防禦面具起源 */}
+            {deep?.subTypeMeta?.childhoodEcho && (
+              <div
+                className="glass-panel"
+                style={{
+                  padding: '22px 26px',
+                  marginBottom: '24px',
+                  background: 'rgba(255,255,255,0.02)',
+                  borderLeft: '4px solid var(--primary-light)'
+                }}
+              >
+                <div style={{ fontSize: '0.92rem', fontWeight: 800, color: 'var(--primary-light)', marginBottom: '8px' }}>
+                  🌱 童年心靈印記與防禦機制的起源 (Childhood Echoes)
+                </div>
+                <p style={{ fontSize: '0.92rem', color: 'var(--text-secondary)', lineHeight: 1.85, margin: 0 }}>
+                  {deep.subTypeMeta.childhoodEcho}
+                </p>
+              </div>
+            )}
+
+            {/* 內在宇宙、最深恐懼、未言渴望、稀缺禮物 */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px', marginBottom: '24px' }}>
+              <div className="glass-panel" style={{ padding: '20px' }}>
+                <div style={{ fontSize: '0.92rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '8px' }}>
+                  🌌 內在繁複宇宙
+                </div>
+                <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.75, margin: 0 }}>
+                  {deep?.subTypeMeta?.innerWorld || '你的內心世界遠比表面所展現的更加豐富深邃，大腦同時運行著多個執行緒。'}
+                </p>
+              </div>
+              <div className="glass-panel" style={{ padding: '20px' }}>
+                <div style={{ fontSize: '0.92rem', fontWeight: 800, color: '#f87171', marginBottom: '8px' }}>
+                  🔒 最深的隱蔽恐懼
+                </div>
+                <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.75, margin: 0 }}>
+                  {deep?.subTypeMeta?.deepestFear || '害怕在卸下防備的瞬間被看見脆弱，害怕付出一切後依然不被真正理解。'}
+                </p>
+              </div>
+              <div className="glass-panel" style={{ padding: '20px' }}>
+                <div style={{ fontSize: '0.92rem', fontWeight: 800, color: '#f472b6', marginBottom: '8px' }}>
+                  💌 未曾言說的渴望
+                </div>
+                <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.75, margin: 0 }}>
+                  {deep?.subTypeMeta?.secretDesire || '渴望有人能穿透你的堅強外殼，不需要你表現出任何功能，就只是愛著你這個人。'}
+                </p>
+              </div>
+              <div className="glass-panel" style={{ padding: '20px' }}>
+                <div style={{ fontSize: '0.92rem', fontWeight: 800, color: 'var(--gold-accent)', marginBottom: '8px' }}>
+                  🎁 帶給世界的稀缺禮物
+                </div>
+                <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.75, margin: 0 }}>
+                  {deep?.subTypeMeta?.giftToWorld || '你在混亂中帶來的確定感與深層洞察，是這個世界最珍貴的安定力量。'}
+                </p>
+              </div>
+            </div>
+
+            {/* 巔峰高光時刻 vs 崩潰至暗時刻 */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px', marginBottom: '24px' }}>
+              <div className="glass-panel" style={{ padding: '20px', borderLeft: '4px solid var(--success)' }}>
+                <div style={{ fontSize: '0.9rem', fontWeight: 800, color: 'var(--success)', marginBottom: '6px' }}>
+                  ✨ 巔峰高光時刻 (When at Your Best)
+                </div>
+                <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.75, margin: 0 }}>
+                  {deep?.subTypeMeta?.whenAtBest || '能量飽滿、目光篤定，能將混亂複雜的事物化為清晰的秩序與前行方向，激勵身邊所有人。'}
+                </p>
+              </div>
+              <div className="glass-panel" style={{ padding: '20px', borderLeft: '4px solid #f87171' }}>
+                <div style={{ fontSize: '0.9rem', fontWeight: 800, color: '#f87171', marginBottom: '6px' }}>
+                  ⚡ 崩潰至暗時刻 (When at Your Worst)
+                </div>
+                <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.75, margin: 0 }}>
+                  {deep?.subTypeMeta?.whenAtWorst || '長期高壓且缺乏出口時，容易進入冷酷或封閉模式，對身邊人過度嚴苛或陷入深度精神內耗。'}
+                </p>
+              </div>
+            </div>
+
+            {/* 原型概述與動態光譜極值 */}
             <div className="content-grid-2col">
               <div>
                 <h4 style={{ fontSize: '1.15rem', fontWeight: 800, marginBottom: '16px', color: 'var(--primary-light)' }}>
@@ -588,53 +872,51 @@ export function ResultView({
                 <h4 style={{ fontSize: '1.15rem', fontWeight: 800, marginBottom: '16px', color: 'var(--secondary-light)' }}>
                   🌌 原型深度概述 (Archetype Overview)
                 </h4>
-                <LockedSection isUnlocked={isUnlocked} onUnlock={handleUnlockClick} title="原型深度概述與量化極值解讀">
-                  <div className="glass-panel" style={{ padding: '24px', lineHeight: 1.85, fontSize: '0.96rem', color: 'var(--text-secondary)' }}>
-                    <p style={{ marginBottom: '12px', color: 'var(--text-primary)', fontWeight: 700 }}>
-                      ✦ {p.name}（{result.code}）屬於 <strong style={{ color: p.groupColor || 'var(--secondary-light)' }}>{p.group}</strong>。
-                    </p>
-                    <p style={{ marginBottom: '12px' }}>
-                      你的核心生命箴言為「{p.tagline}」。在心智模型中，你結合了 <strong style={{ color: 'var(--text-primary)' }}>{result.dimensions.EI.dominantLabel}</strong> 的充能路徑與 <strong style={{ color: 'var(--text-primary)' }}>{result.dimensions.SN.dominantLabel}</strong> 的資訊感知，形成極具辨識度的洞察視角。
-                    </p>
-                    <p style={{ marginBottom: '12px' }}>
-                      在面對抉擇時，你習慣運用 <strong style={{ color: 'var(--text-primary)' }}>{result.dimensions.TF.dominantLabel}</strong> 錨定準則，並以 <strong style={{ color: 'var(--text-primary)' }}>{result.dimensions.JP.dominantLabel}</strong> 的步調掌控局勢。
-                    </p>
-                    {/* 多維度交叉共振動態化學反應（根據 6 大 % 數客製化生成） */}
-                    {dynamicData?.crossSynthesis && (
-                      <div style={{ margin: '14px 0', background: 'linear-gradient(135deg, rgba(251,191,36,0.12), rgba(168,85,247,0.1))', border: '1.5px solid rgba(251,191,36,0.4)', borderRadius: '12px', padding: '16px 18px' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '6px', flexWrap: 'wrap', gap: '6px' }}>
-                          <div style={{ fontSize: '0.95rem', fontWeight: 900, color: '#fbbf24', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                            <span>🔮</span><span>{dynamicData.crossSynthesis.title}</span>
-                          </div>
-                          <span className="dim-code-badge" style={{ color: '#fbbf24', borderColor: 'rgba(251,191,36,0.4)' }}>
-                            {dynamicData.crossSynthesis.tag}
-                          </span>
+                <div className="glass-panel" style={{ padding: '24px', lineHeight: 1.85, fontSize: '0.96rem', color: 'var(--text-secondary)' }}>
+                  <p style={{ marginBottom: '12px', color: 'var(--text-primary)', fontWeight: 700 }}>
+                    ✦ {p.name}（{result.code}）屬於 <strong style={{ color: p.groupColor || 'var(--secondary-light)' }}>{p.group}</strong>。
+                  </p>
+                  <p style={{ marginBottom: '12px' }}>
+                    你的核心生命箴言為「{p.tagline}」。在心智模型中，你結合了 <strong style={{ color: 'var(--text-primary)' }}>{result.dimensions.EI.dominantLabel}</strong> 的充能路徑與 <strong style={{ color: 'var(--text-primary)' }}>{result.dimensions.SN.dominantLabel}</strong> 的資訊感知，形成極具辨識度的洞察視角。
+                  </p>
+                  <p style={{ marginBottom: '12px' }}>
+                    在面對抉擇時，你習慣運用 <strong style={{ color: 'var(--text-primary)' }}>{result.dimensions.TF.dominantLabel}</strong> 錨定準則，並以 <strong style={{ color: 'var(--text-primary)' }}>{result.dimensions.JP.dominantLabel}</strong> 的步調掌控局勢。
+                  </p>
+                  {/* 多維度交叉共振動態化學反應 */}
+                  {dynamicData?.crossSynthesis && (
+                    <div style={{ margin: '14px 0', background: 'linear-gradient(135deg, rgba(229, 154, 88, 0.12), rgba(99, 102, 241, 0.1))', border: '1.5px solid rgba(229, 154, 88, 0.35)', borderRadius: '12px', padding: '16px 18px' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '6px', flexWrap: 'wrap', gap: '6px' }}>
+                        <div style={{ fontSize: '0.95rem', fontWeight: 900, color: 'var(--gold-accent)', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                          <span>🔮</span><span>{dynamicData.crossSynthesis.title}</span>
                         </div>
-                        <p style={{ fontSize: '0.88rem', color: '#e2e8f0', lineHeight: 1.75, margin: 0 }}>
-                          {dynamicData.crossSynthesis.desc}
-                        </p>
+                        <span className="dim-code-badge" style={{ color: 'var(--gold-accent)', borderColor: 'rgba(229, 154, 88, 0.4)' }}>
+                          {dynamicData.crossSynthesis.tag}
+                        </span>
                       </div>
-                    )}
-
-                    <div className="legal-alert-box alert-info" style={{ margin: '12px 0 0 0', fontSize: '0.88rem' }}>
-                      <strong>形態動力學：</strong>{p.subTypeMeta ? p.subTypeMeta.summary : '在動態平衡中展現卓越的自我驅動力。'}
+                      <p style={{ fontSize: '0.88rem', color: '#e2e8f0', lineHeight: 1.75, margin: 0 }}>
+                        {dynamicData.crossSynthesis.desc}
+                      </p>
                     </div>
+                  )}
 
-                    {/* 即時百分比個人化動態解析 */}
-                    {dynamicData && (
-                      <div style={{ marginTop: '16px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                        <div style={{ padding: '12px 14px', background: 'rgba(239, 68, 68, 0.06)', borderLeft: '3px solid #f87171', borderRadius: '4px', fontSize: '0.86rem' }}>
-                          <div style={{ fontWeight: 800, color: '#f87171', marginBottom: '2px' }}>🔥 個人量化極值主導維度解析</div>
-                          <div style={{ color: 'var(--text-primary)', lineHeight: 1.6 }}>{dynamicData.extremeInsights}</div>
-                        </div>
-                        <div style={{ padding: '12px 14px', background: 'rgba(56, 189, 248, 0.06)', borderLeft: '3px solid #38bdf8', borderRadius: '4px', fontSize: '0.86rem' }}>
-                          <div style={{ fontWeight: 800, color: '#38bdf8', marginBottom: '2px' }}>⚖️ 個人量化游移平衡維度解析</div>
-                          <div style={{ color: 'var(--text-primary)', lineHeight: 1.6 }}>{dynamicData.balancedInsights}</div>
-                        </div>
-                      </div>
-                    )}
+                  <div className="legal-alert-box alert-info" style={{ margin: '12px 0 0 0', fontSize: '0.88rem' }}>
+                    <strong>形態動力學：</strong>{p.subTypeMeta ? p.subTypeMeta.summary : '在動態平衡中展現卓越的自我驅動力。'}
                   </div>
-                </LockedSection>
+
+                  {/* 即時百分比個人化動態解析 */}
+                  {dynamicData && (
+                    <div style={{ marginTop: '16px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                      <div style={{ padding: '12px 14px', background: 'rgba(239, 68, 68, 0.06)', borderLeft: '3px solid #f87171', borderRadius: '4px', fontSize: '0.86rem' }}>
+                        <div style={{ fontWeight: 800, color: '#f87171', marginBottom: '2px' }}>🔥 個人量化極值主導維度解析</div>
+                        <div style={{ color: 'var(--text-primary)', lineHeight: 1.6 }}>{dynamicData.extremeInsights}</div>
+                      </div>
+                      <div style={{ padding: '12px 14px', background: 'rgba(56, 189, 248, 0.06)', borderLeft: '3px solid #38bdf8', borderRadius: '4px', fontSize: '0.86rem' }}>
+                        <div style={{ fontWeight: 800, color: '#38bdf8', marginBottom: '2px' }}>⚖️ 個人量化游移平衡維度解析</div>
+                        <div style={{ color: 'var(--text-primary)', lineHeight: 1.6 }}>{dynamicData.balancedInsights}</div>
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>
@@ -652,69 +934,67 @@ export function ResultView({
               </p>
             </div>
 
-            <LockedSection isUnlocked={isUnlocked} onUnlock={handleUnlockClick} title="榮格八維認知功能運算棧">
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px', marginBottom: '24px' }}>
-                {p.cognitiveStack && p.cognitiveStack.map((item, idx) => (
-                  <div
-                    key={idx}
-                    className="glass-panel"
-                    style={{
-                      padding: '20px',
-                      borderColor: `${item.info.color}44`,
-                      background: `linear-gradient(135deg, ${item.info.color}0a, rgba(255,255,255,0.02))`
-                    }}
-                  >
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        <span
-                          style={{
-                            background: item.info.color,
-                            color: '#ffffff',
-                            fontWeight: 900,
-                            fontSize: '0.85rem',
-                            padding: '3px 10px',
-                            borderRadius: '6px',
-                            fontFamily: 'var(--font-mono)'
-                          }}
-                        >
-                          {item.fn}
-                        </span>
-                        <span style={{ fontSize: '0.88rem', fontWeight: 800, color: 'var(--text-primary)' }}>
-                          {item.level}
-                        </span>
-                      </div>
-                      <span style={{ fontSize: '0.82rem', fontFamily: 'var(--font-mono)', color: item.info.color, fontWeight: 'bold' }}>
-                        能量活化度 {item.strength}%
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px', marginBottom: '24px' }}>
+              {p.cognitiveStack && p.cognitiveStack.map((item, idx) => (
+                <div
+                  key={idx}
+                  className="glass-panel"
+                  style={{
+                    padding: '20px',
+                    borderColor: `${item.info.color}44`,
+                    background: `linear-gradient(135deg, ${item.info.color}0a, rgba(255,255,255,0.02))`
+                  }}
+                >
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <span
+                        style={{
+                          background: item.info.color,
+                          color: '#ffffff',
+                          fontWeight: 900,
+                          fontSize: '0.85rem',
+                          padding: '3px 10px',
+                          borderRadius: '6px',
+                          fontFamily: 'var(--font-mono)'
+                        }}
+                      >
+                        {item.fn}
+                      </span>
+                      <span style={{ fontSize: '0.88rem', fontWeight: 800, color: 'var(--text-primary)' }}>
+                        {item.level}
                       </span>
                     </div>
-
-                    {/* 活化度進度條 */}
-                    <div style={{ width: '100%', height: '6px', background: 'rgba(255,255,255,0.08)', borderRadius: '3px', overflow: 'hidden', marginBottom: '12px' }}>
-                      <div style={{ width: `${item.strength}%`, height: '100%', background: item.info.color, borderRadius: '3px' }} />
-                    </div>
-
-                    <div style={{ fontSize: '0.92rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '4px' }}>
-                      {item.info.name}
-                    </div>
-                    <div style={{ fontSize: '0.82rem', color: item.info.color, marginBottom: '8px', fontWeight: 600 }}>
-                      ✦ {item.info.roleTitle}
-                    </div>
-                    <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', lineHeight: 1.55 }}>
-                      {item.desc}
-                    </p>
+                    <span style={{ fontSize: '0.82rem', fontFamily: 'var(--font-mono)', color: item.info.color, fontWeight: 'bold' }}>
+                      能量活化度 {item.strength}%
+                    </span>
                   </div>
-                ))}
-              </div>
 
-              <div className="glass-panel" style={{ padding: '20px', background: 'rgba(99, 102, 241, 0.05)', borderColor: 'rgba(99, 102, 241, 0.2)' }}>
-                <div style={{ fontWeight: 800, color: 'var(--primary-light)', marginBottom: '6px' }}>
-                  💡 認知動力學核心解密：
+                  {/* 活化度進度條 */}
+                  <div style={{ width: '100%', height: '6px', background: 'rgba(255,255,255,0.08)', borderRadius: '3px', overflow: 'hidden', marginBottom: '12px' }}>
+                    <div style={{ width: `${item.strength}%`, height: '100%', background: item.info.color, borderRadius: '3px' }} />
+                  </div>
+
+                  <div style={{ fontSize: '0.92rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '4px' }}>
+                    {item.info.name}
+                  </div>
+                  <div style={{ fontSize: '0.82rem', color: item.info.color, marginBottom: '8px', fontWeight: 600 }}>
+                    ✦ {item.info.roleTitle}
+                  </div>
+                  <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', lineHeight: 1.55 }}>
+                    {item.desc}
+                  </p>
                 </div>
-                <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: 1.65 }}>
-                  你的英雄主導功能（{p.cognitiveStack ? p.cognitiveStack[0].fn : 'Te'}）是你最自信的直覺武器，但當你遭遇重大挫折或長期疲憊時，劣勢功能（{p.cognitiveStack ? p.cognitiveStack[3].fn : 'Fi'}）會被強制喚醒引發「陰影抓狂（In the Grip）」。學會適時啟用輔助功能（{p.cognitiveStack ? p.cognitiveStack[1].fn : 'Ni'}）平衡大腦，是邁向成熟高階心智的關鍵鑰匙。
-                </p>
+              ))}
+            </div>
+
+            <div className="glass-panel" style={{ padding: '20px', background: 'rgba(99, 102, 241, 0.05)', borderColor: 'rgba(99, 102, 241, 0.2)' }}>
+              <div style={{ fontWeight: 800, color: 'var(--primary-light)', marginBottom: '6px' }}>
+                💡 認知動力學核心解密：
               </div>
-            </LockedSection>
+              <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: 1.65 }}>
+                你的英雄主導功能（{p.cognitiveStack ? p.cognitiveStack[0].fn : 'Te'}）是你最自信的直覺武器，但當你遭遇重大挫折或長期疲憊時，劣勢功能（{p.cognitiveStack ? p.cognitiveStack[3].fn : 'Fi'}）會被強制喚醒引發「陰影抓狂（In the Grip）」。學會適時啟用輔助功能（{p.cognitiveStack ? p.cognitiveStack[1].fn : 'Ni'}）平衡大腦，是邁向成熟高階心智的關鍵鑰匙。
+              </p>
+            </div>
           </div>
         )}
 
@@ -735,45 +1015,83 @@ export function ResultView({
               ))}
             </div>
 
-            <LockedSection isUnlocked={isUnlocked} onUnlock={handleUnlockClick} title="職場高薪跑道與商業實戰手冊">
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px', marginBottom: '20px' }}>
-                <div className="glass-panel" style={{ padding: '20px' }}>
-                  <div style={{ fontWeight: 800, color: 'var(--text-primary)', marginBottom: '8px' }}>
-                    👑 職場核心競爭力
-                  </div>
-                  <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-                    {p.careerMastery ? p.careerMastery.workplaceSuperpower : '具備明確的方向感與目標聚焦能力，善於拆解複雜挑戰並激勵團隊達成關鍵成果。'}
-                  </p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px', marginBottom: '20px' }}>
+              <div className="glass-panel" style={{ padding: '20px' }}>
+                <div style={{ fontWeight: 800, color: 'var(--text-primary)', marginBottom: '8px' }}>
+                  👑 職場核心競爭力
                 </div>
+                <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+                  {deep?.subTypeMeta?.workAdvantage || p.careerMastery?.workplaceSuperpower || '具備明確的方向感與目標聚焦能力，善於拆解複雜挑戰並激勵團隊達成關鍵成果。'}
+                </p>
+              </div>
 
-                <div className="glass-panel" style={{ padding: '20px' }}>
-                  <div style={{ fontWeight: 800, color: 'var(--text-primary)', marginBottom: '8px' }}>
-                    ⚡ 理想工作場域特質
-                  </div>
-                  <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-                    {p.careerMastery ? p.careerMastery.idealEnvironment : '給予充分決策自主權、重視結果品質與實質產出、具備開放討論空間的環境最能激發你的熱情。'}
-                  </p>
+              <div className="glass-panel" style={{ padding: '20px' }}>
+                <div style={{ fontWeight: 800, color: 'var(--text-primary)', marginBottom: '8px' }}>
+                  ⚡ 理想工作場域特質
                 </div>
+                <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+                  {p.careerMastery ? p.careerMastery.idealEnvironment : '給予充分決策自主權、重視結果品質與實質產出、具備開放討論空間的環境最能激發你的熱情。'}
+                </p>
+              </div>
 
-                <div className="glass-panel" style={{ padding: '20px' }}>
-                  <div style={{ fontWeight: 800, color: 'var(--text-primary)', marginBottom: '8px' }}>
-                    🤝 與你共事的黃金溝通法則
-                  </div>
-                  <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-                    {p.careerMastery ? p.careerMastery.colleagueRule : '就事論事、溝通直奔主題並嚴守承諾，用數據與邏輯論證。'}
-                  </p>
+              <div className="glass-panel" style={{ padding: '20px' }}>
+                <div style={{ fontWeight: 800, color: 'var(--text-primary)', marginBottom: '8px' }}>
+                  🤝 與你共事的黃金溝通法則
                 </div>
+                <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+                  {p.careerMastery ? p.careerMastery.colleagueRule : '就事論事、溝通直奔主題並嚴守承諾，用數據與邏輯論證。'}
+                </p>
+              </div>
 
-                <div className="glass-panel" style={{ padding: '20px' }}>
-                  <div style={{ fontWeight: 800, color: 'var(--gold-accent)', marginBottom: '8px' }}>
-                    🚀 升遷加速突破口
-                  </div>
-                  <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-                    {p.careerMastery ? p.careerMastery.growthBreakpoint : '學會適時向外授權，不要試圖將所有責任扛在一人肩上。'}
-                  </p>
+              <div className="glass-panel" style={{ padding: '20px' }}>
+                <div style={{ fontWeight: 800, color: 'var(--gold-accent)', marginBottom: '8px' }}>
+                  🚀 升遷加速突破口
+                </div>
+                <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+                  {p.careerMastery ? p.careerMastery.growthBreakpoint : '學會適時向外授權，不要試圖將所有責任扛在一人肩上。'}
+                </p>
+              </div>
+            </div>
+
+            {/* 暗黑職場攻防實戰 */}
+            <h4 style={{ fontSize: '1.05rem', fontWeight: 800, margin: '24px 0 14px 0', color: 'var(--gold-accent)' }}>
+              ⚔️ 暗黑職場實戰對治攻防手冊 (Workplace Warfare)
+            </h4>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px', marginBottom: '20px' }}>
+              <div className="glass-panel" style={{ padding: '20px', borderLeft: '4px solid #f87171' }}>
+                <div style={{ fontWeight: 800, color: '#f87171', marginBottom: '6px' }}>
+                  ✦ 向上管理策略 (面對主管)
+                </div>
+                <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.75, margin: 0 }}>
+                  {deep?.subTypeMeta?.darkWorkplaceBoss || '以客觀數據與可衡量的產出為溝通基礎，超前交付進度，保持清晰專業界線。'}
+                </p>
+              </div>
+
+              <div className="glass-panel" style={{ padding: '20px', borderLeft: '4px solid #34d399' }}>
+                <div style={{ fontWeight: 800, color: '#34d399', marginBottom: '6px' }}>
+                  ✦ 同儕協同防禦 (面對同僚)
+                </div>
+                <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.75, margin: 0 }}>
+                  {deep?.subTypeMeta?.darkWorkplacePeer || '就事論事、直奔主題並嚴守承諾，在核心環節建立不可替代的專業壁壘。'}
+                </p>
+              </div>
+            </div>
+
+            {/* 職場禁忌紅線 */}
+            {deep?.subTypeMeta?.redFlags && (
+              <div className="glass-panel" style={{ padding: '20px', background: 'rgba(239, 68, 68, 0.04)', borderColor: 'rgba(239, 68, 68, 0.25)' }}>
+                <div style={{ fontWeight: 800, color: '#f87171', marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  <span>⚠️</span><span>職場與人際不可踩踏的紅線禁區 (Red Flags)</span>
+                </div>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                  {deep.subTypeMeta.redFlags.map((rf, idx) => (
+                    <span key={idx} style={{ background: 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.3)', padding: '5px 12px', borderRadius: '8px', fontSize: '0.85rem', color: '#fca5a5' }}>
+                      ✕ {rf}
+                    </span>
+                  ))}
                 </div>
               </div>
-            </LockedSection>
+            )}
           </div>
         )}
 
@@ -784,147 +1102,156 @@ export function ResultView({
               ❤️ 親密關係與愛情全維度手冊 (Intimacy & Love Psychology)
             </h4>
 
-            <LockedSection isUnlocked={isUnlocked} onUnlock={handleUnlockClick} title="親密關係與愛情全維度手冊">
-              {/* 依附風格與吸引力宿命（根據 AR / TF 量化分數量身定制） */}
-              {dynamicData?.dynamicLoveDiagnosis && (
+            {/* 依附風格與吸引力宿命 */}
+            {dynamicData?.dynamicLoveDiagnosis && (
+              <div
+                className="glass-panel"
+                style={{
+                  padding: '22px 24px',
+                  marginBottom: '20px',
+                  background: 'linear-gradient(135deg, rgba(236, 72, 153, 0.12), rgba(168, 85, 247, 0.1))',
+                  border: '1.5px solid rgba(236, 72, 153, 0.4)',
+                  borderRadius: '16px'
+                }}
+              >
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px', flexWrap: 'wrap', gap: '8px' }}>
+                  <div style={{ fontSize: '0.82rem', color: '#f472b6', fontWeight: 800, letterSpacing: '1.5px' }}>
+                    💘 你的個人化潛意識戀愛依附風格
+                  </div>
+                  <span className="dim-code-badge" style={{ color: '#f472b6', borderColor: 'rgba(236,72,153,0.4)' }}>
+                    {dynamicData.dynamicLoveDiagnosis.attachmentStyle}
+                  </span>
+                </div>
+                <p style={{ fontSize: '0.97rem', color: '#fff', lineHeight: 1.9, margin: '0 0 14px 0', fontWeight: 500 }}>
+                  {dynamicData.dynamicLoveDiagnosis.attachmentDesc}
+                </p>
+                {(deep?.subTypeMeta?.loveAttachment || deep?.intimacyMastery?.attachment) && (
+                  <p style={{ fontSize: '0.88rem', color: '#fce7f3', lineHeight: 1.75, margin: '0 0 16px 0' }}>
+                    {deep?.subTypeMeta?.loveAttachment || deep?.intimacyMastery?.attachment}
+                  </p>
+                )}
+                {/* 個人化量化心動信號 & 安全感時刻 */}
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '12px' }}>
+                  <div style={{ padding: '14px 16px', background: 'rgba(244,114,182,0.12)', border: '1px solid rgba(244,114,182,0.3)', borderRadius: '12px' }}>
+                    <div style={{ fontSize: '0.78rem', color: '#f472b6', fontWeight: 800, marginBottom: '8px' }}>💓 當你真正動心，你會這樣做</div>
+                    <p style={{ fontSize: '0.89rem', color: '#fce7f3', lineHeight: 1.8, margin: 0 }}>
+                      {dynamicData.dynamicLoveDiagnosis.customCrushSignal}
+                    </p>
+                  </div>
+                  <div style={{ padding: '14px 16px', background: 'rgba(52,211,153,0.08)', border: '1px solid rgba(52,211,153,0.25)', borderRadius: '12px' }}>
+                    <div style={{ fontSize: '0.78rem', color: '#34d399', fontWeight: 800, marginBottom: '8px' }}>🛡️ 讓你瞬間卸下心防的時刻</div>
+                    <p style={{ fontSize: '0.89rem', color: '#d1fae5', lineHeight: 1.8, margin: 0 }}>
+                      {dynamicData.dynamicLoveDiagnosis.customSafetyTrigger}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* 心動信號 & 安全感時刻 */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px', marginBottom: '20px' }}>
+              {(deep?.subTypeMeta?.crushSignals || deep?.intimacyMastery?.crushSignals) && (
                 <div
                   className="glass-panel"
                   style={{
-                    padding: '22px 24px',
-                    marginBottom: '20px',
-                    background: 'linear-gradient(135deg, rgba(236, 72, 153, 0.12), rgba(168, 85, 247, 0.1))',
-                    border: '1.5px solid rgba(236, 72, 153, 0.4)',
-                    borderRadius: '16px'
+                    padding: '22px',
+                    background: 'rgba(251, 191, 36, 0.05)',
+                    borderColor: 'rgba(251, 191, 36, 0.25)'
                   }}
                 >
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px', flexWrap: 'wrap', gap: '8px' }}>
-                    <div style={{ fontSize: '0.82rem', color: '#f472b6', fontWeight: 800, letterSpacing: '1.5px' }}>
-                      💘 你的個人化潛意識戀愛依附風格
-                    </div>
-                    <span className="dim-code-badge" style={{ color: '#f472b6', borderColor: 'rgba(236,72,153,0.4)' }}>
-                      {dynamicData.dynamicLoveDiagnosis.attachmentStyle}
-                    </span>
+                  <div style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--gold-accent)', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <span>💓</span><span>當你真正動心時，藏不住的 3 個極微小信號</span>
                   </div>
-                  <p style={{ fontSize: '0.94rem', color: '#fff', lineHeight: 1.85, margin: '0 0 10px 0' }}>
-                    {dynamicData.dynamicLoveDiagnosis.attachmentDesc}
-                  </p>
-                  <p style={{ fontSize: '0.86rem', color: '#fce7f3', lineHeight: 1.7, margin: 0 }}>
-                    {deep?.intimacyMastery?.attachment}
-                  </p>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                    {(deep?.subTypeMeta?.crushSignals || deep?.intimacyMastery?.crushSignals).map((sig, i) => (
+                      <div key={i} style={{ display: 'flex', gap: '10px', padding: '8px 12px', background: 'rgba(255,255,255,0.03)', borderRadius: '8px', fontSize: '0.88rem', color: 'var(--text-primary)' }}>
+                        <span style={{ color: 'var(--gold-accent)', fontWeight: 900, flexShrink: 0 }}>0{i+1}</span>
+                        <span>{sig}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               )}
 
-              {/* 心動信號 & 安全感時刻 */}
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px', marginBottom: '20px' }}>
-                {deep?.intimacyMastery?.crushSignals && (
-                  <div
-                    className="glass-panel"
-                    style={{
-                      padding: '22px',
-                      background: 'rgba(251, 191, 36, 0.05)',
-                      borderColor: 'rgba(251, 191, 36, 0.25)'
-                    }}
-                  >
-                    <div style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--gold-accent)', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                      <span>💓</span><span>當你真正動心時，藏不住的 3 個極微小信號</span>
-                    </div>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                      {dynamicData?.dynamicLoveDiagnosis?.customCrushSignal && (
-                        <div style={{ display: 'flex', gap: '10px', padding: '10px 12px', background: 'rgba(251,191,36,0.12)', border: '1px solid rgba(251,191,36,0.3)', borderRadius: '8px', fontSize: '0.88rem', color: '#fff', fontWeight: 700 }}>
-                          <span style={{ color: 'var(--gold-accent)', fontWeight: 900, flexShrink: 0 }}>★</span>
-                          <span>{dynamicData.dynamicLoveDiagnosis.customCrushSignal}</span>
-                        </div>
-                      )}
-                      {deep.intimacyMastery.crushSignals.map((sig, i) => (
-                        <div key={i} style={{ display: 'flex', gap: '10px', padding: '8px 12px', background: 'rgba(255,255,255,0.03)', borderRadius: '8px', fontSize: '0.88rem', color: 'var(--text-primary)' }}>
-                          <span style={{ color: 'var(--gold-accent)', fontWeight: 900, flexShrink: 0 }}>0{i+1}</span>
-                          <span>{sig}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {deep?.intimacyMastery?.securityTrigger && (
-                  <div
-                    className="glass-panel"
-                    style={{
-                      padding: '22px',
-                      background: 'rgba(16, 185, 129, 0.05)',
-                      borderColor: 'rgba(16, 185, 129, 0.25)'
-                    }}
-                  >
-                    <div style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--success)', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                      <span>🛡️</span><span>讓你瞬間放下心防的安全感時刻</span>
-                    </div>
-                    <p style={{ fontSize: '0.9rem', color: 'var(--text-primary)', lineHeight: 1.8, margin: '0 0 14px 0' }}>
-                      {deep.intimacyMastery.securityTrigger}
-                    </p>
-                    {deep?.subTypeMeta?.loveLanguage && (
-                      <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '10px' }}>
-                        💌 <strong>深層愛之語：</strong>{deep.subTypeMeta.loveLanguage}
-                      </div>
-                    )}
-                  </div>
-                )}
-              </div>
-
-              {/* 給伴侶的使用說明書 & 禁忌雷區 */}
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px', marginBottom: '24px' }}>
+              {(deep?.subTypeMeta?.securityTrigger || deep?.intimacyMastery?.securityTrigger) && (
                 <div
                   className="glass-panel"
                   style={{
-                    padding: '24px',
-                    background: 'rgba(236, 72, 153, 0.05)',
-                    borderColor: 'rgba(236, 72, 153, 0.25)',
-                    lineHeight: 1.8
+                    padding: '22px',
+                    background: 'rgba(16, 185, 129, 0.05)',
+                    borderColor: 'rgba(16, 185, 129, 0.25)'
                   }}
                 >
-                  <div style={{ fontSize: '1.02rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    <span>📜</span><span>給另一半的真心使用說明書</span>
+                  <div style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--success)', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <span>🛡️</span><span>讓你瞬間放下心防的安全感時刻</span>
                   </div>
-                  {deep?.intimacyMastery?.partnerGuide ? (
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '12px' }}>
-                      {deep.intimacyMastery.partnerGuide.map((rule, idx) => (
-                        <div key={idx} style={{ fontSize: '0.86rem', color: 'var(--text-secondary)' }}>
-                          <span style={{ color: '#f472b6', fontWeight: 800, marginRight: '6px' }}>✦</span>
-                          {rule}
-                        </div>
-                      ))}
+                  <p style={{ fontSize: '0.9rem', color: 'var(--text-primary)', lineHeight: 1.8, margin: '0 0 14px 0' }}>
+                    {deep?.subTypeMeta?.securityTrigger || deep?.intimacyMastery?.securityTrigger}
+                  </p>
+                  {deep?.subTypeMeta?.loveLanguage && (
+                    <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '10px' }}>
+                      💌 <strong>深層愛之語：</strong>{deep.subTypeMeta.loveLanguage}
                     </div>
-                  ) : (
-                    <p style={{ fontSize: '0.92rem', color: 'var(--text-primary)', marginBottom: '14px' }}>{p.loveStyle}</p>
                   )}
-                  <div style={{ fontSize: '0.85rem', color: 'var(--text-tertiary)', borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '10px' }}>
-                    💡 <strong>理想伴侶畫像：</strong>{p.intimacyMastery?.idealPartnerTrait || '重視彼此獨立空間與深層精神共鳴。'}
-                  </div>
                 </div>
+              )}
+            </div>
 
-                <div
-                  className="glass-panel"
-                  style={{
-                    padding: '24px',
-                    background: 'rgba(239, 68, 68, 0.05)',
-                    borderColor: 'rgba(239, 68, 68, 0.25)',
-                    lineHeight: 1.8
-                  }}
-                >
-                  <div style={{ fontSize: '1.02rem', fontWeight: 800, color: '#f87171', marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    <span>⚠️</span><span>人際與戀愛絕對禁忌雷區（踩到必炸）</span>
-                  </div>
-                  <ul style={{ paddingLeft: '20px', margin: '0 0 12px 0', fontSize: '0.88rem', color: 'var(--text-secondary)' }}>
-                    {p.intimacyMastery && p.intimacyMastery.redFlags.map((rf, idx) => (
-                      <li key={idx} style={{ marginBottom: '6px' }}>
-                        <strong style={{ color: 'var(--text-primary)' }}>{rf}</strong>
-                      </li>
+            {/* 給伴侶的使用說明書 & 禁忌雷區 */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px', marginBottom: '24px' }}>
+              <div
+                className="glass-panel"
+                style={{
+                  padding: '24px',
+                  background: 'rgba(236, 72, 153, 0.05)',
+                  borderColor: 'rgba(236, 72, 153, 0.25)',
+                  lineHeight: 1.8
+                }}
+              >
+                <div style={{ fontSize: '1.02rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  <span>📜</span><span>給另一半的真心使用說明書</span>
+                </div>
+                {(deep?.subTypeMeta?.partnerGuide || deep?.intimacyMastery?.partnerGuide) ? (
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '12px' }}>
+                    {(deep?.subTypeMeta?.partnerGuide || deep?.intimacyMastery?.partnerGuide).map((rule, idx) => (
+                      <div key={idx} style={{ fontSize: '0.86rem', color: 'var(--text-secondary)' }}>
+                        <span style={{ color: '#f472b6', fontWeight: 800, marginRight: '6px' }}>✦</span>
+                        {rule}
+                      </div>
                     ))}
-                  </ul>
-                  <div style={{ fontSize: '0.85rem', color: 'var(--text-tertiary)', borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '10px' }}>
-                    💬 <strong>衝突修復秘訣：</strong>{p.intimacyMastery?.communicationTip || '在給出理性建議前，先給予伴侶一句溫暖的情感確認。'}
                   </div>
+                ) : (
+                  <p style={{ fontSize: '0.92rem', color: 'var(--text-primary)', marginBottom: '14px' }}>{p.loveStyle}</p>
+                )}
+                <div style={{ fontSize: '0.85rem', color: 'var(--text-tertiary)', borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '10px' }}>
+                  💡 <strong>理想伴侶畫像：</strong>{p.intimacyMastery?.idealPartnerTrait || '重視彼此獨立空間與深層精神共鳴。'}
                 </div>
               </div>
-            </LockedSection>
+
+              <div
+                className="glass-panel"
+                style={{
+                  padding: '24px',
+                  background: 'rgba(239, 68, 68, 0.05)',
+                  borderColor: 'rgba(239, 68, 68, 0.25)',
+                  lineHeight: 1.8
+                }}
+              >
+                <div style={{ fontSize: '1.02rem', fontWeight: 800, color: '#f87171', marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  <span>⚠️</span><span>人際與戀愛絕對禁忌雷區（踩到必炸）</span>
+                </div>
+                <ul style={{ paddingLeft: '20px', margin: '0 0 12px 0', fontSize: '0.88rem', color: 'var(--text-secondary)' }}>
+                  {(deep?.subTypeMeta?.redFlags || p.intimacyMastery?.redFlags || ['背叛與欺騙', '冷暴力與試探']).map((rf, idx) => (
+                    <li key={idx} style={{ marginBottom: '6px' }}>
+                      <strong style={{ color: 'var(--text-primary)' }}>{rf}</strong>
+                    </li>
+                  ))}
+                </ul>
+                <div style={{ fontSize: '0.85rem', color: 'var(--text-tertiary)', borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '10px' }}>
+                  💬 <strong>衝突修復秘訣：</strong>{p.intimacyMastery?.communicationTip || '在給出理性建議前，先給予伴侶一句溫暖的情感確認。'}
+                </div>
+              </div>
+            </div>
           </div>
         )}
 
@@ -935,120 +1262,191 @@ export function ResultView({
               🛡️ 壓力應激與 4 步陰影自救 SOP (Shadow Integration & Healing Protocol)
             </h4>
 
-            <LockedSection isUnlocked={isUnlocked} onUnlock={handleUnlockClick} title="壓力應激與 4 步陰影自救 SOP">
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px', marginBottom: '24px' }}>
-                <div className="glass-panel" style={{ padding: '22px', borderColor: 'rgba(245, 158, 11, 0.3)' }}>
-                  <div style={{ fontWeight: 800, color: 'var(--warning)', marginBottom: '8px', fontSize: '1.02rem' }}>
-                    ⚡ 核心壓力觸發源 (Stress Triggers)
-                  </div>
-                  <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: 1.65, marginBottom: '14px' }}>
-                    {p.stressProtocol ? p.stressProtocol.trigger : '當長期處於不可控混亂或努力被否定時，能量將急劇衰竭。'}
-                  </p>
-                  <div style={{ fontWeight: 800, color: '#f87171', marginBottom: '6px', fontSize: '0.95rem' }}>
-                    🌀 劣勢功能失控狀態 (In the Grip)
-                  </div>
-                  <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-                    {p.stressProtocol ? p.stressProtocol.shadowGrip : '可能短暫切換至劣勢功能失控狀態，陷入過度自責或焦慮內耗。'}
-                  </p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px', marginBottom: '24px' }}>
+              <div className="glass-panel" style={{ padding: '22px', borderColor: 'rgba(245, 158, 11, 0.3)' }}>
+                <div style={{ fontWeight: 800, color: 'var(--warning)', marginBottom: '8px', fontSize: '1.02rem' }}>
+                  ⚡ 核心壓力觸發源 (Stress Triggers)
                 </div>
-
-                <div className="glass-panel" style={{ padding: '22px', borderColor: 'rgba(16, 185, 129, 0.3)' }}>
-                  <div style={{ fontWeight: 800, color: 'var(--success)', marginBottom: '12px', fontSize: '1.02rem' }}>
-                    🌿 4 步驟心智能量重啟 SOP
-                  </div>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                    {p.stressProtocol && p.stressProtocol.healingSOP.map((step, idx) => (
-                      <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.88rem' }}>
-                        <span
-                          style={{
-                            background: 'rgba(16, 185, 129, 0.2)',
-                            color: '#34d399',
-                            fontWeight: 900,
-                            fontSize: '0.78rem',
-                            padding: '2px 8px',
-                            borderRadius: '4px',
-                            fontFamily: 'var(--font-mono)'
-                          }}
-                        >
-                          STEP 0{idx + 1}
-                        </span>
-                        <span style={{ color: 'var(--text-primary)', fontWeight: 600 }}>{step}</span>
-                      </div>
-                    ))}
-                  </div>
+                <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: 1.65, marginBottom: '14px' }}>
+                  {p.stressProtocol ? p.stressProtocol.trigger : '當長期處於不可控混亂或努力被否定時，能量將急劇衰竭。'}
+                </p>
+                <div style={{ fontWeight: 800, color: '#f87171', marginBottom: '6px', fontSize: '0.95rem' }}>
+                  🌀 劣勢功能失控狀態 (In the Grip)
                 </div>
-              </div>
-
-              <div
-                className="glass-panel"
-                style={{
-                  padding: '20px',
-                  background: 'rgba(16, 185, 129, 0.05)',
-                  borderColor: 'rgba(16, 185, 129, 0.25)',
-                  lineHeight: 1.7
-                }}
-              >
-                <div style={{ fontSize: '1.02rem', fontWeight: 800, color: 'var(--success)', marginBottom: '8px' }}>
-                  🔋 日常身心回充處方：
-                </div>
-                <p style={{ color: 'var(--text-primary)', fontSize: '0.95rem', margin: 0 }}>
-                  {p.stressRecharge}
+                <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+                  {deep?.stressProtocol?.shadowGrip || p.stressProtocol?.shadowGrip || '可能短暫切換至劣勢功能失控狀態，陷入過度自責或焦慮內耗。'}
                 </p>
               </div>
-            </LockedSection>
+
+              <div className="glass-panel" style={{ padding: '22px', borderColor: 'rgba(16, 185, 129, 0.3)' }}>
+                <div style={{ fontWeight: 800, color: 'var(--success)', marginBottom: '12px', fontSize: '1.02rem' }}>
+                  🌿 4 步驟心智能量重啟 SOP
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                  {(deep?.subTypeMeta?.healingStep || p.stressProtocol?.healingSOP || ['短暫切斷雜音', '體能運動釋放', '重整核心目標']).map((step, idx) => (
+                    <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.88rem' }}>
+                      <span
+                        style={{
+                          background: 'rgba(16, 185, 129, 0.2)',
+                          color: '#34d399',
+                          fontWeight: 900,
+                          fontSize: '0.78rem',
+                          padding: '2px 8px',
+                          borderRadius: '4px',
+                          fontFamily: 'var(--font-mono)'
+                        }}
+                      >
+                        STEP 0{idx + 1}
+                      </span>
+                      <span style={{ color: 'var(--text-primary)', fontWeight: 600 }}>{step}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* 21 天個人量化躍遷計畫（動態生成版） */}
+            {dynamicData?.dynamicAscentPlan && (
+              <div style={{ marginBottom: '24px' }}>
+                <div style={{ fontSize: '1.02rem', fontWeight: 800, color: 'var(--gold-accent)', marginBottom: '4px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  🌱 21 天個人化心智躍遷計畫
+                </div>
+                <p style={{ fontSize: '0.84rem', color: 'var(--text-tertiary)', marginBottom: '14px' }}>
+                  根據你的真實六維度數據，為你量身設計的三階段成長路徑
+                </p>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '14px' }}>
+                  {[dynamicData.dynamicAscentPlan.phase1, dynamicData.dynamicAscentPlan.phase2, dynamicData.dynamicAscentPlan.phase3].map((plan, i) => (
+                    <div key={i} className="glass-panel" style={{ padding: '20px 22px', borderLeft: `3px solid ${i === 0 ? 'var(--primary-light)' : i === 1 ? 'var(--gold-accent)' : 'var(--secondary-light)'}` }}>
+                      <div style={{ fontSize: '0.75rem', color: i === 0 ? 'var(--primary-light)' : i === 1 ? 'var(--gold-accent)' : 'var(--secondary-light)', fontWeight: 800, letterSpacing: '1px', marginBottom: '6px' }}>
+                        {plan.days}
+                      </div>
+                      <div style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '8px' }}>
+                        {plan.title}
+                      </div>
+                      <p style={{ fontSize: '0.86rem', color: 'var(--text-secondary)', lineHeight: 1.75, margin: '0 0 12px 0' }}>
+                        {plan.task}
+                      </p>
+                      {plan.microAction && (
+                        <div style={{ padding: '10px 13px', background: 'rgba(255,255,255,0.04)', borderRadius: '8px', fontSize: '0.83rem', color: 'var(--gold-accent)', lineHeight: 1.65 }}>
+                          ✦ 每日微行動：{plan.microAction}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+            {/* 如無動態計畫則顯示 deep data 計畫 */}
+            {!dynamicData?.dynamicAscentPlan && deep?.subTypeMeta?.twentyOneDayPlan && (
+              <div style={{ marginBottom: '24px' }}>
+                <div style={{ fontSize: '1.02rem', fontWeight: 800, color: 'var(--gold-accent)', marginBottom: '12px' }}>
+                  🌱 21 天微習慣自我進化躍遷計畫
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '14px' }}>
+                  {deep.subTypeMeta.twentyOneDayPlan.map((plan, i) => (
+                    <div key={i} className="glass-panel" style={{ padding: '18px 20px' }}>
+                      <div style={{ fontSize: '0.82rem', color: 'var(--gold-accent)', fontWeight: 800, marginBottom: '6px' }}>
+                        {plan.week}
+                      </div>
+                      <p style={{ fontSize: '0.88rem', color: 'var(--text-primary)', lineHeight: 1.7, margin: 0 }}>
+                        {plan.task}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <div
+              className="glass-panel"
+              style={{
+                padding: '20px',
+                background: 'rgba(16, 185, 129, 0.05)',
+                borderColor: 'rgba(16, 185, 129, 0.25)',
+                lineHeight: 1.7
+              }}
+            >
+              <div style={{ fontSize: '1.02rem', fontWeight: 800, color: 'var(--success)', marginBottom: '8px' }}>
+                🔋 日常身心回充處方：
+              </div>
+              <p style={{ color: 'var(--text-primary)', fontSize: '0.95rem', margin: 0 }}>
+                {p.stressRecharge}
+              </p>
+            </div>
           </div>
         )}
 
         {/* 標籤 6: 命定拍檔 */}
         {activeTab === 'matches' && (
           <div className="tab-pane-content active">
-            <LockedSection isUnlocked={isUnlocked} onUnlock={handleUnlockClick} title="命定靈魂拍檔深度契合解析">
-              <div className="content-grid-2col">
-                <div className="match-partner-card">
-                  <img
-                    src={goldenProf.avatar || './avatars/empath.svg'}
-                    alt={goldenProf.name}
-                    className="partner-avatar-img"
-                  />
-                  <div>
-                    <div style={{ fontSize: '0.85rem', color: 'var(--accent-light)', fontWeight: 800, display: 'flex', alignItems: 'center', gap: '6px' }}>
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                      </svg>
-                      最佳靈魂拍檔 (Golden Match)
-                    </div>
-                    <div style={{ fontSize: '1.25rem', fontWeight: 800, margin: '4px 0', color: 'var(--text-primary)' }}>
-                      {p.goldenMatch} · {goldenProf.name}
-                    </div>
-                    <div style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-                      互補共鳴，彼此激發深層潛能與溫暖安全感，在心靈與思維上具備最高契合度。
-                    </div>
+            <div className="content-grid-2col">
+              <div className="match-partner-card">
+                <img
+                  src={goldenProf.avatar || './avatars/empath.svg'}
+                  alt={goldenProf.name}
+                  className="partner-avatar-img"
+                />
+                <div>
+                  <div style={{ fontSize: '0.85rem', color: 'var(--accent-light)', fontWeight: 800, display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                    </svg>
+                    最佳靈魂拍檔 (Golden Match)
                   </div>
-                </div>
-
-                <div className="match-partner-card">
-                  <img
-                    src={growthProf.avatar || './avatars/sentinel.svg'}
-                    alt={growthProf.name}
-                    className="partner-avatar-img"
-                  />
-                  <div>
-                    <div style={{ fontSize: '0.85rem', color: 'var(--secondary-light)', fontWeight: 800, display: 'flex', alignItems: 'center', gap: '6px' }}>
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-                      </svg>
-                      成長磨礪拍檔 (Growth Match)
-                    </div>
-                    <div style={{ fontSize: '1.25rem', fontWeight: 800, margin: '4px 0', color: 'var(--text-primary)' }}>
-                      {p.growthMatch} · {growthProf.name}
-                    </div>
-                    <div style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-                      思維視角迥異，在跨維度碰撞與溝通磨合中，能拓展你的人生維度與心智寬度。
-                    </div>
+                  <div style={{ fontSize: '1.25rem', fontWeight: 800, margin: '4px 0', color: 'var(--text-primary)' }}>
+                    {p.goldenMatch} · {goldenProf.name}
+                  </div>
+                  <div style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+                    互補共鳴，彼此激發深層潛能與溫暖安全感，在心靈與思維上具備最高契合度。
                   </div>
                 </div>
               </div>
-            </LockedSection>
+
+              <div className="match-partner-card">
+                <img
+                  src={growthProf.avatar || './avatars/sentinel.svg'}
+                  alt={growthProf.name}
+                  className="partner-avatar-img"
+                />
+                <div>
+                  <div style={{ fontSize: '0.85rem', color: 'var(--secondary-light)', fontWeight: 800, display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                    </svg>
+                    成長磨礪拍檔 (Growth Match)
+                  </div>
+                  <div style={{ fontSize: '1.25rem', fontWeight: 800, margin: '4px 0', color: 'var(--text-primary)' }}>
+                    {p.growthMatch} · {growthProf.name}
+                  </div>
+                  <div style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+                    思維視角迥異，在跨維度碰撞與溝通磨合中，能拓展你的人生維度與心智寬度。
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* 標籤 7: 致內在小孩的一封信 */}
+        {activeTab === 'letter' && (
+          <div className="tab-pane-content active">
+            <div
+              className="glass-panel"
+              style={{
+                padding: '36px 40px',
+                background: 'linear-gradient(135deg, rgba(229, 154, 88, 0.08), rgba(125, 165, 133, 0.08))',
+                border: '1px solid rgba(229, 154, 88, 0.35)',
+                borderRadius: '20px',
+                lineHeight: 2.2
+              }}
+            >
+              <div style={{ fontSize: '0.88rem', fontWeight: 800, color: 'var(--gold-accent)', letterSpacing: '1.5px', marginBottom: '16px', textTransform: 'uppercase' }}>
+                ✉️ 致內在小孩的一封深層靈魂手札 · A Letter to Your Soul
+              </div>
+              <p className="font-serif" style={{ fontSize: '1.08rem', color: 'var(--text-primary)', margin: 0, fontStyle: 'italic' }}>
+                "{deep?.subTypeMeta?.letterToSelf || '親愛的你，你一直以為自己必須是那個最強的人，才值得被愛。但請記得：你的脆弱也是你的一部分，真實的你，就已經足夠好。'}"
+              </p>
+            </div>
           </div>
         )}
       </div>
