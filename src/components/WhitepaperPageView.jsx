@@ -541,33 +541,33 @@ export function WhitepaperPageView({
         {/* ══ SECTION 9: 愛情依附風格與心動信號 ══ */}
         <SectionHeading subtitle="Deep Love & Intimacy" title="親密關係深度手冊：依附風格與心動信號" id="sec-love" />
 
-        <ModernCard padding="28px 32px" mb="24px" bg="linear-gradient(135deg, rgba(236, 72, 153, 0.08), rgba(255,255,255,0.01))" border="rgba(236, 72, 153, 0.3)">
+        <ModernCard padding="28px 32px" mb="24px" bg="linear-gradient(135deg, rgba(236, 72, 153, 0.06), rgba(255,255,255,0.01))" border="rgba(236, 72, 153, 0.25)">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px', flexWrap: 'wrap', gap: '8px' }}>
-            <div style={{ fontSize: '0.95rem', fontWeight: 800, color: '#f472b6' }}>
+            <div style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--accent-pink, #db2777)' }}>
               💘 潛意識依附風格與宿命模式
             </div>
             {dynamicData?.dynamicLoveDiagnosis?.attachmentStyle && (
-              <span style={{ fontSize: '0.76rem', color: '#f472b6', background: 'rgba(236,72,153,0.15)', border: '1px solid rgba(236,72,153,0.35)', padding: '3px 10px', borderRadius: '8px', fontWeight: 800 }}>
+              <span style={{ fontSize: '0.76rem', color: 'var(--accent-pink, #db2777)', background: 'rgba(236,72,153,0.1)', border: '1px solid rgba(236,72,153,0.3)', padding: '3px 10px', borderRadius: '8px', fontWeight: 800 }}>
                 {dynamicData.dynamicLoveDiagnosis.attachmentStyle}
               </span>
             )}
           </div>
-          <p style={{ fontSize: '0.96rem', color: 'var(--text-primary)', lineHeight: 1.9, margin: '0 0 16px 0', fontWeight: 500 }}>
+          <p style={{ fontSize: '0.96rem', color: 'var(--text-primary)', lineHeight: 1.9, margin: '0 0 16px 0', fontWeight: 600 }}>
             {dynamicData?.dynamicLoveDiagnosis?.attachmentDesc || subType.loveAttachment || p.loveStyle || '追求真實而自由的深度連結，在獨立與依附之間尋求平衡。'}
           </p>
 
           {/* 個人化量化心動信號 & 安全感時刻 */}
           {dynamicData?.dynamicLoveDiagnosis && (
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '12px', marginBottom: '20px' }}>
-              <div style={{ padding: '14px 16px', background: 'rgba(244,114,182,0.1)', border: '1px solid rgba(244,114,182,0.25)', borderRadius: '12px' }}>
-                <div style={{ fontSize: '0.78rem', color: '#f472b6', fontWeight: 800, marginBottom: '6px' }}>💓 當你真正動心，你會這樣做</div>
-                <p style={{ fontSize: '0.88rem', color: '#fce7f3', lineHeight: 1.75, margin: 0 }}>
+              <div style={{ padding: '16px 18px', background: 'rgba(236,72,153,0.06)', border: '1px solid rgba(236,72,153,0.22)', borderRadius: '12px' }}>
+                <div style={{ fontSize: '0.8rem', color: 'var(--accent-pink, #db2777)', fontWeight: 800, marginBottom: '6px' }}>💓 當你真正動心，你會這樣做</div>
+                <p style={{ fontSize: '0.9rem', color: 'var(--text-primary)', lineHeight: 1.8, margin: 0 }}>
                   {dynamicData.dynamicLoveDiagnosis.customCrushSignal}
                 </p>
               </div>
-              <div style={{ padding: '14px 16px', background: 'rgba(52,211,153,0.08)', border: '1px solid rgba(52,211,153,0.25)', borderRadius: '12px' }}>
-                <div style={{ fontSize: '0.78rem', color: '#34d399', fontWeight: 800, marginBottom: '6px' }}>🛡️ 讓你瞬間卸下心防的時刻</div>
-                <p style={{ fontSize: '0.88rem', color: '#d1fae5', lineHeight: 1.75, margin: 0 }}>
+              <div style={{ padding: '16px 18px', background: 'rgba(16,185,129,0.06)', border: '1px solid rgba(16,185,129,0.22)', borderRadius: '12px' }}>
+                <div style={{ fontSize: '0.8rem', color: 'var(--success, #059669)', fontWeight: 800, marginBottom: '6px' }}>🛡️ 讓你瞬間卸下心防的時刻</div>
+                <p style={{ fontSize: '0.9rem', color: 'var(--text-primary)', lineHeight: 1.8, margin: 0 }}>
                   {dynamicData.dynamicLoveDiagnosis.customSafetyTrigger}
                 </p>
               </div>

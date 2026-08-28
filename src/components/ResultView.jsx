@@ -1115,32 +1115,32 @@ export function ResultView({
                 }}
               >
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px', flexWrap: 'wrap', gap: '8px' }}>
-                  <div style={{ fontSize: '0.82rem', color: '#f472b6', fontWeight: 800, letterSpacing: '1.5px' }}>
+                  <div style={{ fontSize: '0.88rem', color: 'var(--accent-pink, #db2777)', fontWeight: 800, letterSpacing: '1px' }}>
                     💘 你的個人化潛意識戀愛依附風格
                   </div>
-                  <span className="dim-code-badge" style={{ color: '#f472b6', borderColor: 'rgba(236,72,153,0.4)' }}>
+                  <span className="dim-code-badge" style={{ color: 'var(--accent-pink, #db2777)', borderColor: 'rgba(236,72,153,0.35)', background: 'rgba(236,72,153,0.08)' }}>
                     {dynamicData.dynamicLoveDiagnosis.attachmentStyle}
                   </span>
                 </div>
-                <p style={{ fontSize: '0.97rem', color: '#fff', lineHeight: 1.9, margin: '0 0 14px 0', fontWeight: 500 }}>
+                <p style={{ fontSize: '0.97rem', color: 'var(--text-primary)', lineHeight: 1.9, margin: '0 0 14px 0', fontWeight: 600 }}>
                   {dynamicData.dynamicLoveDiagnosis.attachmentDesc}
                 </p>
                 {(deep?.subTypeMeta?.loveAttachment || deep?.intimacyMastery?.attachment) && (
-                  <p style={{ fontSize: '0.88rem', color: '#fce7f3', lineHeight: 1.75, margin: '0 0 16px 0' }}>
+                  <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: 1.8, margin: '0 0 16px 0' }}>
                     {deep?.subTypeMeta?.loveAttachment || deep?.intimacyMastery?.attachment}
                   </p>
                 )}
                 {/* 個人化量化心動信號 & 安全感時刻 */}
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '12px' }}>
-                  <div style={{ padding: '14px 16px', background: 'rgba(244,114,182,0.12)', border: '1px solid rgba(244,114,182,0.3)', borderRadius: '12px' }}>
-                    <div style={{ fontSize: '0.78rem', color: '#f472b6', fontWeight: 800, marginBottom: '8px' }}>💓 當你真正動心，你會這樣做</div>
-                    <p style={{ fontSize: '0.89rem', color: '#fce7f3', lineHeight: 1.8, margin: 0 }}>
+                  <div style={{ padding: '16px 18px', background: 'rgba(236,72,153,0.06)', border: '1px solid rgba(236,72,153,0.22)', borderRadius: '14px' }}>
+                    <div style={{ fontSize: '0.82rem', color: 'var(--accent-pink, #db2777)', fontWeight: 800, marginBottom: '8px' }}>💓 當你真正動心，你會這樣做</div>
+                    <p style={{ fontSize: '0.92rem', color: 'var(--text-primary)', lineHeight: 1.8, margin: 0 }}>
                       {dynamicData.dynamicLoveDiagnosis.customCrushSignal}
                     </p>
                   </div>
-                  <div style={{ padding: '14px 16px', background: 'rgba(52,211,153,0.08)', border: '1px solid rgba(52,211,153,0.25)', borderRadius: '12px' }}>
-                    <div style={{ fontSize: '0.78rem', color: '#34d399', fontWeight: 800, marginBottom: '8px' }}>🛡️ 讓你瞬間卸下心防的時刻</div>
-                    <p style={{ fontSize: '0.89rem', color: '#d1fae5', lineHeight: 1.8, margin: 0 }}>
+                  <div style={{ padding: '16px 18px', background: 'rgba(16,185,129,0.06)', border: '1px solid rgba(16,185,129,0.22)', borderRadius: '14px' }}>
+                    <div style={{ fontSize: '0.82rem', color: 'var(--success, #059669)', fontWeight: 800, marginBottom: '8px' }}>🛡️ 讓你瞬間卸下心防的時刻</div>
+                    <p style={{ fontSize: '0.92rem', color: 'var(--text-primary)', lineHeight: 1.8, margin: 0 }}>
                       {dynamicData.dynamicLoveDiagnosis.customSafetyTrigger}
                     </p>
                   </div>
@@ -1214,8 +1214,8 @@ export function ResultView({
                 {(deep?.subTypeMeta?.partnerGuide || deep?.intimacyMastery?.partnerGuide) ? (
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '12px' }}>
                     {(deep?.subTypeMeta?.partnerGuide || deep?.intimacyMastery?.partnerGuide).map((rule, idx) => (
-                      <div key={idx} style={{ fontSize: '0.86rem', color: 'var(--text-secondary)' }}>
-                        <span style={{ color: '#f472b6', fontWeight: 800, marginRight: '6px' }}>✦</span>
+                      <div key={idx} style={{ fontSize: '0.9rem', color: 'var(--text-primary)', lineHeight: 1.75 }}>
+                        <span style={{ color: 'var(--accent-pink, #db2777)', fontWeight: 800, marginRight: '6px' }}>✦</span>
                         {rule}
                       </div>
                     ))}
@@ -1223,7 +1223,7 @@ export function ResultView({
                 ) : (
                   <p style={{ fontSize: '0.92rem', color: 'var(--text-primary)', marginBottom: '14px' }}>{p.loveStyle}</p>
                 )}
-                <div style={{ fontSize: '0.85rem', color: 'var(--text-tertiary)', borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '10px' }}>
+                <div style={{ fontSize: '0.86rem', color: 'var(--text-secondary)', borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '10px' }}>
                   💡 <strong>理想伴侶畫像：</strong>{p.intimacyMastery?.idealPartnerTrait || '重視彼此獨立空間與深層精神共鳴。'}
                 </div>
               </div>
@@ -1237,17 +1237,17 @@ export function ResultView({
                   lineHeight: 1.8
                 }}
               >
-                <div style={{ fontSize: '1.02rem', fontWeight: 800, color: '#f87171', marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <div style={{ fontSize: '1.02rem', fontWeight: 800, color: '#ef4444', marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '6px' }}>
                   <span>⚠️</span><span>人際與戀愛絕對禁忌雷區（踩到必炸）</span>
                 </div>
-                <ul style={{ paddingLeft: '20px', margin: '0 0 12px 0', fontSize: '0.88rem', color: 'var(--text-secondary)' }}>
+                <ul style={{ paddingLeft: '20px', margin: '0 0 12px 0', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
                   {(deep?.subTypeMeta?.redFlags || p.intimacyMastery?.redFlags || ['背叛與欺騙', '冷暴力與試探']).map((rf, idx) => (
                     <li key={idx} style={{ marginBottom: '6px' }}>
                       <strong style={{ color: 'var(--text-primary)' }}>{rf}</strong>
                     </li>
                   ))}
                 </ul>
-                <div style={{ fontSize: '0.85rem', color: 'var(--text-tertiary)', borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '10px' }}>
+                <div style={{ fontSize: '0.86rem', color: 'var(--text-secondary)', borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '10px' }}>
                   💬 <strong>衝突修復秘訣：</strong>{p.intimacyMastery?.communicationTip || '在給出理性建議前，先給予伴侶一句溫暖的情感確認。'}
                 </div>
               </div>
